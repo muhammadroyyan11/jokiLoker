@@ -78,7 +78,7 @@
 
                             <?php else : ?>
                                 <li>
-                                    <a href="#"><b>Register</b></a>
+                                    <a href="<?= site_url('auth/register') ?>"><b>Register</b></a>
                                 </li>
 
                                 <li>

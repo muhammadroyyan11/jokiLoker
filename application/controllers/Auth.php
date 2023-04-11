@@ -113,10 +113,12 @@ class Auth extends CI_Controller
 
     public function register()
     {
-        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]|alpha_numeric');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[3]|trim');
         $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]|trim');
-        $this->form_validation->set_rules('nama_lengkap', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+        $this->form_validation->set_rules('ttl', 'Ttl', 'required|trim');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis_kelamin', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|trim');
 
@@ -125,12 +127,16 @@ class Auth extends CI_Controller
             $this->template->load('tempauth', 'auth/register', $data);
         } else {
             $input = $this->input->post(null, true);
+
+            // var_dump($input);
             unset($input['password2']);
+            $input['nama']          = $input['nama'];
+            $input['no_telp']       = $input['no_telp'];
+            $input['alamat']        = $input['alamat'];
+            $input['email']         = $input['email'];
             $input['password']      = password_hash($input['password'], PASSWORD_DEFAULT);
-            $input['role']          = 'gudang';
-            $input['foto']          = 'user.png';
-            $input['is_active']     = 0;
-            $input['created_at']    = time();
+            $input['role']          = 3;
+            $input['is_active']     = 1;
 
             $query = $this->base->insert('user', $input);
             if ($query) {

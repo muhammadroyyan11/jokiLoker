@@ -1,10 +1,9 @@
 <div class="login-box">
-    <div class="login-logo">
-        <a href="<?= base_url() ?>assets/index2.html"><b>Report</b>Visitor</a>
-    </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <h3 class="text-center mt-0 mb-4">
+            <b>L</b>ogin
+        </h3>
 
         <form action="" method="post">
             <div class="form-group has-feedback">
