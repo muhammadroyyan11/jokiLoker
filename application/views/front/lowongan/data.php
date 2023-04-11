@@ -16,26 +16,24 @@
                             <?php
                             if (userdata('role') == 3) { ?>
                                 <div class="col-md-3 mx-auto p-b-30">
-                                    <a href="">
+                                    <a href="#">
                                         <span class="caption2-slide1 m-text1 t-center m-b-33">
-                                            asd
+                                            Profile User
                                         </span><br><br>
                                     </a>
-
-
-                                    <a href="">
+                                    <a href="#">
                                         <span class="caption2-slide1 m-text1 t-center m-b-33">
                                             Kelola Lamaran
                                         </span>
                                     </a>
                                 </div>
                                 <div class="col-md-3 mx-auto p-b-30">
-                                    <a href="">
+                                    <a href="#">
                                         <span class="caption2-slide1 m-text1 t-center m-b-33">
                                             CV User
                                         </span><br><br>
                                     </a>
-                                    <a href="">
+                                    <a href="#">
                                         <span class="caption2-slide1 m-text1 t-center m-b-33">
                                             Kelola Tes Ujian
                                         </span>
@@ -90,7 +88,7 @@
                 <div class="col-md-4 p-b-30">
                     <div class="job-instructor-layout">
                         <div class="brows-job-type ">
-                            <span class="full-time">Full Time</span>
+                            <span class="full-time">Kontrak</span>
                         </div>
                         <div class="job-instructor-thumb text-center">
                             <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
@@ -103,24 +101,13 @@
                                 <h5>Enreach Behavioral Services</h5>
                             </div>
                         </div>
-                        <ul class="grid-view-caption text-center">
-                            <li>
-                                <div class="brows-job-location">
-                                    <p><i class="fa fa-map-marker"></i>
-                                        <span class="brows-job-sallery">DKI Jakarta </span>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <p><span class="brows-job-sallery">Kota Adm. Jakarta</p>
-                            </li>
-                        </ul>
+                        
                     </div>
                 </div>
                 <div class="col-md-4 p-b-30">
                     <div class="job-instructor-layout">
                         <div class="brows-job-type ">
-                            <span class="full-time">Full Time</span>
+                            <span class="full-time">Kontrak</span>
                         </div>
                         <div class="job-instructor-thumb text-center">
                             <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
@@ -133,24 +120,13 @@
                                 <h5>Enreach Behavioral Services</h5>
                             </div>
                         </div>
-                        <ul class="grid-view-caption text-center">
-                            <li>
-                                <div class="brows-job-location">
-                                    <p><i class="fa fa-map-marker"></i>
-                                        <span class="brows-job-sallery">DKI Jakarta </span>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <p><span class="brows-job-sallery">Kota Adm. Jakarta</p>
-                            </li>
-                        </ul>
+                        
                     </div>
                 </div>
                 <div class="col-md-4 p-b-30">
                     <div class="job-instructor-layout">
                         <div class="brows-job-type ">
-                            <span class="full-time">Full Time</span>
+                            <span class="full-time">Kontrak</span>
                         </div>
                         <div class="job-instructor-thumb text-center">
                             <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
@@ -163,18 +139,7 @@
                                 <h5>Enreach Behavioral Services</h5>
                             </div>
                         </div>
-                        <ul class="grid-view-caption text-center">
-                            <li>
-                                <div class="brows-job-location">
-                                    <p><i class="fa fa-map-marker"></i>
-                                        <span class="brows-job-sallery">DKI Jakarta </span>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <p><span class="brows-job-sallery">Kota Adm. Jakarta</p>
-                            </li>
-                        </ul>
+                        
                     </div>
                 </div>
 
