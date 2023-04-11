@@ -96,7 +96,7 @@
                             <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
                         </div>
                         <div class="job-instructor-content">
-                            <h4 class="instructor-title"><a href="https://jobseeker.id/karir/view/1661765819-enreach-behavioral-services-admin-1661766387.html">Admin</a></h4>
+                            <h4 class="instructor-title"><a href="#">Admin</a></h4>
                             <div class="instructor-skills">
                                 Staff </div>
                             <div class="instructor-skills">
@@ -126,7 +126,7 @@
                             <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
                         </div>
                         <div class="job-instructor-content">
-                            <h4 class="instructor-title"><a href="https://jobseeker.id/karir/view/1661765819-enreach-behavioral-services-admin-1661766387.html">Admin</a></h4>
+                            <h4 class="instructor-title"><a href="#">Admin</a></h4>
                             <div class="instructor-skills">
                                 Staff </div>
                             <div class="instructor-skills">
@@ -156,7 +156,7 @@
                             <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
                         </div>
                         <div class="job-instructor-content">
-                            <h4 class="instructor-title"><a href="https://jobseeker.id/karir/view/1661765819-enreach-behavioral-services-admin-1661766387.html">Admin</a></h4>
+                            <h4 class="instructor-title"><a href="#">Admin</a></h4>
                             <div class="instructor-skills">
                                 Staff </div>
                             <div class="instructor-skills">
