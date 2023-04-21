@@ -236,12 +236,12 @@ class Base_model extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
-    public function getAll($id = null)
+    public function getSub($id = null)
     {
         // $nowDate = date('Y-m-d');
         $this->db->select('*');
-        $this->db->from('antrian_loket');
-        $this->db->join('loket', 'loket.loket_id=antrian_loket.loket_id');
+        $this->db->from('sub_kategori');
+        $this->db->join('kategori', 'kategori.id_kategori=sub_kategori.kategori_id');
         // $this->db->where('tgl_antrian_loket');
         if ($id != null) {
             $this->db->where('id_antrian_loket', $id);
