@@ -259,7 +259,7 @@ class Base_model extends CI_Model
         $this->db->join('kategori', 'kategori.id_kategori=sub_kategori.kategori_id');
         // $this->db->where('tgl_antrian_loket');
         if ($id != null) {
-            $this->db->where('id_antrian_loket', $id);
+            $this->db->where('seo_title', $id);
         }
         $query = $this->db->get();
         return $query;

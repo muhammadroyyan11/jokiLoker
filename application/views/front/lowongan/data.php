@@ -91,17 +91,21 @@
                     <div class="col-md-4 p-b-30">
                         <div class="job-instructor-layout">
                             <div class="brows-job-type ">
-                                <span class="full-time">Kontrak</span>
+                                <span class="full-time"><?= $data['tipe'] ?></span>
                             </div>
                             <div class="job-instructor-thumb text-center">
-                                <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
+                                <a href="<?= site_url('loker/view/' . $data['seo_title']) ?>">
+                                    <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
+                                </a>
                             </div>
                             <div class="job-instructor-content">
-                                <h4 class="instructor-title"><a href="#"></a></h4>
+                                <h4 class="instructor-title"><a href="<?= site_url('loker/view/' . $data['seo_title']) ?>"></a></h4>
                                 <div class="instructor-skills">
                                     Staff </div>
                                 <div class="instructor-skills">
-                                    <h5><?= $data['title']?></h5>
+                                    <a href="<?= site_url('loker/view/' . $data['seo_title']) ?>">
+                                        <h5><?= $data['title'] ?></h5>
+                                    </a>
                                 </div>
                             </div>
 

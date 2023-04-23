@@ -23,7 +23,7 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <form action="<?= site_url('KelolaLowongan/proses')?>" method="post">
+                    <form action="<?= site_url('KelolaLowongan/proses') ?>" method="post">
                         <div class="form-group <?= form_error('nama') ? 'has-error' : null ?>">
                             <label>Nama lowongan *</label>
                             <input type="text" name="nama" value="<?= set_value('nama') ?>" class="form-control">
@@ -41,11 +41,20 @@
                             <span class="help-block"><?= form_error('password') ?></span>
                         </div>
                         <div class="form-group <?= form_error('wisata_id') ? 'has-error' : null ?>" id="destination">
+                            <label>Status kerja *</label>
+                            <select name="tipe" id="select" class="form-control">
+                                <option value="">-- Pilih Status Kerja --</option>
+                                <option value="Kontrak">Kontrak</option>
+                                <option value="Karyawan Tetap">Karyawan Tetap</option>
+                            </select>
+                            <span class="help-block"><?= form_error('wisata_id') ?></span>
+                        </div>
+                        <div class="form-group <?= form_error('wisata_id') ? 'has-error' : null ?>" id="destination">
                             <label>Deptartment / Categori *</label>
                             <select name="dept_id" id="select" class="form-control">
                                 <option value="">-- Pilih Department --</option>
-s                                <?php foreach ($kategori as $l => $data) { ?>
-                                    <option value="<?= $data['id_sub'] ?>"><b><?= $data['nama_kategori']?></b> - <?= $data['nama_sub']?></option>
+                                s <?php foreach ($kategori as $l => $data) { ?>
+                                    <option value="<?= $data['id_sub'] ?>"><b><?= $data['nama_kategori'] ?></b> - <?= $data['nama_sub'] ?></option>
                                 <?php } ?>
                             </select>
                             <span class="help-block"><?= form_error('wisata_id') ?></span>

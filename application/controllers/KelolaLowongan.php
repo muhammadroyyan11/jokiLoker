@@ -40,6 +40,7 @@ class KelolaLowongan extends CI_Controller
             'requirements' => $post['requrement'],
             'deskripsi' => $post['deskripsi'],
             'dept_id' => $post['dept_id'],
+            'tipe' => $post['tipe'],
             'created' => date('Y-m-d'),
             'is_active' => '1'
         ];
