@@ -154,7 +154,7 @@
 
                     <?php if (userdata('role') == 2) { ?>
                         <li><a href="#"><i class="fa fa-book"></i> <span>Department</span></a></li>
-                        <li><a href="<?= site_url('lowongan')?>"><i class="fa fa-paperclip"></i> <span>Kelola Lowongan</span></a></li>
+                        <li><a href="<?= site_url('KelolaLowongan') ?>"><i class="fa fa-paperclip"></i> <span>Kelola Lowongan</span></a></li>
                         <li><a href="#"><i class="fa fa-print"></i> <span>Laporan</span></a></li>
 
                         <li class="header">Master Data</li>
@@ -419,6 +419,8 @@
     <script src="<?= base_url() ?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 
     <script src="<?= base_url() ?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- CK Editor -->
+    <script src="<?= base_url() ?>assets/bower_components/ckeditor/ckeditor.js"></script>
 
     <script>
         $(function() {
@@ -492,8 +494,34 @@
             $('.timepicker').timepicker({
                 showInputs: false
             })
+
+            $(function() {
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace('editor1')
+                CKEDITOR.replace('editor2')
+                //bootstrap WYSIHTML5 - text editor
+                $('.textarea').wysihtml5()
+            })
         })
     </script>
+
+
+    <!-- <script>
+        var confirmation = $("#select");
+        var hidden = $("#subCategory");
+
+        hidden.hide();
+
+        confirmation.change(function() {
+            if ($(this).val() == 'no') {
+                hidden.show();
+            } else {
+                hidden.hide();
+                document.getElementById("dateEnd").value = "Now";
+            }
+        })
+    </script> -->
 </body>
 
 </html>

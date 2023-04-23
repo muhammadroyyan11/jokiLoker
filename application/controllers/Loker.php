@@ -16,7 +16,8 @@ class Loker extends CI_Controller
     public function index()
     {
         $data = [
-            'title'     => 'Lowongan Open'
+            'title'     => 'Lowongan Open',
+            'lowongan'  => $this->base->getLowongan()->result_array()
         ];
 
         $this->template->load('front/template', 'front/lowongan/data', $data);

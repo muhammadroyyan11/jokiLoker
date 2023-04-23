@@ -85,64 +85,31 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4 p-b-30">
-                    <div class="job-instructor-layout">
-                        <div class="brows-job-type ">
-                            <span class="full-time">Kontrak</span>
-                        </div>
-                        <div class="job-instructor-thumb text-center">
-                            <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
-                        </div>
-                        <div class="job-instructor-content">
-                            <h4 class="instructor-title"><a href="#">Admin</a></h4>
-                            <div class="instructor-skills">
-                                Staff </div>
-                            <div class="instructor-skills">
-                                <h5>Enreach Behavioral Services</h5>
+                <!-- start foreach  -->
+                <?php
+                foreach ($lowongan as $key => $data) { ?>
+                    <div class="col-md-4 p-b-30">
+                        <div class="job-instructor-layout">
+                            <div class="brows-job-type ">
+                                <span class="full-time">Kontrak</span>
                             </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="col-md-4 p-b-30">
-                    <div class="job-instructor-layout">
-                        <div class="brows-job-type ">
-                            <span class="full-time">Kontrak</span>
-                        </div>
-                        <div class="job-instructor-thumb text-center">
-                            <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
-                        </div>
-                        <div class="job-instructor-content">
-                            <h4 class="instructor-title"><a href="#">Admin</a></h4>
-                            <div class="instructor-skills">
-                                Staff </div>
-                            <div class="instructor-skills">
-                                <h5>Enreach Behavioral Services</h5>
+                            <div class="job-instructor-thumb text-center">
+                                <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
                             </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="col-md-4 p-b-30">
-                    <div class="job-instructor-layout">
-                        <div class="brows-job-type ">
-                            <span class="full-time">Kontrak</span>
-                        </div>
-                        <div class="job-instructor-thumb text-center">
-                            <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
-                        </div>
-                        <div class="job-instructor-content">
-                            <h4 class="instructor-title"><a href="#">Admin</a></h4>
-                            <div class="instructor-skills">
-                                Staff </div>
-                            <div class="instructor-skills">
-                                <h5>Enreach Behavioral Services</h5>
+                            <div class="job-instructor-content">
+                                <h4 class="instructor-title"><a href="#"></a></h4>
+                                <div class="instructor-skills">
+                                    Staff </div>
+                                <div class="instructor-skills">
+                                    <h5><?= $data['title']?></h5>
+                                </div>
                             </div>
-                        </div>
-                        
-                    </div>
-                </div>
 
+                        </div>
+                    </div>
+                <?php  }
+                ?>
+                <!-- end foreach  -->
             </div>
         </div>
     </section>

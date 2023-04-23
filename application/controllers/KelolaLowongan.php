@@ -1,16 +1,15 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Lowongan extends CI_Controller
+class KelolaLowongan extends CI_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Base_model', 'base');
         cek_login();
         date_default_timezone_set('Asia/Jakarta');
-        $this->load->model('Base_model', 'base');
-        $this->load->model('Chart_model', 'chart');
     }
 
     public function index()
@@ -22,15 +21,30 @@ class Lowongan extends CI_Controller
         $this->template->load('template', 'kelolaLowongan/data', $data);
     }
 
+    public function add()
+    {
+        $data = [
+            'title'     => 'Lowongan',
+            'kategori'  => $this->base->getSub()->result_array()
+        ];
+        $this->template->load('template', 'kelolaLowongan/add', $data);
+    }
+
     public function proses()
     {
         $post = $this->input->post(null, true);
 
         $params = [
-            'nama_kategori' => $post['kategori']
+            'title' => $post['nama'],
+            'seo_title' => slugify($post['nama']),
+            'requirements' => $post['requrement'],
+            'deskripsi' => $post['deskripsi'],
+            'dept_id' => $post['dept_id'],
+            'created' => date('Y-m-d'),
+            'is_active' => '1'
         ];
 
-        $this->base->add('kategori', $params);
+        $this->base->add('lowongan', $params);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil disimpan');
@@ -38,7 +52,7 @@ class Lowongan extends CI_Controller
             set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
         }
 
-        redirect('Kategori');
+        redirect('KelolaLowongan');
     }
 
     public function prosesEdit($id)

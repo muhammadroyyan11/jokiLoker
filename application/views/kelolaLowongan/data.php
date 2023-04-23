@@ -18,9 +18,9 @@
                 <div class="box">
                     <div class="box-header">
                         <div class="pull-right">
-                            <button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modal-default">
+                            <a href="<?= site_url('KelolaLowongan/add')?>" class="btn btn-primary btn-flat">
                                 <i class="fa fa-plus"></i> Add
-                            </button>
+                            </a>
                         </div>
                         <h3 class="box-title">Data <?= $title ?></h3>
                     </div>
@@ -41,7 +41,7 @@
                                 ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
-                                        <td><?= $data['nama_lowongan'] ?></td>
+                                        <td><?= $data['title'] ?></td>
                                         <td>
                                             <button class="btn btn-circle btn-sm btn-warning" data-toggle="modal" data-target="#modal-edit<?= $data['id_lowongan'] ?>"><i class="fa fa-fw fa-edit"></i></button>
                                             <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('lowongan/delete/') . $data['id_lowongan'] ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
