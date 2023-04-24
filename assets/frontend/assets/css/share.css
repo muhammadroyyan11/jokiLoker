@@ -215,3 +215,13 @@
 .resp-sharing-button--telegram:hover {
     background-color: #4B97D1;
 }
+
+.m-text2 {
+    font-family: Montserrat-Bold;
+    font-style: bold;
+    margin-top: 12rem;
+    font-size: 15px;
+    color: #222222;
+    line-height: 1.2;
+    text-transform: uppercase;
+}

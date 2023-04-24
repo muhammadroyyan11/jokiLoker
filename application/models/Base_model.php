@@ -265,6 +265,27 @@ class Base_model extends CI_Model
         return $query;
     }
 
+    public function getLamaran($id = null)
+    {
+        // $nowDate = date('Y-m-d');
+        $this->db->select('*');
+        $this->db->from('lamaran');
+        $this->db->join('lowongan', 'lowongan.id_lowongan=lamaran.lowongan_id');
+        $this->db->join('user', 'user.id_user= lamaran.user_id');
+        $this->db->where('status', 0);
+        if ($id != null) {
+            $this->db->where('user_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function update_cv($pk,$id,$data)
+    {
+        $this->db->where($pk, $id);
+        return $this->db->update('user', $data);
+    }
+
     public function getPosting($seo_judul)
     {
         $this->db->select('*');

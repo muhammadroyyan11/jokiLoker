@@ -17,7 +17,7 @@
                 <div class="p-r-50 p-r-0-lg">
                     <div class="p-b-40">
                         <div class="blog-detail-img wrap-pic-w">
-                            <img src="<?= base_url() ?>assets/img/logo.png" alt="IMG-BLOG" style="max-width: 18rem">
+                            <img src="<?= base_url() ?>assets/img/read_detail.png" alt="IMG-BLOG" style="max-width: 18rem">
                         </div>
 
                         <div class="blog-detail-txt p-t-33">
@@ -49,13 +49,6 @@
                             </div>
                             <hr>
 
-                            <!-- <p class="p-b-25">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed turpis sed lorem dignissim vulputate nec cursus ante. Nunc sit amet tempor magna. Donec eros sem, porta eget leo et, varius eleifend mauris. Donec eu leo congue, faucibus quam eu, viverra mauris. Nulla consectetur lorem mi, at scelerisque metus hendrerit vitae. Proin vel magna vel neque porta ultricies non eget mauris. Suspendisse potenti.
-								</p>
-
-								<p class="p-b-25">
-									Aliquam faucibus scelerisque placerat. Vestibulum vel libero eu nulla varius pretium eget eu magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean dictum faucibus felis, ac vestibulum risus mollis in. Phasellus neque dolor, euismod vitae auctor eget, dignissim a felis. Etiam malesuada elit a nibh aliquam, placerat ultricies nibh dictum. Nam ut egestas velit. Pellentesque viverra tincidunt tellus. Etiam cursus, ligula id vehicula cursus, turpis mauris facilisis massa, eget tincidunt est purus et odio. Nam quis luctus libero, non posuere velit. Ut eu varius diam, eu euismod elit. Donec efficitur, neque eu consectetur consectetur, dui sem consectetur felis, vitae rutrum risus urna vel arcu. Aliquam semper ullamcorper laoreet. Sed arcu lectus, fermentum imperdiet purus eu, ornare ornare libero.
-								</p> -->
                             <?php
                             if ($lowongan->requirements != null) { ?>
                                 <h4>Requirement : </h4><br>
@@ -72,9 +65,12 @@
 
                         <div class="w-size25">
                             <!-- Button -->
-                            <button class="flex-c-m size2 bg1 bo-rad-23 hov1 trans-0-4" data-toggle="modal" data-target="#exampleModalCenter">
+                            <!-- <button class="flex-c-m size2 bg1 bo-rad-23 hov1 trans-0-4" data-toggle="modal" data-target="#exampleModalCenter">
                                 <span style="color: white;  ">Lamar Posisi Ini</span>
-                            </button>
+                            </button> -->
+                            <a href="<?= site_url('loker/lamar/'. $lowongan->seo_title)?>" class="flex-c-m size2 bg1 bo-rad-23 hov1 trans-0-4">
+                                <span style="color: white;  ">Lamar Posisi Ini</span>
+                            </a>
                         </div>
 
 

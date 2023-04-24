@@ -16,7 +16,7 @@
                             <?php
                             if (userdata('role') == 3) { ?>
                                 <div class="col-md-3 mx-auto p-b-30">
-                                    <a href="#">
+                                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
                                         <span class="caption2-slide1 m-text1 t-center m-b-33">
                                             Profile User
                                         </span><br><br>
@@ -28,13 +28,13 @@
                                     </a>
                                 </div>
                                 <div class="col-md-3 mx-auto p-b-30">
-                                    <a href="#">
+                                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
                                         <span class="caption2-slide1 m-text1 t-center m-b-33">
                                             CV User
                                         </span><br><br>
                                     </a>
                                     <a href="#">
-                                        <span class="caption2-slide1 m-text1 t-center m-b-33">
+                                        <span class="caption2-slide1 m-text1 t-center m-b-33" data-toggle="modal" data-target="#kelolaUjian">
                                             Kelola Tes Ujian
                                         </span>
                                     </a>
@@ -76,7 +76,15 @@
                     Daftar Lowongan Pekerjaan
                 </h3>
             </div>
+            <?= $this->session->flashdata('pesan'); ?>
 
+            <?php
+            if ($lamaranCount > 0) { ?>
+                <div class="alert alert-danger" role="alert">
+                    Anda memiliki <b><?= $lamaranCount ?></b> ujian yang belum dikerjakan, Silahkan cek menu kelola ujian
+                </div>
+            <?php }
+            ?>
 
             <div class="form contact-form">
                 <div class="bo4 of-hidden size15 m-b-20">
@@ -120,3 +128,83 @@
 
 
 </section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Curriculum Vittae</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= site_url('loker/upload_cv') ?>" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <h5 for="exampleInputEmail1">File Tersimpan</h5><br>
+                        <a href="<?= base_url() ?>assets/uploads/cv/<?= $cv->cv ?>" target="_blank" class="btn btn-secondary"><?= $cv->cv ?></a>
+                    </div><br>
+                    <div class="form-group">
+                        <h5 for="exampleInputEmail1">Upload File / Update</h5><br>
+                        <input type="file" name="cv" class="form-control border border-dark" id="exampleInputEmail1">
+                        <small id="emailHelp" class="form-text text-muted">Tipe file harus menggunakan format PDF</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Kelola Ujian -->
+<div class="modal fade bd-example-modal-lg" id="kelolaUjian" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">List Ujian</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= site_url('loker/upload_cv') ?>" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Lowongan Test</th>
+                                <th scope="col">Token</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            foreach ($lamaran as $key => $title) { ?>
+                                <tr>
+                                    <th scope="row"><?= $no++?></th>
+                                    <td><?= $data['title']?></td>
+                                    <td>AWEY12</td>
+                                    <td><a href="<?= base_url('Ujian/mulai/')  ?>" target="_blank" class="btn btn-circle btn-sm btn-primary"><i class="fa fa-fw fa-pencil"></i> Mulai</a></td>
+                                </tr>
+                            <?php  }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
