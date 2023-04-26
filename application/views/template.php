@@ -41,7 +41,11 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
     <link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/skins/_all-skins.min.css">
+
     <link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+    <!-- SUMMER NOTE -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -144,6 +148,23 @@
                             </li>
                             <li>
                                 <a href="<?= site_url('SubKategori') ?>"><i class="fa fa-circle-o"></i> Sub-Kategori</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                            <span>Kelola Ujian</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="<?= site_url('ujian') ?>"><i class="fa fa-circle-o"></i> Ujian</a>
+                            </li>
+                            <li>
+                                <a href="<?= site_url('bankSoal') ?>"><i class="fa fa-circle-o"></i> Bank Soal</a>
                             </li>
                         </ul>
                     </li>
@@ -422,6 +443,8 @@
     <!-- CK Editor -->
     <script src="<?= base_url() ?>assets/bower_components/ckeditor/ckeditor.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
     <script>
         $(function() {
             //Initialize Select2 Elements
@@ -503,6 +526,20 @@
                 //bootstrap WYSIHTML5 - text editor
                 $('.textarea').wysihtml5()
             })
+
+            $(document).ready(function() {
+                $('.summernote').summernote({
+                    toolbar: [
+                        // [groupName, [list of button]]
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['font', ['strikethrough', 'superscript', 'subscript']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']]
+                    ]
+                });
+            });
         })
     </script>
 

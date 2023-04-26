@@ -46,6 +46,7 @@ class Auth extends CI_Controller
                     } else {
                         $userdata = [
                             'user'  => $user_db['id_user'],
+                            'nama'  => $user_db['nama'],
                             'role'  => $user_db['role'],
                             'timestamp' => time()
                         ];
@@ -140,7 +141,7 @@ class Auth extends CI_Controller
 
             $query = $this->base->insert('user', $input);
             if ($query) {
-                set_pesan('daftar berhasil. Selanjutnya silahkan hubungi admin untuk mengaktifkan akun anda.');
+                set_pesan('Pendaftaran berhasil.');
                 redirect('auth');
             } else {
                 set_pesan('gagal menyimpan ke database', false);

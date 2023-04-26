@@ -4,7 +4,7 @@
         <h3 class="text-center mt-0 mb-4">
             <b>L</b>ogin
         </h3>
-
+        <?= $this->session->flashdata('pesan'); ?>
         <form action="" method="post">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" name="email" placeholder="Email">

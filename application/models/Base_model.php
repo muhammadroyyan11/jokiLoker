@@ -101,7 +101,7 @@ class Base_model extends CI_Model
     }
 
     public function getUsers($id)
-    {   
+    {
         $this->db->select('user.nama as nama_lengkap, user.username, user.is_active, user.email, user.id_user, user.role');
         $this->db->from('user');
         $this->db->where('id_user !=', $id);
@@ -187,7 +187,7 @@ class Base_model extends CI_Model
 
     public function get_category($table, $number = null, $offset = null, $id)
     {
-       // $this->db->select('*');
+        // $this->db->select('*');
         // $this->db->from('posting');
         $this->db->order_by('id_posting', 'desc');
         // $this->db->join('kartikel', 'kartikel.id_kartikel = posting.id_kartikel');
@@ -265,11 +265,59 @@ class Base_model extends CI_Model
         return $query;
     }
 
+    public function create($table, $data, $batch = false)
+    {
+        if ($batch === false) {
+            $insert = $this->db->insert($table, $data);
+        } else {
+            $insert = $this->db->insert_batch($table, $data);
+        }
+        return $insert;
+    }
+
     public function getLamaran($id = null)
     {
         // $nowDate = date('Y-m-d');
-        $this->db->select('*');
+        $this->db->select('*, ujian.token as tokenUjian');
         $this->db->from('lamaran');
+        $this->db->join('lowongan', 'lowongan.id_lowongan=lamaran.lowongan_id');
+        $this->db->join('user', 'user.id_user= lamaran.user_id');
+        $this->db->join('ujian', 'ujian.lowongan_id= lowongan.id_lowongan');
+        $this->db->where('status', 0);
+        if ($id != null) {
+            $this->db->where('user_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function getUjianById($id)
+    {
+        $this->db->select('*');
+        $this->db->from('ujian a');
+        // $this->db->join('el_login b', 'a.login_id=b.id_user');
+        // $this->db->join('matkul c', 'a.matkul_id=c.id_matkul');
+        $this->db->where('id_ujian', $id);
+        // $this->db->order_by('level', 'ASC');
+        return $this->db->get()->row();
+    }
+
+    public function getChallenge2($id_ujian)
+    {
+        $this->db->select('*');
+        $this->db->from('ujian');
+        $this->db->where('id_ujian', $id_ujian);
+        // $this->db->join('el_ujian', 'el_ujian.id_ujian = el_ujian_soal.ujian_id');
+        // $this->db->join('el_pengajar', 'el_pengajar.id_pengajar = el_ujian_soal.pengajar_id');
+        $query = $this->db->get()->row();
+        return $query;
+    }
+
+    public function getUjian($id = null)
+    {
+        // $nowDate = date('Y-m-d');
+        $this->db->select('*');
+        $this->db->from('ujian');
         $this->db->join('lowongan', 'lowongan.id_lowongan=lamaran.lowongan_id');
         $this->db->join('user', 'user.id_user= lamaran.user_id');
         $this->db->where('status', 0);
@@ -280,7 +328,7 @@ class Base_model extends CI_Model
         return $query;
     }
 
-    public function update_cv($pk,$id,$data)
+    public function update_cv($pk, $id, $data)
     {
         $this->db->where($pk, $id);
         return $this->db->update('user', $data);

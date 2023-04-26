@@ -3,7 +3,7 @@
         <h3 class="text-center mt-0 mb-4">
             <b>R</b>egister
         </h3>
-
+        <?= $this->session->flashdata('pesan'); ?>
         <form action="" method="post">
             <div class="form-group">
                 <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap">

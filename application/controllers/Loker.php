@@ -22,9 +22,30 @@ class Loker extends CI_Controller
             'lamaranCount'   => $this->base->getLamaran(userdata('id_user'))->num_rows(),
             'cv'        => $this->base->get('user', ['id_user' => userdata('id_user')])->row()
         ];
-
+        // var_dump($data['lamaran']);
         $this->template->load('front/template', 'front/lowongan/data', $data);
     }
+
+    public function start($id_ujian)
+	{
+		// $kelas = array('siswa_id', $this->session->userdata('login_session')['siswa_id']);
+		// $where = array('ujian_id' => $id_ujian);
+		$ujian = $this->base->getChallenge2($id_ujian);
+		// var_dump($ujian);
+		// $siswa = $this->ujian->getKelasNow($kelas)->row();
+
+		// var_dump($siswa);
+		$data = array(
+			'title' => "Informasi Challenge",
+			'ujian' => $ujian,
+			// 'siswa' => $siswa,
+			'encrypted_id' => urlencode($this->encryption->encrypt($id_ujian))
+		);
+
+        // var_dump($this->session->userdata('nama'));
+
+		$this->template->load('tempchallenge', 'cbt/infoChallenge', $data);
+	}
 
     public function view($slug)
     {
@@ -99,4 +120,16 @@ class Loker extends CI_Controller
             set_pesan('Terjadi kesalahan saat mengupload data', false);
         }
     }
+
+    public function cektoken()
+	{
+		$id = $this->input->post('id_ujian', true);
+		$token = $this->input->post('token', true);
+		$cek = $this->base->getUjianById($id);
+
+        var_dump($cek);
+
+		$data['status'] = $token === $cek->token ? TRUE : FALSE;
+		$this->output_json($data);
+	}
 }

@@ -188,12 +188,12 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            foreach ($lamaran as $key => $title) { ?>
+                            foreach ($lamaran as $key => $data) { ?>
                                 <tr>
                                     <th scope="row"><?= $no++?></th>
                                     <td><?= $data['title']?></td>
-                                    <td>AWEY12</td>
-                                    <td><a href="<?= base_url('Ujian/mulai/')  ?>" target="_blank" class="btn btn-circle btn-sm btn-primary"><i class="fa fa-fw fa-pencil"></i> Mulai</a></td>
+                                    <td><?= $data['token']?></td>
+                                    <td><a href="<?= base_url('loker/start/' . $data['id_ujian'])  ?>" target="_blank" class="btn btn-circle btn-sm btn-primary"><i class="fa fa-fw fa-pencil"></i> Mulai</a></td>
                                 </tr>
                             <?php  }
                             ?>
