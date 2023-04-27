@@ -10,6 +10,7 @@ class Ujian extends CI_Controller
         cek_login();
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Base_model', 'base');
+        $this->load->model('Ujian_m', 'ujian');
     }
 
     public function index()
@@ -20,6 +21,18 @@ class Ujian extends CI_Controller
             'title' => 'Ujian'
         ];
         $this->template->load('template', 'Ujian/data', $data);
+    }
+
+    public function report()
+    {
+        $data = [
+            'ujian' => $this->ujian->getLead()->result_array(),
+            
+            'title' => 'Report Ujian'
+        ];
+
+        // var_dump($data['ujian']);
+        $this->template->load('template', 'Ujian/report', $data);
     }
 
     public function proses()

@@ -295,7 +295,7 @@ class Base_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('ujian a');
-        // $this->db->join('el_login b', 'a.login_id=b.id_user');
+        // $this->db->join('user b', 'a.user_id=b.id_user');
         // $this->db->join('matkul c', 'a.matkul_id=c.id_matkul');
         $this->db->where('id_ujian', $id);
         // $this->db->order_by('level', 'ASC');

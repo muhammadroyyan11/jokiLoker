@@ -186,7 +186,7 @@ function simpan() {
 
     $.ajax({
         type: "POST",
-        url: base_url + "siswa/Challenge/simpan_satu",
+        url: base_url + "loker/simpan_satu",
         data: form.serialize(),
         dataType: 'json',
         success: function (data) {
@@ -200,14 +200,14 @@ function selesai() {
     ajaxcsrf();
     $.ajax({
         type: "POST",
-        url: base_url + "siswa/Challenge/simpan_akhir",
+        url: base_url + "loker/simpan_akhir",
         data: { id_ujian: id_tes },
         beforeSend: function () {
             simpan();
         },
         success: function (r) {
             if (r.status) {
-                window.location.href = base_url + 'siswa/Challenge/';
+                window.location.href = base_url + 'loker/';
             }
         }
     });
