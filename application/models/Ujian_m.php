@@ -146,6 +146,7 @@ class Ujian_m extends CI_Model
     {
         $this->db->select('*, UNIX_TIMESTAMP(tgl_selesai) as waktu_habis');
         $this->db->from('el_hasil');
+        // $this->db->join('ujian', 'ujian=id_ujian = el_hasil.ujian_id');
         $this->db->where('ujian_id', $id);
         $this->db->where('siswa_id', $siswa);
         return $this->db->get();

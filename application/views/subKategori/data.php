@@ -31,8 +31,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Sub Kategori</th>
-                                    <th>Kategori</th>
+                                    <th>Sub Department</th>
+                                    <th>Department</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

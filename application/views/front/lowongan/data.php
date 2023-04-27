@@ -16,12 +16,12 @@
                             <?php
                             if (userdata('role') == 3) { ?>
                                 <div class="col-md-3 mx-auto p-b-30">
-                                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <a href="#" data-toggle="modal" data-target="#profileUpdate">
                                         <span class="caption2-slide1 m-text1 t-center m-b-33">
                                             Profile User
                                         </span><br><br>
                                     </a>
-                                    <a href="#">
+                                    <a href="#" data-toggle="modal" data-target="#kelolaLamaran">
                                         <span class="caption2-slide1 m-text1 t-center m-b-33">
                                             Kelola Lamaran
                                         </span>
@@ -41,7 +41,7 @@
                                 </div>
                             <?php } elseif (userdata('role') == 2) { ?>
                                 <div class="col-md-3 mx-auto p-b-30">
-                                    <a href="#">
+                                    <a href="#"  data-toggle="modal" data-target="#profileUpdate">
                                         <span class="caption2-slide1 m-text1 t-center m-b-33">
                                             Profil HRD
                                         </span>
@@ -161,8 +161,87 @@
         </div>
     </div>
 </div>
+<!-- Modal Update Profile-->
+<div class="modal fade" id="profileUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Update</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= site_url('loker/changeProfile/') ?>" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <h5 for="exampleInputEmail1">Nama</h5>
+                        <input type="text" name="nama" class="form-control border border-dark" value="<?= userdata('nama')?>" id="exampleInputEmail1">
+                    </div><br>
+                    <div class="form-group">
+                        <h5 for="exampleInputEmail1">Password baru</h5>
+                        <input type="password" name="password" class="form-control border border-dark" id="exampleInputEmail1">
+                        <small id="emailHelp" class="form-text text-muted">Kosongi form password jika tidak ada perubahan</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 
 
+<!-- Modal Kelola Lamaran -->
+<div class="modal fade bd-example-modal-lg" id="kelolaLamaran" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">List Lamaran</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= site_url('loker/upload_cv') ?>" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Lowongan</th>
+                                <th scope="col">Hasil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            foreach ($history as $key => $data) { ?>
+                                <tr>
+                                    <th scope="row"><?= $no++ ?></th>
+                                    <td><?= $data['title'] ?></td>
+                                    <td>
+                                        <?php if($data['statusLamaran'] == null){
+                                            echo 'Menunggu Keputusan HRD';
+                                        } else {
+                                            echo $data['statusLamaran'];
+                                        }?>
+                                    </td>
+                                </tr>
+                            <?php  }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 
 <!-- Modal Kelola Ujian -->
 <div class="modal fade bd-example-modal-lg" id="kelolaUjian" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -190,9 +269,9 @@
                             $no = 1;
                             foreach ($lamaran as $key => $data) { ?>
                                 <tr>
-                                    <th scope="row"><?= $no++?></th>
-                                    <td><?= $data['title']?></td>
-                                    <td><?= $data['token']?></td>
+                                    <th scope="row"><?= $no++ ?></th>
+                                    <td><?= $data['title'] ?></td>
+                                    <td><?= $data['token'] ?></td>
                                     <td><a href="<?= base_url('loker/start/' . $data['id_ujian'])  ?>" target="_blank" class="btn btn-circle btn-sm btn-primary"><i class="fa fa-fw fa-pencil"></i> Mulai</a></td>
                                 </tr>
                             <?php  }

@@ -17,7 +17,7 @@ class Kategori extends CI_Controller
     {
         $data = [
             'kategori' => $this->base->get('kategori')->result_array(),
-            'title' => 'Kategori'
+            'title' => 'Department'
         ];
         $this->template->load('template', 'kategori/data', $data);
     }

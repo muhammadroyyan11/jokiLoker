@@ -115,10 +115,10 @@ class Auth extends CI_Controller
     public function register()
     {
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[3]|trim');
-        $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]|trim');
+        $this->form_validation->set_rules('password2', 'Password', 'matches[password]|trim');
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
-        $this->form_validation->set_rules('ttl', 'Ttl', 'required|trim');
+        $this->form_validation->set_rules('ttl', 'Tanggal Lahir', 'required|trim');
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis_kelamin', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|trim');

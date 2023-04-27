@@ -31,7 +31,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Kategori Lowongan</th>
+                                    <th>Nama Department</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

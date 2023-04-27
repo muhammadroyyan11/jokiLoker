@@ -147,17 +147,17 @@
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-laptop"></i>
-                            <span>Kelola Kategori</span>
+                            <span>Kelola Department</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="<?= site_url('kategori') ?>"><i class="fa fa-circle-o"></i> Kategori</a>
+                                <a href="<?= site_url('kategori') ?>"><i class="fa fa-circle-o"></i> Department</a>
                             </li>
                             <li>
-                                <a href="<?= site_url('SubKategori') ?>"><i class="fa fa-circle-o"></i> Sub-Kategori</a>
+                                <a href="<?= site_url('SubKategori') ?>"><i class="fa fa-circle-o"></i> Sub-Department</a>
                             </li>
                         </ul>
                     </li>
@@ -184,7 +184,7 @@
                     <?php } ?>
 
                     <?php if (userdata('role') == 2) { ?>
-                        <li><a href="#"><i class="fa fa-book"></i> <span>Department</span></a></li>
+                        <!-- <li><a href="#"><i class="fa fa-book"></i> <span>Department</span></a></li> -->
                         <li><a href="<?= site_url('KelolaLowongan') ?>"><i class="fa fa-paperclip"></i> <span>Kelola Lowongan</span></a></li>
                         <li><a href="#"><i class="fa fa-print"></i> <span>Laporan</span></a></li>
 

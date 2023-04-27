@@ -18,7 +18,7 @@ class SubKategori extends CI_Controller
         $data = [
             'sub' => $this->base->getSub()->result_array(),
             'kategori' => $this->base->get('kategori')->result_array(),
-            'title' => 'Sub Kategori'
+            'title' => 'Sub Department'
         ];
 
         $this->template->load('template', 'SubKategori/data', $data);
@@ -29,7 +29,7 @@ class SubKategori extends CI_Controller
         $data = [
             'sub' => $this->base->getSub()->result_array(),
             'kategori' => $this->base->get('kategori')->result_array(),
-            'title' => 'Sub Kategori'
+            'title' => 'Sub Department'
         ];
 
 

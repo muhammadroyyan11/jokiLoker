@@ -32,6 +32,7 @@
                                 </div>
                                 <input type="hidden" name="user_id" value="<?= $user->id_user?>">
                                 <input type="hidden" name="lowongan_id" value="<?= $lowongan->id_lowongan?>">
+                                <input type="hidden" name="ujian_id" value="<?= $lowongan->id_ujian?>">
 
                                 <textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20 border border-dark" name="deskripsi" placeholder="Tuliskan singkat deskripsi diri anda"></textarea>
 

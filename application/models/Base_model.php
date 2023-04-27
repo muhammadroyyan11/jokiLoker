@@ -256,7 +256,9 @@ class Base_model extends CI_Model
         $this->db->select('*');
         $this->db->from('lowongan');
         $this->db->join('sub_kategori', 'sub_kategori.id_sub=lowongan.dept_id');
+        $this->db->join('ujian', 'ujian.lowongan_id=lowongan.id_lowongan');
         $this->db->join('kategori', 'kategori.id_kategori=sub_kategori.kategori_id');
+        
         // $this->db->where('tgl_antrian_loket');
         if ($id != null) {
             $this->db->where('seo_title', $id);
@@ -281,8 +283,8 @@ class Base_model extends CI_Model
         $this->db->select('*, ujian.token as tokenUjian');
         $this->db->from('lamaran');
         $this->db->join('lowongan', 'lowongan.id_lowongan=lamaran.lowongan_id');
-        $this->db->join('user', 'user.id_user= lamaran.user_id');
-        $this->db->join('ujian', 'ujian.lowongan_id= lowongan.id_lowongan');
+        // $this->db->join('user', 'user.id_user= lamaran.user_id');
+        $this->db->join('ujian', 'ujian.lowongan_id = lowongan.id_lowongan');
         $this->db->where('status', 0);
         if ($id != null) {
             $this->db->where('user_id', $id);
@@ -290,6 +292,20 @@ class Base_model extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function getKelolaLamaran($id = null)
+    {
+        $this->db->select('*');
+        $this->db->from('el_hasil');
+        $this->db->join('ujian', 'ujian.id_ujian = el_hasil.ujian_id');
+        $this->db->join('lowongan', 'lowongan.id_lowongan = ujian.lowongan_id');
+        if ($id != null) {
+            $this->db->where($id);
+        }
+        
+        return $this->db->get();
+    }
+    
 
     public function getUjianById($id)
     {
@@ -306,8 +322,9 @@ class Base_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('ujian');
+        // $this->db->join('el_hasil', 'el_hasil.id_hasil = el_hasil.ujian_id', 'left');
+
         $this->db->where('id_ujian', $id_ujian);
-        // $this->db->join('el_ujian', 'el_ujian.id_ujian = el_ujian_soal.ujian_id');
         // $this->db->join('el_pengajar', 'el_pengajar.id_pengajar = el_ujian_soal.pengajar_id');
         $query = $this->db->get()->row();
         return $query;
@@ -427,6 +444,13 @@ class Base_model extends CI_Model
     {
         $this->db->where($array);
         return $this->db->update($table, $data);
+    }
+
+    public function updateLamaran($id_user, $id_ujian)
+    {
+        $sql = 'UPDATE  `lamaran` set `status` = 1 WHERE `user_id` = '. $id_user .' and `ujian_id` =  '. $id_ujian .'';
+
+        return $sql;
     }
 
     public function insert($table, $data, $batch = false)

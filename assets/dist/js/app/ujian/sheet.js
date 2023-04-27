@@ -198,6 +198,9 @@ function simpan() {
 function selesai() {
     simpan();
     ajaxcsrf();
+
+    var id_ujian = $("#id_tes").val();
+    
     $.ajax({
         type: "POST",
         url: base_url + "loker/simpan_akhir",

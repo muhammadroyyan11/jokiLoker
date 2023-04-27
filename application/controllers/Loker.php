@@ -20,19 +20,40 @@ class Loker extends CI_Controller
             'title'     => 'Lowongan Open',
             'lowongan'  => $this->base->getLowongan()->result_array(),
             'lamaran'   => $this->base->getLamaran(userdata('id_user'))->result_array(),
+            'history'   => $this->base->getKelolaLamaran(['siswa_id' => userdata('id_user')])->result_array(),
             'lamaranCount'   => $this->base->getLamaran(userdata('id_user'))->num_rows(),
             'cv'        => $this->base->get('user', ['id_user' => userdata('id_user')])->row()
         ];
-        // var_dump($data['lamaran']);
         $this->template->load('front/template', 'front/lowongan/data', $data);
     }
 
+    public function changeProfile()
+    {
+        $post = $this->input->post(null, true);
+
+        $params = [
+            'nama' => $post['nama'],
+        ];
+
+        if ($post['password'] != null) {
+            $params['password'] = password_hash($post['password'], PASSWORD_DEFAULT);
+        }
+        $this->base->update('user', 'id_user', userdata('id_user'), $params);
+
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Data berhasil disimpan');
+        } else {
+            set_pesan('terjadi kesalahan saat menyimpan data');
+        }
+
+        redirect('loker');
+    }
     public function start($id_ujian)
     {
         // $kelas = array('siswa_id', $this->session->userdata('login_session')['siswa_id']);
         // $where = array('ujian_id' => $id_ujian);
         $ujian = $this->base->getChallenge2($id_ujian);
-        // var_dump($ujian);
+        var_dump($ujian);
         // $siswa = $this->ujian->getKelasNow($kelas)->row();
 
         // var_dump($siswa);
@@ -66,6 +87,8 @@ class Loker extends CI_Controller
             'user'        => $this->base->get('user', ['id_user' => userdata('id_user')])->row()
         ];
 
+        // var_dump($data['lowongan']);
+
         $this->template->load('front/template', 'front/lowongan/lamar', $data);
     }
 
@@ -77,7 +100,8 @@ class Loker extends CI_Controller
             'user_id'       => $post['user_id'],
             'lowongan_id'   => $post['lowongan_id'],
             'deskripsi'     => $post['deskripsi'],
-            'status'        => 0
+            'status'        => 0,
+            'ujian_id'      => $post['ujian_id']
         ];
 
         var_dump($params);
@@ -159,7 +183,7 @@ class Loker extends CI_Controller
         $id_en = $this->input->get('key', true);
         $id  = $this->encryption->decrypt(rawurldecode($id_en));
 
-        $idSiswa =userdata('id_user');
+        $idSiswa = userdata('id_user');
 
         $ujian = $this->base->getUjianById($id);
 
@@ -219,6 +243,9 @@ class Loker extends CI_Controller
             ];
             $this->ujian->create('el_hasil', $input);
 
+            $this->base->updateGenerate('lamaran', array('user_id' => $idSiswa, 'ujian_id' =>$id), ['status' => 1]);
+
+
             redirect('loker/garap/?key=' . urlencode($id_en), 'location', 301);
         }
 
@@ -276,6 +303,7 @@ class Loker extends CI_Controller
         }
 
 
+        $id_tes = $this->encryption->encrypt($detail_tes->ujian_id);
         $id_tes = $this->encryption->encrypt($detail_tes->ujian_id);
         $tes = $this->session->userdata('login_session');
 
@@ -378,81 +406,89 @@ class Loker extends CI_Controller
     }
 
     // public function simpan_akhir()
-	// {
-	// 	// Decrypt Id
-	// 	$id_awal = $this->input->post('id_ujian', true);
-	// 	// $id_tes = $this->encryption->decrypt($id_awal);
-	// 	$id_tes =$this->input->post('id_tes' , true);
+    // {
+    // 	// Decrypt Id
+    // 	$id_awal = $this->input->post('id_ujian', true);
+    // 	// $id_tes = $this->encryption->decrypt($id_awal);
+    // 	$id_tes =$this->input->post('id_tes' , true);
     //     var_dump($id_tes);
 
-	// 	$siswa_id = userdata('id_user');
+    // 	$siswa_id = userdata('id_user');
 
-	// 	// Get Jawaban
-	// 	$list_jawaban = $this->ujian->getJawaban($id_tes, $siswa_id);
-	// 	$nilai = $this->ujian->getNilai($id_tes, $siswa_id);
+    // 	// Get Jawaban
+    // 	$list_jawaban = $this->ujian->getJawaban($id_tes, $siswa_id);
+    // 	$nilai = $this->ujian->getNilai($id_tes, $siswa_id);
 
-	// 	$waktu_habis = $this->ujian->getWaktu($siswa_id, $id_tes);
+    // 	$waktu_habis = $this->ujian->getWaktu($siswa_id, $id_tes);
 
-	// 	// Pecah Jawaban
-	// 	$jawaban_simpan = explode(",", $list_jawaban);
+    // 	// Pecah Jawaban
+    // 	$jawaban_simpan = explode(",", $list_jawaban);
 
-	// 	$jumlah_benar 	= 0;
-	// 	$jumlah_salah 	= 0;
-	// 	$jumlah_ragu  	= 0;
-	// 	$jumlah_soal	= sizeof($jawaban_simpan);
+    // 	$jumlah_benar 	= 0;
+    // 	$jumlah_salah 	= 0;
+    // 	$jumlah_ragu  	= 0;
+    // 	$jumlah_soal	= sizeof($jawaban_simpan);
 
-	// 	foreach ($jawaban_simpan as $jwb) {
-	// 		$dt_jwb 	= explode(":", $jwb);
-	// 		$id_soal 	= $dt_jwb[0];
-	// 		$jawaban 	= $dt_jwb[1];
-	// 		$ragu 		= $dt_jwb[2];
+    // 	foreach ($jawaban_simpan as $jwb) {
+    // 		$dt_jwb 	= explode(":", $jwb);
+    // 		$id_soal 	= $dt_jwb[0];
+    // 		$jawaban 	= $dt_jwb[1];
+    // 		$ragu 		= $dt_jwb[2];
 
-	// 		$cek_jwb 	= $this->ujian->getSoalId($id_soal)->row();
+    // 		$cek_jwb 	= $this->ujian->getSoalId($id_soal)->row();
 
-	// 		// $jawaban = $cek_jwb->kunci ? $jumlah_benar++ : $jumlah_salah++;
-	// 		if ($jawaban == $cek_jwb->kunci) {
-	// 			$jumlah_benar++;
-	// 		} else {
-	// 			$jumlah_salah++;
-	// 		}
-	// 	}
+    // 		// $jawaban = $cek_jwb->kunci ? $jumlah_benar++ : $jumlah_salah++;
+    // 		if ($jawaban == $cek_jwb->kunci) {
+    // 			$jumlah_benar++;
+    // 		} else {
+    // 			$jumlah_salah++;
+    // 		}
+    // 	}
 
-	// 	$cek_row = $this->ujian->HslUjianGive($id_tes);
+    // 	$cek_row = $this->ujian->HslUjianGive($id_tes);
 
-	// 	$cek = $cek_row->num_rows();
+    // 	$cek = $cek_row->num_rows();
 
-	// 	var_dump($cek);
+    // 	var_dump($cek);
 
-	// 	$d_update = [
-	// 		'jml_benar'		=> $jumlah_benar,
-	// 		'nilai'			=> number_format(floor($nilai), 0),
-	// 		'point'			=> $set_point,
-	// 		'waktu_pengerjaan' => $differences,
-	// 		'status'		=> 0,
-	// 		'tgl_selesai'	=> $waktu_a,
-	// 	];
+    // 	$d_update = [
+    // 		'jml_benar'		=> $jumlah_benar,
+    // 		'nilai'			=> number_format(floor($nilai), 0),
+    // 		'point'			=> $set_point,
+    // 		'waktu_pengerjaan' => $differences,
+    // 		'status'		=> 0,
+    // 		'tgl_selesai'	=> $waktu_a,
+    // 	];
 
-	// 	if ($cek < 1) {
-	// 		$update_siswa = [
-	// 			'nama_file' => 'time.png',
-	// 			'siswa_id' => $this->session->userdata('login_session')['siswa_id']
-	// 		];
-	// 		$this->db->insert('el_badge', $update_siswa);
-	// 	}
+    // 	if ($cek < 1) {
+    // 		$update_siswa = [
+    // 			'nama_file' => 'time.png',
+    // 			'siswa_id' => $this->session->userdata('login_session')['siswa_id']
+    // 		];
+    // 		$this->db->insert('el_badge', $update_siswa);
+    // 	}
 
-	// 	$this->ujian->update('el_hasil', $d_update, 'siswa_id', $siswa_id);
-	// 	$this->output_json(['status' => TRUE, 'data' => $d_update, 'id' => $siswa_id]);
-	// }
-
+    // 	$this->ujian->update('el_hasil', $d_update, 'siswa_id', $siswa_id);
+    // 	$this->output_json(['status' => TRUE, 'data' => $d_update, 'id' => $siswa_id]);
+    // }
     public function simpan_akhir()
-	{
+    {
         $siswa_id = userdata('id_user');
 
-		$d_update = [
-			'status'		=> 0,
-		];
+        $id_ujian = $this->input->post('id_tes', true);
 
-		$this->ujian->update('el_hasil', $d_update, 'siswa_id', $siswa_id);
-		$this->output_json(['status' => TRUE, 'data' => $d_update, 'id' => $siswa_id]);
-	}
+        $d_update = [
+            'status'        => 0,
+        ];
+
+        $lamaran = ['status' => 1];
+
+
+        $this->ujian->update('el_hasil', $d_update, 'siswa_id', $siswa_id);
+
+        // if ($this->db->affected_rows() > 0) {
+        // }
+        // $this->ujian->update('lamaran', $lamaran, 'user_id', $siswa_id);
+        $this->output_json(['status' => TRUE, 'data' => $d_update, 'id' => $siswa_id]);
+    }
 }
