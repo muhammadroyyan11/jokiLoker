@@ -70,7 +70,7 @@
 <!-- Banner -->
 <section class="banner bgwhite p-t-40 p-b-40">
     <section class="bgwhite p-t-66 p-b-60">
-        <div class="container">
+        <div class="container" id="card-lists">
             <div class="sec-title p-b-60">
                 <h3 class="m-text5 t-center">
                     Daftar Lowongan Pekerjaan
@@ -88,7 +88,7 @@
 
             <div class="form contact-form">
                 <div class="bo4 of-hidden size15 m-b-20">
-                    <input class="sizefull s-text7 p-l-22 p-r-22 border border-dark" type="text" name="name" placeholder="Ketikkan Lowongan yang diinginkan">
+                    <input class="sizefull s-text7 p-l-22 p-r-22 border border-dark" id="myInput" onkeyup="myFunction()"  type="text" name="name" placeholder="Ketikkan Lowongan yang diinginkan">
                 </div>
             </div>
 
@@ -96,7 +96,7 @@
                 <!-- start foreach  -->
                 <?php
                 foreach ($lowongan as $key => $data) { ?>
-                    <div class="col-md-4 p-b-30">
+                    <div class="col-md-4 p-b-30" id="">
                         <div class="job-instructor-layout">
                             <div class="brows-job-type ">
                                 <span class="full-time"><?= $data['tipe'] ?></span>
@@ -109,8 +109,8 @@
                             <div class="job-instructor-content">
                                 <h4 class="instructor-title"><a href="<?= site_url('loker/view/' . $data['seo_title']) ?>"></a></h4>
                                 <div class="instructor-skills">
-                                    Staff </div>
-                                <div class="instructor-skills">
+                                    <?= $data['section']?> </div>
+                                <div class="instructor-skills admin">
                                     <a href="<?= site_url('loker/view/' . $data['seo_title']) ?>">
                                         <h5><?= $data['title'] ?></h5>
                                     </a>

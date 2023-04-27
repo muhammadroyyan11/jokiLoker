@@ -170,6 +170,7 @@
     <script type="text/javascript" src="<?= base_url() ?>assets/frontend/client/vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="<?= base_url() ?>assets/frontend/client/vendor/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/dist/js/search.js"></script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="<?= base_url() ?>assets/frontend/client/vendor/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">

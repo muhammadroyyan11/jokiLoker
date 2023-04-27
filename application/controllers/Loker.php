@@ -24,6 +24,8 @@ class Loker extends CI_Controller
             'lamaranCount'   => $this->base->getLamaran(userdata('id_user'))->num_rows(),
             'cv'        => $this->base->get('user', ['id_user' => userdata('id_user')])->row()
         ];
+
+        // var_dump($this->base->getLowongan()->result_array());
         $this->template->load('front/template', 'front/lowongan/data', $data);
     }
 
