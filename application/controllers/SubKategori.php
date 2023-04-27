@@ -77,7 +77,7 @@ class SubKategori extends CI_Controller
 
     public function delete($id)
     {
-        $this->base->del('kategori', ['id_kategori' => $id]);
+        $this->base->del('sub_kategori', ['id_sub' => $id]);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil dihapus');
@@ -85,6 +85,6 @@ class SubKategori extends CI_Controller
             set_pesan('Terjadi kesalahan menghapus data!', FALSE);
         }
 
-        redirect('Kategori');
+        redirect('subKategori');
     }
 }

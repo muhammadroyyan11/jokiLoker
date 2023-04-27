@@ -41,6 +41,15 @@
                             <span class="help-block"><?= form_error('password') ?></span>
                         </div>
                         <div class="form-group <?= form_error('wisata_id') ? 'has-error' : null ?>" id="destination">
+                            <label>Section / Bagian *</label>
+                            <select name="tipe" id="select" class="form-control">
+                                <option value="">-- Pilih Bagian --</option>
+                                <option value="Staff Kantor">Staff Kantor</option>
+                                <option value="Staff Produksi">Staff Produksi</option>
+                            </select>
+                            <span class="help-block"><?= form_error('wisata_id') ?></span>
+                        </div>
+                        <div class="form-group <?= form_error('wisata_id') ? 'has-error' : null ?>" id="destination">
                             <label>Status kerja *</label>
                             <select name="tipe" id="select" class="form-control">
                                 <option value="">-- Pilih Status Kerja --</option>

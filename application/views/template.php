@@ -56,10 +56,20 @@
 
         <header class="main-header">
             <!-- Logo -->
-            <a href="<?= base_url('dashboard') ?>" class="logo">
-                <span class="logo-mini"><b>TJM</b></span>
-                <span class="logo-lg"><b>T</b>JAKRINDO <b>M</b>AS </span>
-            </a>
+            <?php
+            if (userdata('role') != 1) { ?>
+                <a href="<?= base_url('loker') ?>" class="logo">
+                    <span class="logo-mini"><b>TJM</b></span>
+                    <span class="logo-lg"><b>T</b>JAKRINDO <b>M</b>AS </span>
+                </a>
+            <?php } else { ?>
+                <a href="<?= base_url('dashboard') ?>" class="logo">
+                    <span class="logo-mini"><b>TJM</b></span>
+                    <span class="logo-lg"><b>T</b>JAKRINDO <b>M</b>AS </span>
+                </a>
+            <?php }
+            ?>
+
             <nav class="navbar navbar-static-top" role="navigation">
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>

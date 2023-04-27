@@ -18,7 +18,10 @@
                 <div class="box">
                     <div class="box-header">
                         <div class="pull-right">
-                            <a href="<?= site_url('Ujian')?>" class="btn btn-warning btn-flat">
+                            <a href="<?= site_url('Ujian/generate/'. $id) ?>" class="btn btn-danger btn-flat">
+                                <i class="fa fa-undo"></i> Generate Hasil
+                            </a>
+                            <a href="<?= site_url('Ujian') ?>" class="btn btn-warning btn-flat">
                                 <i class="fa fa-undo"></i> Kembali
                             </a>
                         </div>
@@ -36,6 +39,7 @@
                                     <th>Email</th>
                                     <th>Lowongan</th>
                                     <th>Nilai</th>
+                                    <th>Keputusan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,7 +54,7 @@
                                         <td><?= $data['email'] ?></td>
                                         <td><?= $data['title'] ?> </td>
                                         <td><?= $data['nilai'] ?> </td>
-                                        
+                                        <td><?= $data['statusLamaran'] ?> </td>
                                     </tr>
                                 <?php
                                 } ?>

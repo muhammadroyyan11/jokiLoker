@@ -245,18 +245,29 @@ class Ujian_m extends CI_Model
         return $this->db->get();
     }
 
+    public function getLamaranById($array)
+    {
+        $this->db->select('*');
+        $this->db->from('lamaran');
+        $this->db->where($array);
+        // $this->db->where('user_id', userdata('id_user'));
+        return $this->db->get();
+    }
+
     public function getLead($where = null)
     {
         $this->db->distinct();
-        $this->db->select('*');
+        $this->db->select('*, el_hasil.status as statusTest');
         $this->db->from('el_hasil');
         if ($where != null) {
             $this->db->where($where);
         }
         $this->db->order_by('nilai', 'DESC');
-        $this->db->join('user', 'user.id_user = el_hasil.siswa_id');
+        $this->db->join('user', 'user.id_user = el_hasil.siswa_id', 'left');
         $this->db->join('ujian', 'ujian.id_ujian = el_hasil.ujian_id');
         $this->db->join('lowongan', 'lowongan.id_lowongan = ujian.lowongan_id');
         return $this->db->get();
     }
+
+
 }

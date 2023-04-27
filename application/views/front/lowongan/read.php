@@ -62,16 +62,21 @@
                             <?php }
                             ?>
                         </div>
-
-                        <div class="w-size25">
-                            <!-- Button -->
-                            <!-- <button class="flex-c-m size2 bg1 bo-rad-23 hov1 trans-0-4" data-toggle="modal" data-target="#exampleModalCenter">
+                        <?php
+                        if (userdata('role') != 2) { ?>
+                            <div class="w-size25">
+                                <!-- Button -->
+                                <!-- <button class="flex-c-m size2 bg1 bo-rad-23 hov1 trans-0-4" data-toggle="modal" data-target="#exampleModalCenter">
                                 <span style="color: white;  ">Lamar Posisi Ini</span>
                             </button> -->
-                            <a href="<?= site_url('loker/lamar/'. $lowongan->seo_title)?>" class="flex-c-m size2 bg1 bo-rad-23 hov1 trans-0-4">
-                                <span style="color: white;  ">Lamar Posisi Ini</span>
-                            </a>
-                        </div>
+                                <a href="<?= site_url('loker/lamar/' . $lowongan->seo_title) ?>" class="flex-c-m size2 bg1 bo-rad-23 hov1 trans-0-4">
+                                    <span style="color: white;  ">Lamar Posisi Ini</span>
+                                </a>
+                            </div>
+                        <?php }
+                        ?>
+
+
 
 
                     </div>

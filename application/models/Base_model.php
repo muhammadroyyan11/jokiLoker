@@ -423,6 +423,12 @@ class Base_model extends CI_Model
         return $this->db->update($table, $data);
     }
 
+    public function updateGenerate($table, $array, $data)
+    {
+        $this->db->where($array);
+        return $this->db->update($table, $data);
+    }
+
     public function insert($table, $data, $batch = false)
     {
         return $batch ? $this->db->insert_batch($table, $data) : $this->db->insert($table, $data);
