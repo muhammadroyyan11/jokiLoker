@@ -49,7 +49,7 @@ if (time() >= $soal->waktu_habis) {
                 <input type="hidden" name="jml_soal" id="jml_soal" value="<?= $no; ?>">
             </div>
         </div>
-        <input type="text" name="id_tes" value="<?= $this->encryption->decrypt($id_tes);  ?>">
+        <input type="hidden" name="id_tes" value="<?= $this->encryption->decrypt($id_tes);  ?>">
 
         <?= form_close(); ?>
     </div>

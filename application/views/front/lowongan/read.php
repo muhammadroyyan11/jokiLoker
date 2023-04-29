@@ -17,7 +17,7 @@
                 <div class="p-r-50 p-r-0-lg">
                     <div class="p-b-40">
                         <div class="blog-detail-img wrap-pic-w">
-                            <img src="<?= base_url() ?>assets/img/read_detail.png" alt="IMG-BLOG" style="max-width: 18rem">
+                            <img src="<?= base_url() ?>assets/img/read_detail.png" alt="IMG-BLOG" style="max-width: 60  rem" class="border border-black">
                         </div>
 
                         <div class="blog-detail-txt p-t-33">
@@ -92,24 +92,26 @@
                     </h4>
 
                     <ul class="bgwhite">
-                        <!-- <?php foreach ($lowongan as $key => $data) { ?>
+                        <?php foreach ($featured as $key => $data) { ?>
                             <li class="flex-w p-b-20">
-                                <a href="<?= site_url("shop/detail/$data->seo_title") ?>" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-                                    <img src="<?= base_url() ?>assets/img/uploads/produk/<?= $data->gambar_name ?>" alt="IMG-PRODUCT">
+                                <a href="<?= site_url("loker/view/") . $data['seo_title'] ?>" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
+                                    <img src="<?= base_url() ?>assets/img/logo.png" alt="IMG-PRODUCT" class="border" style="max-width: 18rem">
+                                    <!-- <img src="<?= base_url() ?>assets/img/read_detail.png" alt="IMG-BLOG" style="max-width: 18rem"> -->
                                 </a>
 
                                 <div class="w-size23 p-t-5">
-                                    <a href="<?= site_url("shop/detail/$data->seo_name") ?>" class="s-text20">
-                                        <b><?= character_limiter($data->name, 31) ?></b>
+                                    <a href="<?= site_url("loker/view/") . $data['seo_title'] ?>" class="s-text20">
+                                        <b><?= character_limiter($data['title'], 31) ?></b>
                                     </a>
 
                                     <span class="dis-block s-text17 p-t-6">
-                                        <?= "Rp " . number_format($data->harga, 2, ',', '.'); ?>
+                                        <?= $data['section'] ?>
                                     </span>
                                 </div>
-                            </li>
-                        <?php } ?> -->
+                            </li> <br>
+                        <?php } ?>
                     </ul>
+
 
                 </div>
             </div>

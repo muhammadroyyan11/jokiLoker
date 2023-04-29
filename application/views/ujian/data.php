@@ -96,7 +96,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Waktu Ujian (Menit)</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" name="waktu" placeholder="Masukkan Jumlah soal">
+                    <input type="number" class="form-control" id="exampleInputEmail1" name="waktu" placeholder="Masukkan waktu dalam bentuk menit">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tanggal Selesai Ujian</label>
@@ -144,7 +144,38 @@ foreach ($ujian as $key => $data) : $no++; ?>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama ujian</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="ujian" value="<?= $data['nama_kategori'] ?>" placeholder="Masukkan nama kategori">
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="ujian" value="<?= $data['nama_ujian']?>" placeholder="Masukkan nama Ujian">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Jenis Soal</label>
+                        <select name="jenis" id="" class="form-control select2" style="width: 100%;">
+                            <option value="acak" <?= $data['jenis'] == 'acak' ? 'selected' : '' ?>>Acak</option>
+                            <option value="urut" <?= $data['jenis'] == 'urut' ? 'selected' : '' ?>>Urut</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Jumlah Soal</label>
+                        <input type="number" class="form-control" id="exampleInputEmail1" name="jumlah" value="<?= $data['jumlah_soal']?>" placeholder="Masukkan Jumlah soal">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Waktu Ujian (Menit)</label>
+                        <input type="number" class="form-control" id="exampleInputEmail1" name="waktu" value="<?= $data['waktu'] ?>" placeholder="Masukkan Jumlah soal">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tanggal Selesai Ujian</label>
+                        <input type="datetime-local" class="form-control" id="exampleInputEmail1" name="tgl_selesai" value="<?= $data['tgl_selesai'] ?>" placeholder="Masukkan waktu dalam bentuk menit">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Untuk Lowongan</label>
+                        <select name="lowongan_id" id="" class="form-control select2" style="width: 100%;">
+                            <option value="urut" disabled>-- Pilih Lowongan --</option>
+                            <?php
+                            foreach ($lowongan as $key => $data) { ?>
+                                <option value="<?= $data['id_lowongan'] ?>" <?= $data['id_lowongan'] == $data['id_lowongan'] ? 'selected' : '' ?>><?= $data['title'] ?></option>
+                            <?php }
+                            ?>
+
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -250,7 +250,7 @@ class Base_model extends CI_Model
         return $query;
     }
 
-    public function getLowongan($id = null)
+    public function getLowongan($id = null, $limit = null)
     {
         // $nowDate = date('Y-m-d');
         $this->db->select('*');
@@ -263,6 +263,12 @@ class Base_model extends CI_Model
         if ($id != null) {
             $this->db->where('seo_title', $id);
         }
+
+        if ($limit != null) {
+            $this->db->limit($limit);
+        }
+
+        $this->db->order_by('id_lowongan', 'desc');
         $query = $this->db->get();
         return $query;
     }

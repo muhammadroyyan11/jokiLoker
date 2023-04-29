@@ -16,7 +16,8 @@ class KelolaLowongan extends CI_Controller
     {
         $data = [
             'lowongan' => $this->base->get('lowongan')->result_array(),
-            'title' => 'Lowongan'
+            'title' => 'Lowongan',
+
         ];
         $this->template->load('template', 'kelolaLowongan/data', $data);
     }
@@ -28,6 +29,16 @@ class KelolaLowongan extends CI_Controller
             'kategori'  => $this->base->getSub()->result_array()
         ];
         $this->template->load('template', 'kelolaLowongan/add', $data);
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'title'     => 'Lowongan',
+            'row'       => $this->base->get('lowongan', ['id_lowongan' => $id])->row(),
+            'kategori'  => $this->base->getSub()->result_array()
+        ];
+        $this->template->load('template', 'kelolaLowongan/edit', $data);
     }
 
     public function proses()
@@ -42,6 +53,7 @@ class KelolaLowongan extends CI_Controller
             'dept_id' => $post['dept_id'],
             'tipe' => $post['tipe'],
             'created' => date('Y-m-d'),
+            'section'   => $post['section'],
             'is_active' => '1'
         ];
 
@@ -61,10 +73,28 @@ class KelolaLowongan extends CI_Controller
         $post = $this->input->post(null, true);
 
         $params = [
-            'nama_kategori' => $post['kategori']
+            'title' => $post['nama'],
+            'seo_title' => slugify($post['nama']),
+            'requirements' => $post['requrement'],
+            'deskripsi' => $post['deskripsi'],
+            'dept_id' => $post['dept_id'],
+            'tipe' => $post['tipe'],
+            'created' => date('Y-m-d'),
+            'section'   => $post['section'],
+            'is_active' => '1'
         ];
 
-        $this->base->edit('kategori', $params, ['id_kategori' => $id]);
+        // if ($post['dept_id'] != null) {
+        //     $params['dept_id'] = $post['dept_id'];
+        // }
+
+
+        // if ($post['tipe'] != null) {
+        //     $params['tipe'] = $post['tipe'];
+        // }
+
+
+        $this->base->edit('lowongan', $params, ['id_lowongan' => $id]);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil disimpan');
@@ -72,12 +102,12 @@ class KelolaLowongan extends CI_Controller
             set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
         }
 
-        redirect('Kategori');
+        redirect('kelolaLowongan');
     }
 
     public function delete($id)
     {
-        $this->base->del('kategori', ['id_kategori' => $id]);
+        $this->base->del('lowongan', ['id_lowongan' => $id]);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil dihapus');
@@ -85,6 +115,6 @@ class KelolaLowongan extends CI_Controller
             set_pesan('Terjadi kesalahan menghapus data!', FALSE);
         }
 
-        redirect('Kategori');
+        redirect('kelolaLowongan');
     }
 }

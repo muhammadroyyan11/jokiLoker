@@ -23,6 +23,7 @@ class Ujian extends CI_Controller
         $this->template->load('template', 'Ujian/data', $data);
     }
 
+
     public function report($id)
     {
         $data = [
@@ -107,7 +108,13 @@ class Ujian extends CI_Controller
         $post = $this->input->post(null, true);
 
         $params = [
-            'nama_ujian' => $post['ujian']
+            'nama_ujian' => $post['ujian'],
+            'jenis' => $post['jenis'],
+            'jumlah_soal' => $post['jumlah'],
+            'waktu' => $post['waktu'],
+            'tgl_dibuat' => date('Y-m-d h:i:s'),
+            'tgl_selesai' => $post['tgl_selesai'],
+            'lowongan_id' => $post['lowongan_id'],
         ];
 
         $this->base->edit('ujian', $params, ['id_ujian' => $id]);

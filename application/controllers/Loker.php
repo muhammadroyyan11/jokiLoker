@@ -55,7 +55,7 @@ class Loker extends CI_Controller
         // $kelas = array('siswa_id', $this->session->userdata('login_session')['siswa_id']);
         // $where = array('ujian_id' => $id_ujian);
         $ujian = $this->base->getChallenge2($id_ujian);
-        var_dump($ujian);
+        // var_dump($ujian);
         // $siswa = $this->ujian->getKelasNow($kelas)->row();
 
         // var_dump($siswa);
@@ -75,7 +75,8 @@ class Loker extends CI_Controller
     {
         $data = [
             'title'     => 'Lowongan Open',
-            'lowongan'  => $this->base->getLowongan($slug)->row()
+            'lowongan'  => $this->base->getLowongan($slug)->row(),
+            'featured'  => $this->base->getLowongan(NULL, '5')->result_array()
         ];
 
         $this->template->load('front/template', 'front/lowongan/read', $data);
