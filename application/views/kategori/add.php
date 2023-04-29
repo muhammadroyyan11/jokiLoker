@@ -14,7 +14,7 @@
         <div class="box-header">
             <h3 class="box-title">Add New User Account</h3>
             <div class="pull-right">
-                <a href="<?= site_url('user') ?>" class="btn btn-warning btn-flat">
+                <a href="<?= site_url('kategori') ?>" class="btn btn-warning btn-flat">
                     <i class="fa fa-undo"></i> Kembali
                 </a>
             </div>
