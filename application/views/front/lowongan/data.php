@@ -176,7 +176,9 @@
                     <div class="form-group">
                         <h5 for="exampleInputEmail1">Foto Profil</h5>
                         <!-- <input type="text" name="nama" class="form-control border border-dark" value="<?= userdata('nama') ?>" id="exampleInputEmail1"> -->
-                        <center><img src="<?= base_url() ?>assets/uploads/foto/halo.jpg" alt="" class="border border-black" style="max-width: 130px; margin-top: 10px;"></center>
+                        <center><img src="<?= base_url() ?>assets/uploads/foto/<?= userdata('foto')?>" alt="" class="border border-black" style="max-width: 130px; margin-top: 10px;"></center><br>
+                        <input type="file" name="foto" class="form-control border border-dark" id="exampleInputEmail1">
+                        <small id="emailHelp" class="form-text text-muted">Lewati form upload jika tidak ada perubahan Foto</small>
                     </div><br>
                     <div class="form-group">
                         <h5 for="exampleInputEmail1">Nama</h5>

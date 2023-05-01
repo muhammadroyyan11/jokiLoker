@@ -31,24 +31,77 @@ class Loker extends CI_Controller
 
     public function changeProfile()
     {
-        $post = $this->input->post(null, true);
+        // $post = $this->input->post(null, true);
 
-        $params = [
-            'nama' => $post['nama'],
-        ];
+        // $params = [
+        //     'nama' => $post['nama'],
+        // ];
 
-        if ($post['password'] != null) {
-            $params['password'] = password_hash($post['password'], PASSWORD_DEFAULT);
-        }
-        $this->base->update('user', 'id_user', userdata('id_user'), $params);
+        // if ($post['password'] != null) {
+        //     $params['password'] = password_hash($post['password'], PASSWORD_DEFAULT);
+        // }
+        // $this->base->update('user', 'id_user', userdata('id_user'), $params);
 
-        if ($this->db->affected_rows() > 0) {
-            set_pesan('Data berhasil disimpan');
+        // if ($this->db->affected_rows() > 0) {
+        //     set_pesan('Data berhasil disimpan');
+        // } else {
+        //     set_pesan('terjadi kesalahan saat menyimpan data');
+        // }
+
+        // redirect('loker');
+        $post = $this->input->post(null, TRUE);
+
+        // var_dump($post);
+
+        $config['upload_path']          = './assets/uploads/foto/';
+        $config['allowed_types']        = 'jpeg|png|jpg';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+        $config['file_name']            = 'foto-' . userdata('nama') . date('ymd') . '-' . substr(md5(rand()), 0, 6);
+
+
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('foto')) {
+            $post['foto'] = $this->upload->data('file_name');
+
+            $params = [
+                'nama' => $post['nama'],
+            ];
+
+            if ($post['password'] != null) {
+                $params['password'] = password_hash($post['password'], PASSWORD_DEFAULT);
+            }
+            $params['foto'] = $post['foto'];
+            $this->base->update('user', 'id_user', userdata('id_user'), $params);
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Data Berhasil Dismpan');
+                // echo "<script type='text/javascript'>alert('File berhasil disimpan');</script>";
+            } else {
+                set_pesan('Data Berhasil Dismpan', false);
+            }
         } else {
-            set_pesan('terjadi kesalahan saat menyimpan data');
+            $params = [
+                'nama' => $post['nama'],
+            ];
+
+            if ($post['password'] != null) {
+                $params['password'] = password_hash($post['password'], PASSWORD_DEFAULT);
+            }
+
+            $this->base->update('user', 'id_user', userdata('id_user'), $params);
+
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Data Berhasil Dismpan');
+                // echo "<script type='text/javascript'>alert('File berhasil disimpan');</script>";
+            } else {
+                set_pesan('Data Berhasil Dismpan', false);
+            }
         }
 
-        redirect('loker');
+        redirect('Loker');
     }
     public function start($id_ujian)
     {

@@ -186,7 +186,6 @@
                     <?php if (userdata('role') == 2) { ?>
                         <!-- <li><a href="#"><i class="fa fa-book"></i> <span>Department</span></a></li> -->
                         <li><a href="<?= site_url('KelolaLowongan') ?>"><i class="fa fa-paperclip"></i> <span>Kelola Lowongan</span></a></li>
-                        <li><a href="#"><i class="fa fa-print"></i> <span>Laporan</span></a></li>
 
                         <li class="header">Master Data</li>
                         <li><a href="#"><i class="fa fa-users"></i> <span>Calon Karyawan</span></a></li>

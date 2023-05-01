@@ -39,7 +39,9 @@ class Ujian extends CI_Controller
     {
         $data = [
             'row' => $this->ujian->getLead(['id_hasil' => $id])->row(),
+            'title' => 'Detail Hasil'
         ];
+        // var_dump($data['row']);
         $this->template->load('template', 'Ujian/detail', $data);
     }
 
