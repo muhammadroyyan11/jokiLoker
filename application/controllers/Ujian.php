@@ -35,6 +35,14 @@ class Ujian extends CI_Controller
         $this->template->load('template', 'Ujian/report', $data);
     }
 
+    public function detail($id)
+    {
+        $data = [
+            'row' => $this->ujian->getLead(['id_hasil' => $id])->row(),
+        ];
+        $this->template->load('template', 'Ujian/detail', $data);
+    }
+
     public function generate($id)
     {
         $get_ujian = $this->ujian->getLead(['ujian_id' => $id])->row();

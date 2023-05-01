@@ -148,6 +148,34 @@ class Loker extends CI_Controller
         }
     }
 
+    public function upload_foto()
+    {
+        $post = $this->input->post(null, TRUE);
+
+        $config['upload_path']          = './assets/uploads/foto/';
+        $config['allowed_types']        = 'jpeg|jpg|png';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+        $config['file_name']            = 'profile-' . userdata('nama') . date('ymd') . '-' . substr(md5(rand()), 0, 6);
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('cv')) {
+            $post['cv'] = $this->upload->data('file_name');
+            $this->base->update_cv('id_user', userdata('id_user'), $post);
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Data Berhasil Dismpan');
+                // echo "<script type='text/javascript'>alert('File berhasil disimpan');</script>";
+            } else {
+                set_pesan('Data Berhasil Dismpan', false);
+            }
+            redirect('Loker');
+        } else {
+            set_pesan('Terjadi kesalahan saat mengupload data', false);
+        }
+    }
+
     public function output_json($data, $encode = true)
     {
         if ($encode) $data = json_encode($data);
@@ -246,7 +274,7 @@ class Loker extends CI_Controller
             ];
             $this->ujian->create('el_hasil', $input);
 
-            $this->base->updateGenerate('lamaran', array('user_id' => $idSiswa, 'ujian_id' =>$id), ['status' => 1]);
+            $this->base->updateGenerate('lamaran', array('user_id' => $idSiswa, 'ujian_id' => $id), ['status' => 1]);
 
 
             redirect('loker/garap/?key=' . urlencode($id_en), 'location', 301);

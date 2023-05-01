@@ -9,21 +9,9 @@ function myFunction() {
 		let lowongan = card[i].querySelector(".admin");
 		let jenis = card[i].querySelector(".full-time");
 
-		if (tittle.innerText.toUpperCase().indexOf(input) > -1) {
+		if (tittle.innerText.toUpperCase().indexOf(input) > -1 || lowongan.innerText.toUpperCase().indexOf(input) > -1 || jenis.innerText.toUpperCase().indexOf(input) > -1) {
 			card[i].style.display = "";
-		} else {
-			card[i].style.display = "none";
-		}
-
-        if (lowongan.innerText.toUpperCase().indexOf(input) > -1) {
-			card[i].style.display = "";
-		} else {
-			card[i].style.display = "none";
-		}
-
-        if (jenis.innerText.toUpperCase().indexOf(input) > -1) {
-			card[i].style.display = "";
-		} else {
+		}else {
 			card[i].style.display = "none";
 		}
 	}

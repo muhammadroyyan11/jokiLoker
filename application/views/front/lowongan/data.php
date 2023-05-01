@@ -41,7 +41,7 @@
                                 </div>
                             <?php } elseif (userdata('role') == 2) { ?>
                                 <div class="col-md-3 mx-auto p-b-30">
-                                    <a href="#"  data-toggle="modal" data-target="#profileUpdate">
+                                    <a href="#" data-toggle="modal" data-target="#profileUpdate">
                                         <span class="caption2-slide1 m-text1 t-center m-b-33">
                                             Profil HRD
                                         </span>
@@ -88,7 +88,7 @@
 
             <div class="form contact-form">
                 <div class="bo4 of-hidden size15 m-b-20">
-                    <input class="sizefull s-text7 p-l-22 p-r-22 border border-dark" id="myInput" onkeyup="myFunction()"  type="text" name="name" placeholder="Ketikkan Lowongan yang diinginkan">
+                    <input class="sizefull s-text7 p-l-22 p-r-22 border border-dark" id="myInput" onkeyup="myFunction()" type="text" name="name" placeholder="Ketikkan Lowongan yang diinginkan">
                 </div>
             </div>
 
@@ -109,7 +109,7 @@
                             <div class="job-instructor-content">
                                 <h4 class="instructor-title"><a href="<?= site_url('loker/view/' . $data['seo_title']) ?>"></a></h4>
                                 <div class="instructor-skills">
-                                    <?= $data['section']?> </div>
+                                    <?= $data['section'] ?> </div>
                                 <div class="instructor-skills admin">
                                     <a href="<?= site_url('loker/view/' . $data['seo_title']) ?>">
                                         <h5><?= $data['title'] ?></h5>
@@ -174,8 +174,13 @@
             <form action="<?= site_url('loker/changeProfile/') ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
+                        <h5 for="exampleInputEmail1">Foto Profil</h5>
+                        <!-- <input type="text" name="nama" class="form-control border border-dark" value="<?= userdata('nama') ?>" id="exampleInputEmail1"> -->
+                        <center><img src="<?= base_url() ?>assets/uploads/foto/halo.jpg" alt="" class="border border-black" style="max-width: 130px; margin-top: 10px;"></center>
+                    </div><br>
+                    <div class="form-group">
                         <h5 for="exampleInputEmail1">Nama</h5>
-                        <input type="text" name="nama" class="form-control border border-dark" value="<?= userdata('nama')?>" id="exampleInputEmail1">
+                        <input type="text" name="nama" class="form-control border border-dark" value="<?= userdata('nama') ?>" id="exampleInputEmail1">
                     </div><br>
                     <div class="form-group">
                         <h5 for="exampleInputEmail1">Password baru</h5>
@@ -222,11 +227,11 @@
                                     <th scope="row"><?= $no++ ?></th>
                                     <td><?= $data['title'] ?></td>
                                     <td>
-                                        <?php if($data['statusLamaran'] == null){
+                                        <?php if ($data['statusLamaran'] == null) {
                                             echo 'Menunggu Keputusan HRD';
                                         } else {
                                             echo $data['statusLamaran'];
-                                        }?>
+                                        } ?>
                                     </td>
                                 </tr>
                             <?php  }

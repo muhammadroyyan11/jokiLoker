@@ -18,7 +18,7 @@
                 <div class="box">
                     <div class="box-header">
                         <div class="pull-right">
-                            <a href="<?= site_url('Ujian/generate/'. $id) ?>" class="btn btn-danger btn-flat">
+                            <a href="<?= site_url('Ujian/generate/' . $id) ?>" class="btn btn-danger btn-flat">
                                 <i class="fa fa-undo"></i> Generate Hasil
                             </a>
                             <a href="<?= site_url('Ujian') ?>" class="btn btn-warning btn-flat">
@@ -40,6 +40,7 @@
                                     <th>Lowongan</th>
                                     <th>Nilai</th>
                                     <th>Keputusan</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,6 +56,10 @@
                                         <td><?= $data['title'] ?> </td>
                                         <td><?= $data['nilai'] ?> </td>
                                         <td><?= $data['statusLamaran'] ?> </td>
+                                        <td>
+                                            <a href="https://wa.me/62<?= $data['no_telp']?>" target="_blank" class="btn btn-circle btn-sm btn-success" title="Hubugi Kandidat"><i class="fa fa-fw fa-whatsapp"></i></a>
+                                            <a href="<?= base_url('ujian/detail/') . $data['id_hasil'] ?>" class="btn btn-circle btn-sm btn-primary" title="Detail Hasil"><i class="fa fa-fw fa-info"></i></a>
+                                        </td>
                                     </tr>
                                 <?php
                                 } ?>
