@@ -28,10 +28,10 @@ class Ujian extends CI_Controller
     {
         $data = [
             'ujian' => $this->ujian->getLead(['ujian_id' => $id, 'el_hasil.status' => 0])->result_array(),
+            'row' => $this->ujian->getLead(['ujian_id' => $id, 'el_hasil.status' => 0])->row(),
             'id'    => $id,
             'title' => 'Report Ujian'
         ];
-        // var_dump($data['ujian']);
         $this->template->load('template', 'Ujian/report', $data);
     }
 
@@ -56,6 +56,42 @@ class Ujian extends CI_Controller
 
             var_dump($data->nilai);
             if ($data->nilai >= '56') {
+                $params = [
+                    'statusLamaran' => 'Lolos Seleksi'
+                ];
+            } else {
+                $params = [
+                    'statusLamaran' => 'Tidak Lolos Seleksi'
+                ];
+            }
+            $array = ['id_hasil' => $data->id_hasil, 'siswa_id' => $data->siswa_id];
+
+            $this->base->updateGenerate('el_hasil', $array, $params);
+
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Berhasil memberikan keputusan');
+            } else {
+                set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
+            }
+        }
+        // }
+
+        redirect('Ujian');
+    }
+
+    public function generate_kantor($id)
+    {
+        $get_ujian = $this->ujian->getLead(['ujian_id' => $id])->row();
+
+        $get_peserta = $this->ujian->getLead(['ujian_id' => $id])->result();
+
+        var_dump($get_peserta);
+
+        // if ($get_ujian == 'Staff Produksi') {
+        foreach ($get_peserta as $key => $data) {
+
+            var_dump($data->nilai);
+            if ($data->nilai >= '71') {
                 $params = [
                     'statusLamaran' => 'Lolos Seleksi'
                 ];
