@@ -187,8 +187,6 @@
                         <!-- <li><a href="#"><i class="fa fa-book"></i> <span>Department</span></a></li> -->
                         <li><a href="<?= site_url('KelolaLowongan') ?>"><i class="fa fa-paperclip"></i> <span>Kelola Lowongan</span></a></li>
 
-                        <li class="header">Master Data</li>
-                        <li><a href="#"><i class="fa fa-users"></i> <span>Calon Karyawan</span></a></li>
                     <?php } ?>
 
 
@@ -546,6 +544,7 @@
                 CKEDITOR.replace('editor2')
                 CKEDITOR.replace('editor3')
                 CKEDITOR.replace('editor4')
+                CKEDITOR.replace('editor5')
                 //bootstrap WYSIHTML5 - text editor
                 $('.textarea').wysihtml5()
             })

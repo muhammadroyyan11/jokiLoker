@@ -13,8 +13,8 @@
 
                     <p class="text-muted text-center">Calon Karyawan</p>
 
-                   
-                    <a href="<?= base_url()?>assets/uploads/cv/<?= $row->cv ?>" target="_blank" class="btn btn-primary btn-block"><b>Download CV</b></a>
+
+                    <a href="<?= base_url() ?>assets/uploads/cv/<?= $row->cv ?>" target="_blank" class="btn btn-primary btn-block"><b>Download CV</b></a>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -38,10 +38,14 @@
                     <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat lengkap</strong>
 
                     <p class="text-muted"> <?= $row->alamat ?></p>
+                    <hr>
+                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Jenjang Pendidikan</strong>
 
-                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Deskripsi lamaran</strong>
+                    <p class="text-muted"><?= $row->jenjang_pendidikan ?></p>
+                    <hr>
+                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Agama</strong>
 
-                    <p><?= $row->deskripsi ?></p>
+                    <p class="text-muted"> <?= $row->agama ?></p>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -83,17 +87,18 @@
                                 <label for="inputExperience" class="col-sm-2 control-label">Hasil Keputusan</label>
 
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputName" value="<?= $row->statusLamaran ?>" disabled placeholder="Name">
+                                    <input type="text" class="form-control" id="inputName" value="<?= $row->statusLamaran ?>" disabled placeholder="Name">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputExperience" class="col-sm-2 control-label">Hasil Keputusan</label>
+                                <label for="inputExperience" class="col-sm-2 control-label">Deskripsi melamar</label>
 
                                 <div class="col-sm-10">
-                                <textarea name="" class="form-control" id="" cols="30" rows="10" disabled><?= $row->deskripsi ?></textarea>
+                                    <!-- <textarea name="Deskripsi" class="form-control" id="editor5" cols="30" rows="10"></textarea> -->
+                                    <?= $row->deskripsi ?>
                                 </div>
                             </div>
-                            
+
 
                         </form>
                     </div>

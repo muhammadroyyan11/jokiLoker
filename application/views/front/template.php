@@ -62,7 +62,7 @@
                         <img src="<?= base_url() ?>assets/img/logo_nav.png" alt="IMG-LOGO">
                     </a>
                 <?php } else { ?>
-                    <a href="<?= site_url('dashboard') ?>" class="logo">
+                    <a href="<?= site_url('home') ?>" class="logo">
                         <img src="<?= base_url() ?>assets/img/logo_nav.png" alt="IMG-LOGO">
                     </a>
                 <?php }

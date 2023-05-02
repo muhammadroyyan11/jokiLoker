@@ -9,7 +9,7 @@
   <hr>
 </section>
 
-<?php if (userdata('role') == 2) { ?>
+<?php if (userdata('role') == 2 || userdata('role') == 1) { ?>
   <section>
     <div class="col-lg-3 col-xs-6">
       <!-- small box -->
