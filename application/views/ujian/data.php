@@ -170,8 +170,9 @@ foreach ($ujian as $key => $data) : $no++; ?>
                         <select name="lowongan_id" id="" class="form-control select2" style="width: 100%;">
                             <option value="urut" disabled>-- Pilih Lowongan --</option>
                             <?php
+                            $row = $data['lowongan_id'];
                             foreach ($lowongan as $key => $data) { ?>
-                                <option value="<?= $data['id_lowongan'] ?>" <?= $data['id_lowongan'] == $data['id_lowongan'] ? 'selected' : '' ?>><?= $data['title'] ?></option>
+                                <option value="<?= $data['id_lowongan'] ?>" <?= $row == $data['id_lowongan'] ? 'selected' : '' ?>><?= $data['title'] ?></option>
                             <?php }
                             ?>
 

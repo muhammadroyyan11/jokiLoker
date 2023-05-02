@@ -163,6 +163,8 @@ class Ujian extends CI_Controller
             'lowongan_id' => $post['lowongan_id'],
         ];
 
+        // var_dump($params);
+
         $this->base->edit('ujian', $params, ['id_ujian' => $id]);
 
         if ($this->db->affected_rows() > 0) {
