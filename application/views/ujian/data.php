@@ -47,8 +47,8 @@
                                         <td><?= $no++ ?></td>
                                         <td><?= $data['nama_ujian'] ?></td>
                                         <td><?= $data['jenis'] ?></td>
-                                        <td><?= $data['jumlah_soal'] ?> Menit</td>
-                                        <td><?= $data['waktu'] ?> </td>
+                                        <td><?= $data['jumlah_soal'] ?></td>
+                                        <td><?= $data['waktu'] ?> Menit</td>
                                         <td>
                                             <button class="btn btn-circle btn-sm btn-warning" data-toggle="modal" data-target="#modal-edit<?= $data['id_ujian'] ?>"><i class="fa fa-fw fa-edit"></i></button>
                                             <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('ujian/delete/') . $data['id_ujian'] ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>

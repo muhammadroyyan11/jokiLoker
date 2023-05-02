@@ -273,6 +273,25 @@ class Base_model extends CI_Model
         return $query;
     }
 
+    public function getLowonganList($id = null)
+    {
+        // $nowDate = date('Y-m-d');
+        $this->db->select('*');
+        $this->db->from('lowongan');
+        $this->db->join('sub_kategori', 'sub_kategori.id_sub=lowongan.dept_id');
+        $this->db->join('ujian', 'ujian.lowongan_id=lowongan.id_lowongan');
+        $this->db->join('kategori', 'kategori.id_kategori=sub_kategori.kategori_id');
+        
+        // $this->db->where('tgl_antrian_loket');
+        if ($id != null) {
+            $this->db->where('seo_title', $id);
+        }
+
+        $this->db->order_by('id_lowongan', 'desc');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function create($table, $data, $batch = false)
     {
         if ($batch === false) {

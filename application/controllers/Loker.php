@@ -18,7 +18,7 @@ class Loker extends CI_Controller
     {
         $data = [
             'title'     => 'Lowongan Open',
-            'lowongan'  => $this->base->getLowongan()->result_array(),
+            'lowongan'  => $this->base->getLowonganList()->result_array(),
             'lamaran'   => $this->base->getLamaran(userdata('id_user'))->result_array(),
             'history'   => $this->base->getKelolaLamaran(['siswa_id' => userdata('id_user')])->result_array(),
             'lamaranCount'   => $this->base->getLamaran(userdata('id_user'))->num_rows(),
@@ -364,7 +364,7 @@ class Loker extends CI_Controller
 
         if (!empty($soal_urut_ok)) {
             foreach ($soal_urut_ok as $s) {
-                $path = 'uploads/bank_soal/';
+                $path = 'assets/uploads/bank_soal/';
                 $vrg = $arr_jawab[$s->id_soal]["r"] == "" ? "N" : $arr_jawab[$s->id_soal]["r"];
                 $html .= '<input type="hidden" name="id_soal_' . $no . '" value="' . $s->id_soal . '">';
                 // $html .= '<input type="hidden" name="level_' . $no . '" value="' . $s->level . '">';
