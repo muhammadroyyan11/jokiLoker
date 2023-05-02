@@ -56,9 +56,18 @@
 
             <div class="wrap_header">
                 <!-- Logo -->
-                <a href="<?= site_url('home') ?>" class="logo">
-                    <img src="<?= base_url() ?>assets/img/logo_nav.png" alt="IMG-LOGO">
-                </a>
+                <?php
+                if ($this->session->has_userdata('login_session')) { ?>
+                    <a href="<?= site_url('loker') ?>" class="logo">
+                        <img src="<?= base_url() ?>assets/img/logo_nav.png" alt="IMG-LOGO">
+                    </a>
+                <?php } else { ?>
+                    <a href="<?= site_url('dashboard') ?>" class="logo">
+                        <img src="<?= base_url() ?>assets/img/logo_nav.png" alt="IMG-LOGO">
+                    </a>
+                <?php }
+                ?>
+
 
                 <!-- Menu -->
                 <div class="wrap_menu pull-left">
@@ -69,7 +78,7 @@
                             <?php
                             if ($this->session->has_userdata('login_session')) : ?>
                                 <li>
-                                    <a href="#"><b>Hi , <?= userdata('nama')?></b></a>
+                                    <a href="#"><b>Hi , <?= userdata('nama') ?></b></a>
                                 </li>
 
                                 <li>
@@ -171,6 +180,8 @@
     <!--===============================================================================================-->
     <script type="text/javascript" src="<?= base_url() ?>assets/frontend/client/vendor/lightbox2/js/lightbox.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dist/js/search.js"></script>
+    <!-- Select2 -->
+    <script src="<?= base_url() ?>assets/bower_components/select2/dist/js/select2.full.min.js"></script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="<?= base_url() ?>assets/frontend/client/vendor/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">

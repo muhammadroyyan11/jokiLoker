@@ -49,6 +49,9 @@ class Auth extends CI_Controller
                             'nama'  => $user_db['nama'],
                             'role'  => $user_db['role'],
                             'foto'  => $user_db['foto'],
+                            'cv'    => $user_db['cv'],
+                            'agama'  => $user_db['agama'],
+                            'jenjang_pendidikan'  => $user_db['jenjang_pendidikan'],
                             'timestamp' => time()
                         ];
                         $this->session->set_userdata('login_session', $userdata);
@@ -123,6 +126,8 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis_kelamin', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|trim');
+        $this->form_validation->set_rules('jenjang_pendidikan', 'Jenjang Pendidikan', 'required|trim');
+        $this->form_validation->set_rules('agama', 'Agama', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Buat Akun';
@@ -139,6 +144,9 @@ class Auth extends CI_Controller
             $input['password']      = password_hash($input['password'], PASSWORD_DEFAULT);
             $input['role']          = 3;
             $input['is_active']     = 1;
+            $input['foto']          = 'user.png';
+            $input['agama']         = $input['agama'];
+            $input['jenjang_pendidikan']     = $input['jenjang_pendidikan'];
 
             $query = $this->base->insert('user', $input);
             if ($query) {

@@ -86,6 +86,13 @@
                                 <input type="text" class="form-control" id="inputName" value="<?= $row->statusLamaran ?>" disabled placeholder="Name">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="inputExperience" class="col-sm-2 control-label">Hasil Keputusan</label>
+
+                                <div class="col-sm-10">
+                                <textarea name="" class="form-control" id="" cols="30" rows="10" disabled><?= $row->deskripsi ?></textarea>
+                                </div>
+                            </div>
                             
 
                         </form>

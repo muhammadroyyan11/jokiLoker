@@ -22,12 +22,42 @@
             </div>
             <div class="form-group has-feedback">
                 <select name="jenis_kelamin" class="form-control">
-                    <option value="" disabled>-- Pilih Jenis Kelamin --</option>
+                    <option value="NULL">-- Pilih Jenis Kelamin --</option>
                     <option value="Laki-laki">Laki - Laki</option>
                     <option value="Perempuan">Perempuan</option>
                 </select>
                 <span class="form-control-feedback"></span>
                 <?= form_error('jenis_kelamin', '<small class="text-danger">', '</small>'); ?>
+            </div>
+            <div class="form-group has-feedback">
+                <select name="jenjang_pendidikan" class="form-control">
+                    <option value="NULL">-- Pilih Jenjang Pendidikan --</option>
+                    <option value="SD">SD</option>
+                    <option value="SMP">SMP</option>
+                    <option value="SMA/SMK">SMP</option>
+                    <option value="Diploma 1">Diploma 1</option>
+                    <option value="Diploma 2">Diploma 2</option>
+                    <option value="Diploma 3">Diploma 3</option>
+                    <option value="Diploma 4">Diploma 4</option>
+                    <option value="S1">S1</option>
+                    <option value="S2">S2</option>
+                </select>
+                <span class="form-control-feedback"></span>
+                <?= form_error('jenjang_pendidikan', '<small class="text-danger">', '</small>'); ?>
+            </div>
+            <div class="form-group has-feedback">
+                <select name="agama" class="form-control">
+                    <option value="NULL">-- Pilih Agama --</option>
+                    <option value="Islam">Islam</option>
+                    <option value="Kristen">Kristen</option>
+                    <option value="Protestan">Protestan</option>
+                    <option value="Katolik">Katolik</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Budha">Budha</option>
+                    <option value="Konghucu">Konghucu</option>
+                </select>
+                <span class="form-control-feedback"></span>
+                <?= form_error('agama', '<small class="text-danger">', '</small>'); ?>
             </div>
             <div class="form-group has-feedback">
                 <input type="date" class="form-control" name="ttl" placeholder="Tanggal Lahir">

@@ -62,7 +62,7 @@
                     <span class="logo-mini"><b>TJM</b></span>
                     <span class="logo-lg"><b>T</b>JAKRINDO <b>M</b>AS </span>
                 </a>
-            <?php } else { ?>
+            <?php } else if(userdata('role') == 1) { ?>
                 <a href="<?= base_url('dashboard') ?>" class="logo">
                     <span class="logo-mini"><b>TJM</b></span>
                     <span class="logo-lg"><b>T</b>JAKRINDO <b>M</b>AS </span>
