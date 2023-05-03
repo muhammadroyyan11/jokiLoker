@@ -210,12 +210,12 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" name="nama" value="<?= userdata('nama')?>" placeholder="Masukkan nama Lengkap">
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="nama" value="<?= userdata('nama')?>" placeholder="Masukkan nama Lengkap" require>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputEmail1" name="password" placeholder="Masukkan nama Lengkap">
+                            <input type="password" class="form-control" id="exampleInputEmail1" name="password" placeholder="Masukkan Password baru">
                         </div>
                         
                     </div>
