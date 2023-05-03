@@ -51,7 +51,7 @@ class Ujian extends CI_Controller
 
         $get_peserta = $this->ujian->getLead(['ujian_id' => $id])->result();
 
-        var_dump($get_peserta);
+        // var_dump($get_peserta);
 
         // if ($get_ujian == 'Staff Produksi') {
         foreach ($get_peserta as $key => $data) {
@@ -87,7 +87,7 @@ class Ujian extends CI_Controller
 
         $get_peserta = $this->ujian->getLead(['ujian_id' => $id])->result();
 
-        var_dump($get_peserta);
+        // var_dump($get_peserta);
 
         // if ($get_ujian == 'Staff Produksi') {
         foreach ($get_peserta as $key => $data) {
