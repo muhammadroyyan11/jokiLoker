@@ -250,6 +250,17 @@ class Base_model extends CI_Model
         return $query;
     }
 
+    public function getLamaranView($where)
+    {
+        $this->db->select('*');
+        $this->db->from('lamaran a');
+        $this->db->join('lowongan b', 'b.id_lowongan = a.lowongan_id');
+        if ($where != null) {
+            $this->db->where($where);
+        }
+        return $this->db->get();
+    }
+
     public function getLowongan($id = null, $limit = null)
     {
         // $nowDate = date('Y-m-d');
@@ -258,7 +269,7 @@ class Base_model extends CI_Model
         $this->db->join('sub_kategori', 'sub_kategori.id_sub=lowongan.dept_id');
         $this->db->join('ujian', 'ujian.lowongan_id=lowongan.id_lowongan');
         $this->db->join('kategori', 'kategori.id_kategori=sub_kategori.kategori_id');
-        
+
         // $this->db->where('tgl_antrian_loket');
         if ($id != null) {
             $this->db->where('seo_title', $id);
@@ -281,7 +292,7 @@ class Base_model extends CI_Model
         $this->db->join('sub_kategori', 'sub_kategori.id_sub=lowongan.dept_id');
         $this->db->join('ujian', 'ujian.lowongan_id=lowongan.id_lowongan');
         $this->db->join('kategori', 'kategori.id_kategori=sub_kategori.kategori_id');
-        
+
         // $this->db->where('tgl_antrian_loket');
         if ($id != null) {
             $this->db->where('seo_title', $id);
@@ -327,10 +338,10 @@ class Base_model extends CI_Model
         if ($id != null) {
             $this->db->where($id);
         }
-        
+
         return $this->db->get();
     }
-    
+
 
     public function getUjianById($id)
     {
@@ -473,7 +484,7 @@ class Base_model extends CI_Model
 
     public function updateLamaran($id_user, $id_ujian)
     {
-        $sql = 'UPDATE  `lamaran` set `status` = 1 WHERE `user_id` = '. $id_user .' and `ujian_id` =  '. $id_ujian .'';
+        $sql = 'UPDATE  `lamaran` set `status` = 1 WHERE `user_id` = ' . $id_user . ' and `ujian_id` =  ' . $id_ujian . '';
 
         return $sql;
     }

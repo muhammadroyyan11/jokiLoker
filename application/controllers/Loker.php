@@ -129,8 +129,11 @@ class Loker extends CI_Controller
         $data = [
             'title'     => 'Lowongan Open',
             'lowongan'  => $this->base->getLowongan($slug)->row(),
-            'featured'  => $this->base->getLowongan(NULL, '5')->result_array()
+            'featured'  => $this->base->getLowongan(NULL, '5')->result_array(),
+            'count'       => $this->base->getLamaranView(['user_id' => userdata('id_user'), 'seo_title' => $slug])->num_rows()
         ];
+
+        // var_dump($data['row'], userdata('id_user'));
 
         $this->template->load('front/template', 'front/lowongan/read', $data);
     }
@@ -159,8 +162,6 @@ class Loker extends CI_Controller
             'status'        => 0,
             'ujian_id'      => $post['ujian_id']
         ];
-
-        var_dump($params);
 
         $this->base->add('lamaran', $params);
 
