@@ -19,7 +19,7 @@ class User extends CI_Controller
     {
         $data['title'] = "User Management";
         $data['users'] = $this->base_model->getUsers(userdata('id_user'));
-        
+
         $this->template->load('template', 'user/data', $data);
     }
 
@@ -52,33 +52,41 @@ class User extends CI_Controller
 
         // $this->template->load('template', 'user/add', $data);
 
-        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[3]|trim');
-        $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]|trim');
+        $this->form_validation->set_rules('password2', 'Password', 'matches[password]|trim');
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+        $this->form_validation->set_rules('ttl', 'Tanggal Lahir', 'required|trim');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis_kelamin', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
+        $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|trim');
+        $this->form_validation->set_rules('jenjang_pendidikan', 'Jenjang Pendidikan', 'required|trim');
+        $this->form_validation->set_rules('agama', 'Agama', 'required|trim');
         $this->form_validation->set_rules('role', 'Role', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
             $data = array(
-                'title' => 'Add new user',
-                'wisata' => $this->base->get('wisata')->result()
+                'title' => 'Add new user'
             );
             $this->template->load('template', 'user/add', $data);
         } else {
             $input = $this->input->post(null, true);
 
-            $input_data = [
+            $params = [
                 'nama'          => $input['nama'],
-                'username'      => $input['username'],
                 'email'         => $input['email'],
-                'role'          => $input['role'],
+                'no_telp'       => $input['no_telp'],
+                'ttl'           => $input['ttl'],
+                'alamat'        => $input['alamat'],
+                'agama'         => $input['agama'],
+                'jenjang_pendidikan'        => $input['jenjang_pendidikan'],
+                'jenis_kelamin'        => $input['jenis_kelamin'],
                 'password'      => password_hash($input['password'], PASSWORD_DEFAULT),
-                'wisata_id'     => $input['wisata_id'],
+                'role'          => $input['role'],
                 'is_active'     => 1
             ];
 
-            if ($this->base_model->insert('user', $input_data)) {
+            if ($this->base_model->insert('user', $params)) {
                 set_pesan('data berhasil disimpan.');
                 redirect('user');
             } else {
@@ -87,6 +95,7 @@ class User extends CI_Controller
             }
         }
     }
+
 
     public function proses()
     {
@@ -155,22 +164,57 @@ class User extends CI_Controller
     public function edit($id)
     {
         $data['title'] = "Edit User";
-        $data['user'] = $this->base_model->getUser('user', ['id_user' => $id]);
+        // $data['user'] = $this->base_model->getUser('user', ['id_user' => $id]);
+        $data['row'] = $this->base_model->get('user', ['id_user' => $id])->row();
         $this->template->load('template', 'user/edit', $data);
+    }
+
+    public function prosesAdd()
+    {
+        $input = $this->input->post(null, true);
+        $params = [
+            'nama'          => $input['nama'],
+            'email'         => $input['email'],
+            'no_telp'       => $input['no_telp'],
+            'ttl'           => $input['ttl'],
+            'alamat'        => $input['alamat'],
+            'agama'         => $input['agama'],
+            'jenjang_pendidikan'        => $input['jenjang_pendidikan'],
+            'jenis_kelamin'        => $input['jenis_kelamin'],
+            'password'      => password_hash($input['password'], PASSWORD_DEFAULT)
+        ];
+
+        $this->base->add('user', $params);
+
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('data berhasil ditambahkan.');
+        } else {
+            set_pesan('data gagal diubah.', false);
+        }
+
+        redirect('user');
     }
 
     public function prosesEdit()
     {
         $input = $this->input->post(null, true);
-        $input_data = [
-            'nama_lengkap'  => $input['nama'],
-            'username'      => $input['username'],
+        $params = [
+            'nama'          => $input['nama'],
             'email'         => $input['email'],
             'no_telp'       => $input['no_telp'],
-            'role'          => $input['role']
+            'ttl'           => $input['ttl'],
+            'alamat'        => $input['alamat'],
+            'agama'        => $input['agama'],
+            'jenjang_pendidikan'        => $input['jenjang_pendidikan'],
+            'jenis_kelamin'        => $input['jenis_kelamin'],
         ];
 
-        if ($this->base_model->update('user', 'id_user', $input['id_user'], $input_data)) {
+        if ($input['password'] != null) {
+            $params['password'] = password_hash($input['password'], PASSWORD_DEFAULT);
+        }
+        // var_dump($params);
+        $this->base->edit('user', $params, ['id_user' => $input['id_user']]);
+        if ($this->db->affected_rows() > 0) {
             set_pesan('data berhasil diubah.');
             redirect('user');
         } else {
