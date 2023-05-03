@@ -52,7 +52,7 @@
                                     <?= $this->session->userdata('nama') ?> <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="<?= base_url('logout') ?>">Logout</a></li>
+                                    <li><a href="<?= site_url('auth/logout') ?>">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -91,9 +91,7 @@
         <footer class="main-footer">
             <div class="container">
                 <?= strftime('%A, %d %B %Y') ?>, <span class="live-clock"><?= date('H:i:s') ?></span>
-                <div class="pull-right hidden-xs">
-                    <b>Quiz</b> V.1.0
-                </div>
+               
             </div>
             <!-- /.container -->
         </footer>
