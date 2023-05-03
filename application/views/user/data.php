@@ -30,7 +30,6 @@
                                 <th>No</th>
                                 <th>Aktivasi</th>
                                 <th>Nama</th>
-                                <th>Username</th>
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Aksi</th>
@@ -47,7 +46,6 @@
                                             <a href="<?= base_url('user/toggle/') . $data['id_user'] ?>" class="btn btn-circle btn-sm <?= $data['is_active'] ? 'btn-secondary' : 'btn-success' ?>" title="<?= $data['is_active'] ? 'Nonaktifkan User' : 'Aktifkan User' ?>"><i class="fa fa-fw fa-power-off"></i></a>
                                         </td>
                                         <td><?= $data['nama_lengkap']; ?></td>
-                                        <td><?= $data['username']; ?></td>
                                         <td><?= $data['email']; ?></td>
                                         <td>
                                             <?php if ($data['role'] == 1) {
