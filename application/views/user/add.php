@@ -23,7 +23,7 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <form action="<?= site_url('user/prosesAdd') ?>" method="post">
+                    <form action="" method="post">
                         <div class="form-group <?= form_error('nama') ? 'has-error' : null ?>">
                             <label>Nama Lengkap *</label>
                             <input type="text" name="nama" class="form-control" require>
@@ -103,7 +103,7 @@
                         <div class="form-group <?= form_error('role') ? 'has-error' : null ?>">
                             <label>Role *</label>
                             <select name="role" class="form-control" id="">
-                                <option value="NULL">-- Pilih Rolen --</option>
+                                <option value="NULL">-- Pilih Role --</option>
                                 <option value="2">HRD</option>
                                 <option value="3">Calon Karyawan</option>
                             </select>

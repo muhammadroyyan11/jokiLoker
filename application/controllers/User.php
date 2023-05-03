@@ -71,7 +71,6 @@ class User extends CI_Controller
             $this->template->load('template', 'user/add', $data);
         } else {
             $input = $this->input->post(null, true);
-
             $params = [
                 'nama'          => $input['nama'],
                 'email'         => $input['email'],
