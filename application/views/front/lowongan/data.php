@@ -272,7 +272,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Lowongan Test</th>
-                                <th scope="col">Token</th>
+                                <th scope="col">Waktu</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -283,7 +283,7 @@
                                 <tr>
                                     <th scope="row"><?= $no++ ?></th>
                                     <td><?= $data['title'] ?></td>
-                                    <td><?= $data['token'] ?></td>
+                                    <td><?= $data['waktu'] ?> Menit</td>
                                     <td><a href="<?= base_url('loker/start/' . $data['id_ujian'])  ?>" target="_blank" class="btn btn-circle btn-sm btn-primary"><i class="fa fa-fw fa-pencil"></i> Mulai</a></td>
                                 </tr>
                             <?php  }
