@@ -14,13 +14,16 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <div class="form-group">
-                                            <input type="file" name="file_soal" class="form-control">
+                                            <center>
+                                                <img src="<?= base_url() ?>assets/uploads/bank_soal/<?= $row->file ?>" style="max-width:50rem;" alt=""><br>
+                                            </center>
+                                            <input type="file" name="file_soal" class="form-control" style="margin-top: 15px;">
                                         </div>
                                         <div class="form-group">
                                             <textarea class="form-control summernote" name="pertanyaan"><?= $this->input->post("pertanyaan") ?? $row->pertanyaan ?></textarea>
                                             <?php
                                             if ($page == 'edit') { ?>
-                                                <input type="hidden" value="<?= $row->id_soal ?>" name="id_ujian">
+                                                <input type="hidden" value="<?= $row->id_soal ?>" name="id_soal">
                                             <?php }
                                             ?>
                                         </div>
@@ -31,6 +34,7 @@
                                 $abjad = ['a', 'b', 'c', 'd'];
                                 foreach ($abjad as $abj) :
                                     $abjd = $abj;
+                                    $opsi = 'p_' . $abj;
                                 ?>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
@@ -41,7 +45,7 @@
                                                 <input type="file" name="file_<?= $abjd ?>" class="form-control">
                                             </div> -->
                                             <div class="form-group">
-                                                <textarea class="form-control summernote" name="p_<?= $abjd ?>"><?= $this->input->post("jawab_'<?= $abjd ?>'") ?? $row->pertanyaan ?></textarea>
+                                                <textarea class="form-control summernote" name="p_<?= $abjd ?>"><?= $this->input->post("p_'<?= $abjd ?>'") ?? $row->$opsi ?></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -53,10 +57,10 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <select name="kunci" id="" class="form-control">
-                                            <option value="a">Pilihan A</option>
-                                            <option value="b">Pilihan B</option>
-                                            <option value="c">Pilihan C</option>
-                                            <option value="d">Pilihan D</option>
+                                            <option value="a"  <?= $row->kunci == 'a' ? 'selected' : '' ?>>Pilihan A</option>
+                                            <option value="b"  <?=  $row->kunci == 'b' ? 'selected' : '' ?>>Pilihan B</option>
+                                            <option value="c"  <?=  $row->kunci == 'c' ? 'selected' : '' ?>>Pilihan C</option>
+                                            <option value="d"  <?=  $row->kunci == 'd' ? 'selected' : '' ?>>Pilihan D</option>
                                         </select>
                                     </div>
                                 </div>
