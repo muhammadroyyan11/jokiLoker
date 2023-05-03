@@ -35,12 +35,12 @@
                             <?= date('H:i:s', strtotime($ujian->tgl_selesai)) ?>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th style="vertical-align:middle">Token</th>
                         <td>
                             <input autocomplete="off" id="token" placeholder="Token" name="token" type="text" class="input-sm form-control">
                         </td>
-                    </tr>
+                    </tr> -->
                 </table>
             </div>
             <div class="col-sm-6">
