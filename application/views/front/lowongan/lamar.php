@@ -30,13 +30,6 @@
                                 <div class="bo4 of-hidden size15 m-b-20">
                                     <input class="sizefull s-text7 p-l-22 p-r-22 border border-dark" type="text" name="email" value="<?= $user->email?>" placeholder="Email Address"/>
                                 </div>
-                                <div class="bo4 of-hidden size15 m-b-20">
-                                    <!-- <input class="sizefull s-text7 p-l-22 p-r-22 border border-dark" type="text" name="email" value="<?= $user->email?>" placeholder="Email Address"/> -->
-
-                                    <select name="" class="sizefull s-text7 p-l-22 p-r-22 border border-dark select2" id="">
-                                        <option value="">asd</option>
-                                    </select>
-                                </div>
                                 <input type="hidden" name="user_id" value="<?= $user->id_user?>">
                                 <input type="hidden" name="lowongan_id" value="<?= $lowongan->id_lowongan?>">
                                 <input type="hidden" name="ujian_id" value="<?= $lowongan->id_ujian?>">
