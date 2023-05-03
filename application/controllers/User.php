@@ -97,6 +97,7 @@ class User extends CI_Controller
     }
 
 
+
     public function proses()
     {
         $input = $this->input->post(null, true);
