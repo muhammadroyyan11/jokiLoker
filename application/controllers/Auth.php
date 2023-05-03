@@ -73,6 +73,29 @@ class Auth extends CI_Controller
         }
     }
 
+    public function editProfile()
+    {
+        $post = $this->input->post(null, true);
+
+        $params = [
+            'nama' => $post['nama'],
+        ];
+
+        if ($post['password'] != null) {
+            $params['password'] = password_hash($post['password'], PASSWORD_DEFAULT);
+        }
+
+        $this->base->update('user', 'id_user', userdata('id_user'), $params);
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Data Berhasil Dismpan');
+            // echo "<script type='text/javascript'>alert('File berhasil disimpan');</script>";
+        } else {
+            set_pesan('Data Berhasil Dismpan', false);
+        }
+
+        redirect('dashboard');
+    }
+
     public function proses()
     {
         $input = $this->input->post(null, true);

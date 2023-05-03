@@ -62,7 +62,7 @@
                     <span class="logo-mini"><b>TJM</b></span>
                     <span class="logo-lg"><b>T</b>JAKRINDO <b>M</b>AS </span>
                 </a>
-            <?php } else if(userdata('role') == 1) { ?>
+            <?php } else if (userdata('role') == 1) { ?>
                 <a href="<?= base_url('dashboard') ?>" class="logo">
                     <span class="logo-mini"><b>TJM</b></span>
                     <span class="logo-lg"><b>T</b>JAKRINDO <b>M</b>AS </span>
@@ -99,9 +99,9 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">
+                                        <button class="btn btn-default btn-flat" data-toggle="modal" data-target="#modal-edit-profile">
                                             Ganti Password
-                                        </a>
+                                        </button>
                                     </div>
                                     <div class="pull-right">
                                         <a href="<?= site_url('auth/logout') ?>" class="btn btn-default btn-flat">Sign out</a>
@@ -195,6 +195,41 @@
             </section>
             <!-- /.sidebar -->
         </aside>
+
+
+        <!-- Modal Edit Profile -->
+        <div class="modal fade" id="modal-edit-profile">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Edit Akun</h4>
+                    </div>
+                    <?= form_open('auth/editProfile'); ?>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="nama" value="<?= userdata('nama')?>" placeholder="Masukkan nama Lengkap">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputEmail1" name="password" placeholder="Masukkan nama Lengkap">
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
