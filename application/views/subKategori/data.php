@@ -70,7 +70,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tambah Sub kategori lowongan</h4>
+                <h4 class="modal-title">Tambah Sub Department</h4>
             </div>
             <?= form_open('SubKategori/proses'); ?>
             <div class="modal-body">
@@ -114,7 +114,7 @@ foreach ($sub as $key => $data) : $no++; ?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Edit sub lowongan</h4>
+                    <h4 class="modal-title">Edit Sub Department</h4>
                 </div>
                 <?= form_open('subKategori/prosesEdit/' . $data['id_sub']); ?>
                 <div class="modal-body">

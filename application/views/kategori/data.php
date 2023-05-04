@@ -68,7 +68,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tambah kategori lowongan</h4>
+                <h4 class="modal-title">Tambah Department lowongan</h4>
             </div>
             <?= form_open('kategori/proses'); ?>
             <div class="modal-body">
@@ -100,7 +100,7 @@ foreach ($kategori as $key => $data) : $no++; ?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Edit kategori lowongan</h4>
+                    <h4 class="modal-title">Edit Department lowongan</h4>
                 </div>
                 <?= form_open('kategori/prosesEdit/' . $data['id_kategori']); ?>
                 <div class="modal-body">
