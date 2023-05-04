@@ -34,7 +34,7 @@
                     <option value="NULL">-- Pilih Jenjang Pendidikan --</option>
                     <option value="SD">SD</option>
                     <option value="SMP">SMP</option>
-                    <option value="SMA/SMK">SMP</option>
+                    <option value="SMA/SMK">SMA/SMK</option>
                     <option value="Diploma 1">Diploma 1</option>
                     <option value="Diploma 2">Diploma 2</option>
                     <option value="Diploma 3">Diploma 3</option>

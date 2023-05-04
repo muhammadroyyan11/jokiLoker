@@ -87,7 +87,7 @@
                                 <option value="NULL">-- Pilih Jenjang Pendidikan --</option>
                                 <option value="SD" <?= $row->jenjang_pendidikan == 'SD' ? 'selected' : '' ?>>SD</option>
                                 <option value="SMP" <?= $row->jenjang_pendidikan == 'SMP' ? 'selected' : '' ?>>SMP</option>
-                                <option value="SMA/SMK" <?= $row->jenjang_pendidikan == 'SMA/SMK' ? 'selected' : '' ?>>SMP</option>
+                                <option value="SMA/SMK" <?= $row->jenjang_pendidikan == 'SMA/SMK' ? 'selected' : '' ?>>SMA/SMK</option>
                                 <option value="Diploma 1" <?= $row->jenjang_pendidikan == 'Diploma 1' ? 'selected' : '' ?>>Diploma 1</option>
                                 <option value="Diploma 2" <?= $row->jenjang_pendidikan == 'Diploma 2' ? 'selected' : '' ?>>Diploma 2</option>
                                 <option value="Diploma 3" <?= $row->jenjang_pendidikan == 'Diploma 3' ? 'selected' : '' ?>>Diploma 3</option>
