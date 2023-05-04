@@ -61,10 +61,11 @@ class SubKategori extends CI_Controller
         $post = $this->input->post(null, true);
 
         $params = [
-            'nama_kategori' => $post['kategori']
+            'nama_sub'      => $post['nama_sub'],
+            'kategori_id' => $post['id_kategori']
         ];
 
-        $this->base->edit('kategori', $params, ['id_kategori' => $id]);
+        $this->base->edit('sub_kategori', $params, ['id_sub' => $id]);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil disimpan');
@@ -72,8 +73,9 @@ class SubKategori extends CI_Controller
             set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
         }
 
-        redirect('Kategori');
+        redirect('subKategori');
     }
+    
 
     public function delete($id)
     {

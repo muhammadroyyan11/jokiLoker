@@ -26,7 +26,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                    <?= $this->session->flashdata('pesan'); ?>
+                        <?= $this->session->flashdata('pesan'); ?>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -108,21 +108,34 @@
 <?php
 $no = 0;
 foreach ($sub as $key => $data) : $no++; ?>
-    <div class="modal fade" id="modal-edit<?= $data['id_kategori'] ?>">
+    <div class="modal fade" id="modal-edit<?= $data['id_sub'] ?>">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Edit kategori lowongan</h4>
+                    <h4 class="modal-title">Edit sub lowongan</h4>
                 </div>
-                <?= form_open('kategori/prosesEdit/' . $data['id_kategori']); ?>
+                <?= form_open('subKategori/prosesEdit/' . $data['id_sub']); ?>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama Kategori</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="kategori" value="<?= $data['nama_kategori'] ?>" placeholder="Masukkan nama kategori">
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="nama_sub" value="<?= $data['nama_sub'] ?>" placeholder="Masukkan nama kategori">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nama Kategori</label>
+                        <select name="id_kategori" class="form-control select2" style="width: 100%;">
+                            <option value="null">-- pilih --</option>
+                            <?php
+                            foreach ($kategori as $key => $data) { ?>
+                                <option value="<?= $data['id_kategori'] ?>" <?= $data['id_kategori'] == $data['id_kategori'] ? 'selected' : '' ?>><?= $data['nama_kategori'] ?></option>
+                            <?php }
+                            ?>
+                        </select>
                     </div>
                 </div>
+
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>
