@@ -31,8 +31,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Sub Department</th>
                                     <th>Department</th>
+                                    <th>Sub Department</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -43,8 +43,8 @@
                                 ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
-                                        <td><?= $data['nama_sub'] ?></td>
                                         <td><?= $data['nama_kategori'] ?></td>
+                                        <td><?= $data['nama_sub'] ?></td>
                                         <td>
                                             <button class="btn btn-circle btn-sm btn-warning" data-toggle="modal" data-target="#modal-edit<?= $data['id_sub'] ?>"><i class="fa fa-fw fa-edit"></i></button>
                                             <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('subKategori/delete/') . $data['id_sub'] ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>

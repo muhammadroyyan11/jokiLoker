@@ -412,7 +412,7 @@ class Loker extends CI_Controller
         // Decrypt Id
         $id_tes = $this->input->post('id_ujian', true);
         $jml = $this->input->post('jml_soal', true);
-        $id_tes = $this->encryption->decrypt($id_tes);
+        // $id_tes = $this->encryption->decrypt($id_tes);
 
         $input     = $this->input->post(null, true);
         $list_jawaban     = "";
@@ -473,6 +473,8 @@ class Loker extends CI_Controller
             // 'point'            => $set_point,
         ];
         $this->ujian->update('el_hasil', $d_update, 'siswa_id', $siswa_id);
+
+        // $this->base->edit('el_hasil', $d_update, ['siswa_id' => $siswa_id, 'ujian_id' => $id_tes]);
 
         $current_level = $this->input->post('level', true);
 

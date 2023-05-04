@@ -51,12 +51,12 @@ class Ujian extends CI_Controller
 
         $get_peserta = $this->ujian->getLead(['ujian_id' => $id])->result();
 
-        // var_dump($get_peserta);
+        var_dump($get_peserta);
 
         // if ($get_ujian == 'Staff Produksi') {
         foreach ($get_peserta as $key => $data) {
 
-            var_dump($data->nilai);
+            // var_dump($data->nilai);
             if ($data->nilai >= '56') {
                 $params = [
                     'statusLamaran' => 'Lolos Seleksi'
@@ -66,7 +66,7 @@ class Ujian extends CI_Controller
                     'statusLamaran' => 'Tidak Lolos Seleksi'
                 ];
             }
-            $array = ['id_hasil' => $data->id_hasil, 'siswa_id' => $data->siswa_id];
+            $array = ['id_hasil' => $data->id_hasil, 'siswa_id' => $data->siswa_id, 'ujian_id' => $id];
 
             $this->base->updateGenerate('el_hasil', $array, $params);
 
