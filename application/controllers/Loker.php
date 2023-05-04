@@ -410,7 +410,7 @@ class Loker extends CI_Controller
     public function simpan_satu()
     {
         // Decrypt Id
-        $id_tes = $this->input->post('id_ujian', true);
+        $id_tes = $this->input->post('id_tes', true);
         $jml = $this->input->post('jml_soal', true);
         // $id_tes = $this->encryption->decrypt($id_tes);
 
@@ -472,9 +472,9 @@ class Loker extends CI_Controller
             'nilai'            => number_format(floor($nilai), 0),
             // 'point'            => $set_point,
         ];
-        $this->ujian->update('el_hasil', $d_update, 'siswa_id', $siswa_id);
+        // $this->ujian->update('el_hasil', $d_update, 'siswa_id', $siswa_id);
 
-        // $this->base->edit('el_hasil', $d_update, ['siswa_id' => $siswa_id, 'ujian_id' => $id_tes]);
+        $this->base->edit('el_hasil', $d_update, ['siswa_id' => $siswa_id, 'ujian_id' => $id_tes]);
 
         $current_level = $this->input->post('level', true);
 
