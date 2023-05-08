@@ -113,12 +113,16 @@ class Ujian_m extends CI_Model
     public function getSoal($id)
     {
         $ujian = $this->getUjianById($id);
-        $order = $ujian->jenis==="acak" ? 'rand()' : "urut";
+        $order = $ujian->jenis==="acak" ? 'rand()' : "ASC";
 
         $this->db->select('id_soal, pertanyaan, file, p_a, p_b, p_c, p_d, kunci,  tipe_file');
         $this->db->from('soal');
         // $this->db->where('matkul_id', $ujian->matkul_id);
-        $this->db->order_by($order);
+        if ($order == 'acak') {
+            $this->db->order_by($order);
+        } else {
+            $this->db->order_by('id_soal', 'ASC'); 
+        }
         $this->db->limit($ujian->jumlah_soal);
         return $this->db->get()->result();
     }
