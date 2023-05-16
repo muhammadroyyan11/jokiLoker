@@ -202,7 +202,7 @@ class Auth extends CI_Controller
         $config = [
             'protocol'  => 'smtp',
             'smtp_host' => 'ssl://mail.radinaltugasakhir.site',
-            'smtp_user' => 'no-reply@adinaltugasakhir.site',
+            'smtp_user' => 'no-reply@radinaltugasakhir.site',
             'smtp_pass' => '1234Arema',
             'smtp_port' => 465,
             'mailtype'  => 'html',
@@ -212,7 +212,7 @@ class Auth extends CI_Controller
 
         $this->email->initialize($config);
 
-        $this->email->from('no-reply@adinaltugasakhir.site', 'Account Verification');
+        $this->email->from('no-reply@radinaltugasakhir.site', 'Account Verification');
         $this->email->to($post['email']);
 
         if ($type == 'verify') {
@@ -249,7 +249,9 @@ class Auth extends CI_Controller
 
                     $this->db->delete('user_token', ['email' => $email]);
 
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">' . $email . ' has been activated! Please login.</div>');
+                    if ($this->db->affected_rows() > 0) {
+                        set_pesan('Akun berhasil verifikasi, Silahkan login');
+                    }
                     redirect('auth');
                 } else {
                     $this->db->delete('user', ['email' => $email]);
