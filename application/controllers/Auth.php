@@ -200,7 +200,7 @@ class Auth extends CI_Controller
         $post = $this->input->post(null, TRUE);
 
         $config = [
-            'protocol'  => 'smtp',
+            'protozzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzcol'  => 'smtp',
             'smtp_host' => 'ssl://mail.radinaltugasakhir.site',
             'smtp_user' => 'no-reply@radinaltugasakhir.site',
             'smtp_pass' => '1234Arema',
