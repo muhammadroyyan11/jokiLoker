@@ -20,7 +20,7 @@
                             <?php
                             if (userdata('cv') == null) { ?>
                                 <div class="alert alert-danger" role="alert">
-                                    Anda tidak bisa melamar pekerjaan, Silahkan Upload CV Terlebih dahulu
+                                    Anda tidak bisa melamar pekerjaan, Silahkan Upload CV Terlebih dahulu, klik <a href="<?= site_url('biodata')?>">Disini</a> untuk melengkapi Biodata
                                 </div>
                             <?php }
                             ?>

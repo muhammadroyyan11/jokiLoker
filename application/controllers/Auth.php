@@ -200,7 +200,7 @@ class Auth extends CI_Controller
         $post = $this->input->post(null, TRUE);
 
         $config = [
-            'protozzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzcol'  => 'smtp',
+            'protocol'  => 'smtp',
             'smtp_host' => 'ssl://mail.radinaltugasakhir.site',
             'smtp_user' => 'no-reply@radinaltugasakhir.site',
             'smtp_pass' => '1234Arema',
@@ -210,6 +210,14 @@ class Auth extends CI_Controller
             'newline'   => "\r\n"
         ];
 
+        $data = [
+            'from'  => $post['email'],
+            'nama'  => $post['nama'],
+            'link'  =>  base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token)
+        ];
+
+        $template = $this->load->view('front/email/template', $data,TRUE);
+
         $this->email->initialize($config);
 
         $this->email->from('no-reply@radinaltugasakhir.site', 'Account Verification');
@@ -217,7 +225,7 @@ class Auth extends CI_Controller
 
         if ($type == 'verify') {
             $this->email->subject('Account Verification');
-            $this->email->message('Click this link to verify you account : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
+            $this->email->message($template);
         } else if ($type == 'forgot') {
             $this->email->subject('Reset Password');
             $this->email->message('Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
