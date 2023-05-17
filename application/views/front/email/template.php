@@ -137,7 +137,7 @@
                     <tr>
                         <td align="center" valign="top" style="padding: 36px 24px">
                             <a href="<?= base_url() ?>" target="_blank" style="display: inline-block">
-                                <img src="logo_nav.png" alt="Logo" border="0" style="display: block" />
+                                <img src="<?= base_url() ?>assets/img/logo_nav.png" alt="Logo" border="0" style="display: block" />
                             </a>
                         </td>
                     </tr>
