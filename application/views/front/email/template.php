@@ -252,7 +252,7 @@
                                 Jika tidak berfungsi, anda dapat klik link tautan berikut:
                             </p>
                             <p style="margin: 0">
-                                <a href="<?= $link ?>" target="_blank">https://same-link-as-button.url/xxx-xxx-xxxx</a>
+                                <a href="<?= $link ?>" target="_blank"><?= $link ?></a>
                             </p>
                         </td>
                     </tr>
