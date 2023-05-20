@@ -50,7 +50,7 @@
                                         <td>
                                             <button class="btn btn-circle btn-sm btn-warning" data-toggle="modal" data-target="#modal-edit<?= $data['id_wawancara'] ?>"><i class="fa fa-fw fa-edit"></i></button>
                                             <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('wawancara/delete/') . $data['id_wawancara'] ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
-                                            <a href="<?= base_url('wawancara/report/') . $data['id_wawancara'] ?>" class="btn btn-circle btn-sm btn-primary"><i class="fa fa-fw fa-file-text-o "></i></a>
+                                            <a href="<?= base_url('kelolaWawancara/report/') . $data['id_wawancara'] ?>" class="btn btn-circle btn-sm btn-primary"><i class="fa fa-fw fa-file-text-o "></i></a>
                                         </td>
                                     </tr>
                                 <?php

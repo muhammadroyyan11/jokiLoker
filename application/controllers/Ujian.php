@@ -20,7 +20,7 @@ class Ujian extends CI_Controller
             'lowongan' => $this->base->get('lowongan')->result_array(),
             'title' => 'Ujian'
         ];
-        $this->template->load('template', 'Ujian/data', $data);
+        $this->template->load('template', 'ujian/data', $data);
     }
 
 
@@ -32,7 +32,7 @@ class Ujian extends CI_Controller
             'id'    => $id,
             'title' => 'Report Ujian'
         ];
-        $this->template->load('template', 'Ujian/report', $data);
+        $this->template->load('template', 'ujian/report', $data);
     }
 
     public function detail($id)
@@ -42,7 +42,7 @@ class Ujian extends CI_Controller
             'title' => 'Detail Hasil'
         ];
         // var_dump($data['row']);
-        $this->template->load('template', 'Ujian/detail', $data);
+        $this->template->load('template', 'ujian/detail', $data);
     }
 
     public function generate($id)
@@ -62,10 +62,17 @@ class Ujian extends CI_Controller
                     'statusLamaran' => 'Lolos ke tahap wawancara'
                 ];
 
+                $wawancara_id = $this->base->get('wawancara', ['lowongan_id' => $data->lowongan_id])->row();
+                
+                
                 $paramsWawacara = [
                     'user_id'       => $data->siswa_id,
+                    'wawancara_id'   => $wawancara_id->id_wawancara,
                     'lowongan_id'   => $data->lowongan_id
                 ];
+
+                $this->base->add('peserta_wawancara', $paramsWawacara);
+
             } else {
                 $params = [
                     'statusLamaran' => 'Tidak Lolos'
@@ -99,11 +106,22 @@ class Ujian extends CI_Controller
         // if ($get_ujian == 'Staff Produksi') {
         foreach ($get_peserta as $key => $data) {
 
-            var_dump($data->nilai);
             if ($data->nilai >= '71') {
                 $params = [
                     'statusLamaran' => 'Lolos Seleksi'
                 ];
+
+                $wawancara_id = $this->base->get('wawancara', ['lowongan_id' => $data->lowongan_id])->row();
+                
+                
+                $paramsWawacara = [
+                    'user_id'       => $data->siswa_id,
+                    'wawancara_id'   => $wawancara_id->id_wawancara,
+                    'lowongan_id'   => $data->lowongan_id
+                ];
+
+                $this->base->add('peserta_wawancara', $paramsWawacara);
+                
             } else {
                 $params = [
                     'statusLamaran' => 'Tidak Lolos Seleksi'

@@ -315,7 +315,10 @@ class Loker extends CI_Controller
             $waktu_selesai     = date('Y-m-d H:i:s', strtotime("+{$ujian->waktu} minute"));
             $time_mulai        = date('Y-m-d H:i:s');
 
+            $id_lowongan = $this->base->get('ujian', ['id_ujian' => $id])->row();
+
             $input = [
+                'lowongan_id'      => $id_lowongan->lowongan_id, 
                 'ujian_id'         => $id,
                 'siswa_id'        => $idSiswa,
                 'list_soal'        => $list_id_soal,

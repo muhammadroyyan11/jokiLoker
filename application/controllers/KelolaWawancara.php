@@ -31,6 +31,17 @@ class KelolaWawancara extends CI_Controller
         $this->template->load('template', 'kelolaLowongan/add', $data);
     }
 
+    public function report($id)
+    {
+        $data = [
+            'wawancara' => $this->base->getPeserta(['wawancara_id' => $id])->result_array(),
+            // 'row' => $this->ujian->getLead(['ujian_id' => $id, 'el_hasil.status' => 0])->row(),
+            // 'id'    => $id,
+            'title' => 'Daftar Peserta Wawancara'
+        ];
+        $this->template->load('template', 'kelolaWawancara/report', $data);
+    }
+
     public function edit($id)
     {
         $data = [

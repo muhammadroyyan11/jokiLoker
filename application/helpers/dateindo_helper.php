@@ -1,25 +1,132 @@
-<?php
-
-function tgl_indo($tanggal){
-	$bulan = array (
-		1 =>   'Januari',
-		'Februari',
-		'Maret',
-		'April',
-		'Mei',
-		'Juni',
-		'Juli',
-		'Agustus',
-		'September',
-		'Oktober',
-		'November',
-		'Desember'
-	);
-	$pecahkan = explode('-', $tanggal);
-	
-	// variabel pecahkan 0 = tahun
-	// variabel pecahkan 1 = bulan
-	// variabel pecahkan 2 = tanggal
+<?php 
  
-	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+// function untuk menampilkan nama hari ini dalam bahasa indonesia
+// di buat oleh malasngoding.com
+ 
+function tgl_indo(){
+	$hari = date ("D");
+ 
+	switch($hari){
+		case 'Sun':
+			$hari_ini = "Minggu";
+		break;
+ 
+		case 'Mon':			
+			$hari_ini = "Senin";
+		break;
+ 
+		case 'Tue':
+			$hari_ini = "Selasa";
+		break;
+ 
+		case 'Wed':
+			$hari_ini = "Rabu";
+		break;
+ 
+		case 'Thu':
+			$hari_ini = "Kamis";
+		break;
+ 
+		case 'Fri':
+			$hari_ini = "Jumat";
+		break;
+ 
+		case 'Sat':
+			$hari_ini = "Sabtu";
+		break;
+		
+		default:
+			$hari_ini = "Tidak di ketahui";		
+		break;
+	}
+ 
+	return "<b>" . $hari_ini . "</b>";
+ 
+}
+
+function medium_bulan($bln){
+	switch ($bln)
+	{
+	   case 1:
+		  return "Januari";
+		  break;
+	   case 2:
+		  return "Februari";
+		  break;
+	   case 3:
+		  return "Maret";
+		  break;
+	   case 4:
+		  return "April";
+		  break;
+	   case 5:
+		  return "Mei";
+		  break;
+	   case 6:
+		  return "Juni";
+		  break;
+	   case 7:
+		  return "Juli";
+		  break;
+	   case 8:
+		  return "Agustus";
+		  break;
+	   case 9:
+		  return "September";
+		  break;
+	   case 10:
+		  return "Oktober";
+		  break;
+	   case 11:
+		  return "November";
+		  break;
+	   case 12:
+		  return "Desember";
+		  break;
+	}
+ }
+
+function mediumdate_indo($tgl){
+	$ubah = gmdate($tgl, time()+60*60*8);
+	$pecah = explode("-",$ubah);
+	$tanggal = $pecah[2];
+	$bulan = medium_bulan($pecah[1]);
+	$tahun = $pecah[0];
+
+	$day = date('D', strtotime($tgl));
+
+	switch($day){
+		case 'Sun':
+			$hari_ini = "Minggu";
+		break;
+ 
+		case 'Mon':			
+			$hari_ini = "Senin";
+		break;
+ 
+		case 'Tue':
+			$hari_ini = "Selasa";
+		break;
+ 
+		case 'Wed':
+			$hari_ini = "Rabu";
+		break;
+ 
+		case 'Thu':
+			$hari_ini = "Kamis";
+		break;
+ 
+		case 'Fri':
+			$hari_ini = "Jumat";
+		break;
+ 
+		case 'Sat':
+			$hari_ini = "Sabtu";
+		break;
+		
+		default:
+			$hari_ini = "Tidak di ketahui";		
+		break;
+	}
+	return $hari_ini . ', ' . $tanggal . ' ' . $bulan . ' ' . $tahun;
 }

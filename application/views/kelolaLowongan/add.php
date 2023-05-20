@@ -90,7 +90,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tanggal Wawancara</label>
-                            <input type="datetime-local" class="form-control" id="exampleInputEmail1" name="tgl_wawancara" placeholder="Masukkan Tanggal Wawancara">
+                            <input type="date" class="form-control" id="exampleInputEmail1" name="tgl_wawancara" placeholder="Masukkan Tanggal Wawancara">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-success btn-flat">Simpan</button>

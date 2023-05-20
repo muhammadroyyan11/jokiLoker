@@ -19,7 +19,7 @@
                     <div class="box-header">
                         <div class="pull-right">
                             <?php
-                            if (isset($row->section) == 'Staff Produksi') { ?>
+                            if (isset($row->section) != 'Staff Kantor') { ?>
                                 <a href="<?= site_url('Ujian/generate/' . $id) ?>" class="btn btn-danger btn-flat">
                                     <i class="fa fa-undo"></i> Generate Hasil
                                 </a>
@@ -66,7 +66,7 @@
                                         <td><?= $data['nilai'] ?> </td>
                                         <td><?= $data['statusLamaran'] ?> </td>
                                         <td>
-                                            <a href="https://api.whatsapp.com/send?phone=<?= $data['no_telp'] ?>&text=Dear%20Calon%20Pegawai%2C%0A%0ADari%20hasil%20pengerjaan%20ujian%20test%2C%20anda%20dinyatakan%20lolos.%0A%0ARegard%2C%0AHRD%20PT%20TjARKINDO%20MAS" target="_blank" class="btn btn-circle btn-sm btn-success" title="Hubugi Kandidat"><i class="fa fa-fw fa-whatsapp"></i></a>
+                                            <!-- <a href="https://api.whatsapp.com/send?phone=<?= $data['no_telp'] ?>&text=Dear%20Calon%20Pegawai%2C%0A%0ADari%20hasil%20pengerjaan%20ujian%20test%2C%20anda%20dinyatakan%20lolos.%0A%0ARegard%2C%0AHRD%20PT%20TjARKINDO%20MAS" target="_blank" class="btn btn-circle btn-sm btn-success" title="Hubugi Kandidat"><i class="fa fa-fw fa-whatsapp"></i></a> -->
                                             <a href="<?= base_url('ujian/detail/') . $data['id_hasil'] ?>" class="btn btn-circle btn-sm btn-primary" title="Detail Hasil"><i class="fa fa-fw fa-info"></i></a>
                                         </td>
                                     </tr>

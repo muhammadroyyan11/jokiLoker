@@ -95,12 +95,24 @@ class KelolaLowongan extends CI_Controller
     public function report($id)
     {
         $data = [
-            'ujian' => $this->ujian->getLead(['ujian_id' => $id, 'el_hasil.status' => 0])->result_array(),
-            'row' => $this->ujian->getLead(['ujian_id' => $id, 'el_hasil.status' => 0])->row(),
-            'id'    => $id,
-            'title' => 'Report Ujian'
+            'lowongan' => $this->base->getPelamar(['lowongan_id' => $id])->result_array(),
+            // 'row' => $this->ujian->getLead(['ujian_id' => $id, 'el_hasil.status' => 0])->row(),
+            // 'id'    => $id,
+            'title' => 'Report Pelamar'
         ];
+
+        
         $this->template->load('template', 'kelolaLowongan/report', $data);
+    }
+
+    public function detail($id)
+    {
+        $data = [
+            'row' =>  $this->base->getPelamar(['id_lamaran' => $id])->row(),
+            'title' => 'Detail Hasil'
+        ];
+        // var_dump($data['row']);
+        $this->template->load('template', 'kelolaLowongan/detail', $data);
     }
 
     public function prosesEdit($id)
