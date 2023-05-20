@@ -17,11 +17,11 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <div class="pull-right">
+                        <!-- <div class="pull-right">
                             <button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modal-default">
                                 <i class="fa fa-plus"></i> Add
                             </button>
-                        </div>
+                        </div> -->
                         <h3 class="box-title">Data <?= $title ?></h3>
                     </div>
                     <!-- /.box-header -->

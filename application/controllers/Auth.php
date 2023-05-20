@@ -170,6 +170,7 @@ class Auth extends CI_Controller
             $input['foto']          = 'user.png';
             $input['agama']         = $input['agama'];
             $input['jenjang_pendidikan']     = $input['jenjang_pendidikan'];
+            $input['createdOn']     = date('Y-m-d');
 
             // siapkan token
             $token = base64_encode(random_bytes(32));

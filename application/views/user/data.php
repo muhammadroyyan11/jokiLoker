@@ -16,14 +16,14 @@
                 <div class="box-header">
                     <h3 class="box-title">Data <?= $title ?></h3>
                     <div class="pull-right">
-                        <a href="<?= site_url('user/add')?>" class="btn btn-primary btn-flat">
+                        <a href="<?= site_url('user/add') ?>" class="btn btn-primary btn-flat">
                             <i class="fa fa-plus"></i> Add
                         </a>
                     </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                <?= $this->session->flashdata('pesan'); ?>
+                    <?= $this->session->flashdata('pesan'); ?>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -32,6 +32,7 @@
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Tanggal Regis</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -50,14 +51,14 @@
                                         <td>
                                             <?php if ($data['role'] == 1) {
                                                 echo 'Admin';
-                                            } elseif ($data['role'] == 2){
+                                            } elseif ($data['role'] == 2) {
                                                 echo 'HRD';
-                                            } elseif ($data['role'] == 3){
+                                            } elseif ($data['role'] == 3) {
                                                 echo 'Calon Karyawan';
-                                            }?>
+                                            } ?>
                                         </td>
+                                        <td><?= $data['createdOn']; ?></td>
                                         <td>
-
                                             <a href="<?= base_url('user/edit/') . $data['id_user'] ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>
                                             <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('user/delete/') . $data['id_user'] ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
                                         </td>

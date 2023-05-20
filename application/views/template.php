@@ -177,11 +177,8 @@
                     <?php if (userdata('role') == 2) { ?>
                         <!-- <li><a href="#"><i class="fa fa-book"></i> <span>Department</span></a></li> -->
                         <li><a href="<?= site_url('KelolaLowongan') ?>"><i class="fa fa-paperclip"></i> <span>Kelola Lowongan</span></a></li>
-
+                        <li><a href="<?= site_url('KelolaWawancara') ?>"><i class="fa fa-paperclip"></i> <span>Kelola Wawancara</span></a></li>
                     <?php } ?>
-
-
-
                 </ul>
             </section>
             <!-- /.sidebar -->

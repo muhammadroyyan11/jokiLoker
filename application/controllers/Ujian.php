@@ -59,16 +59,23 @@ class Ujian extends CI_Controller
             // var_dump($data->nilai);
             if ($data->nilai >= '56') {
                 $params = [
-                    'statusLamaran' => 'Lolos Seleksi'
+                    'statusLamaran' => 'Lolos ke tahap wawancara'
+                ];
+
+                $paramsWawacara = [
+                    'user_id'       => $data->siswa_id,
+                    'lowongan_id'   => $data->lowongan_id
                 ];
             } else {
                 $params = [
-                    'statusLamaran' => 'Tidak Lolos Seleksi'
+                    'statusLamaran' => 'Tidak Lolos'
                 ];
             }
             $array = ['id_hasil' => $data->id_hasil, 'siswa_id' => $data->siswa_id, 'ujian_id' => $id];
 
             $this->base->updateGenerate('el_hasil', $array, $params);
+
+            
 
             if ($this->db->affected_rows() > 0) {
                 set_pesan('Berhasil memberikan keputusan');

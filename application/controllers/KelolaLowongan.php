@@ -45,7 +45,7 @@ class KelolaLowongan extends CI_Controller
     {
         $post = $this->input->post(null, true);
 
-        $params = [
+        $paramsLowongan = [
             'title' => $post['nama'],
             'seo_title' => slugify($post['nama']),
             'requirements' => $post['requrement'],
@@ -57,7 +57,31 @@ class KelolaLowongan extends CI_Controller
             'is_active' => '1'
         ];
 
-        $this->base->add('lowongan', $params);
+       
+        $return_id =   $this->base->insert('lowongan', $paramsLowongan);
+
+        // var_dump($return_id);
+
+        $paramsUjian = [
+            'nama_ujian' => 'Test '. $post['nama'],
+            'jenis' => $post['jenis'],
+            'jumlah_soal' => $post['jumlah'],
+            'waktu' => $post['waktu'],
+            'tgl_dibuat' => date('Y-m-d h:i:s'),
+            'tgl_selesai' => $post['tgl_selesai'],
+            'lowongan_id' => $return_id,
+            'token' => strtoupper(random_string('alpha', 5)),
+        ];
+
+        $this->base->add('ujian', $paramsUjian);
+
+        $paramsWawancara = [
+            'nama_wawancara' => 'Wawancara ' . $post['nama'],
+            'tanggal'        => $post['tgl_wawancara'],
+            'lowongan_id'    => $return_id
+        ];
+
+        $this->base->add('wawancara', $paramsWawancara);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil disimpan');
@@ -66,6 +90,17 @@ class KelolaLowongan extends CI_Controller
         }
 
         redirect('KelolaLowongan');
+    }
+
+    public function report($id)
+    {
+        $data = [
+            'ujian' => $this->ujian->getLead(['ujian_id' => $id, 'el_hasil.status' => 0])->result_array(),
+            'row' => $this->ujian->getLead(['ujian_id' => $id, 'el_hasil.status' => 0])->row(),
+            'id'    => $id,
+            'title' => 'Report Ujian'
+        ];
+        $this->template->load('template', 'kelolaLowongan/report', $data);
     }
 
     public function prosesEdit($id)
@@ -84,23 +119,40 @@ class KelolaLowongan extends CI_Controller
             'is_active' => '1'
         ];
 
-        // if ($post['dept_id'] != null) {
-        //     $params['dept_id'] = $post['dept_id'];
-        // }
-
-
-        // if ($post['tipe'] != null) {
-        //     $params['tipe'] = $post['tipe'];
-        // }
-
-
-        $this->base->edit('lowongan', $params, ['id_lowongan' => $id]);
-
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil disimpan');
         } else {
             set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
         }
+
+        // if (isset($_POST['add'])) {
+        //     $dataPengajar = array(
+        //         'nip' => $post['nip'],
+        //         'nama' => $post['nama'],
+        //         'jenis_kelamin' => $post['jenis_kelamin'],
+        //         'tempat_lahir' => $post['tempat_lahir'],
+        //         'tgl_lahir' => $post['tgl_lahir'],
+        //         'alamat' => $post['alamat'],
+        //         'foto' => 'user.jpg',
+        //         'status' => 0
+        //     );
+
+        //     $return_id =  $this->admin->insert($dataPengajar, 'el_pengajar');
+
+        //     // foreach ($return_id as $key => $data) {
+        //     //     echo $data->id_pengajar;   
+        //     // }
+        //     // var_dump($params2,$getId);
+        //     $dataLogin = array(
+        //         'email' => $post['email'],
+        //         'password' => password_hash('password', PASSWORD_DEFAULT),
+        //         'pengajar_id' => $return_id,
+        //         'role' => 2,
+        //     );
+        //     $this->admin->insert($dataLogin, 'el_login');
+        //     redirect('admin/Datapengajar');
+        //     // var_dump($dataLogin);
+        // }
 
         redirect('kelolaLowongan');
     }
@@ -116,5 +168,17 @@ class KelolaLowongan extends CI_Controller
         }
 
         redirect('kelolaLowongan');
+    }
+
+    public function toggle($getId)
+    {
+        $status = $this->base_model->getUser('lowongan', ['id_lowongan' => $getId])['is_active'];
+        $toggle = $status ? 0 : 1;
+        $pesan = $toggle ? 'lowongan diaktifkan.' : 'lowongan dinonaktifkan.';
+
+        if ($this->base_model->update('lowongan', 'id_lowongan', $getId, ['is_active' => $toggle])) {
+            set_pesan($pesan);
+        }
+        redirect('keloaLowongan');
     }
 }

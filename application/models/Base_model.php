@@ -19,6 +19,35 @@ class Base_model extends CI_Model
         return $sql;
     }
 
+    public function getWawancara($where = null)
+    {
+        $this->db->select('*');
+        $this->db->from('wawancara');
+        $this->db->join('lowongan', 'lowongan.id_lowongan = wawancara.lowongan_id');
+        if ($where != null) {
+            $this->db->where($where);
+        }
+
+        $sql = $this->db->get();
+        return $sql;
+    }
+
+    public function insert($table, $data)
+    {
+        $this->db->insert($table, $data);
+        return $this->db->insert_id();
+    }
+
+
+    public function getNewMember()
+    {
+        $this->db->select('user.nama as nama_lengkap, user.username, user.is_active, user.email, user.id_user, user.role, user.createdOn');
+        $this->db->from('user');
+        $this->db->where('MONTH(createdOn)', date('m'));
+
+        return $this->db->get();
+    }
+
     public function get_surat($where = null)
     {
         $this->db->select('*');
@@ -102,7 +131,7 @@ class Base_model extends CI_Model
 
     public function getUsers($id)
     {
-        $this->db->select('user.nama as nama_lengkap, user.username, user.is_active, user.email, user.id_user, user.role');
+        $this->db->select('user.nama as nama_lengkap, user.username, user.is_active, user.email, user.id_user, user.role, user.createdOn');
         $this->db->from('user');
         $this->db->where('id_user !=', $id);
         return $this->db->get()->result_array();
@@ -487,11 +516,6 @@ class Base_model extends CI_Model
         $sql = 'UPDATE  `lamaran` set `status` = 1 WHERE `user_id` = ' . $id_user . ' and `ujian_id` =  ' . $id_ujian . '';
 
         return $sql;
-    }
-
-    public function insert($table, $data, $batch = false)
-    {
-        return $batch ? $this->db->insert_batch($table, $data) : $this->db->insert($table, $data);
     }
 
     public function delete($table, $pk, $id)

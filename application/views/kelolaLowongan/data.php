@@ -30,6 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>IsActive</th>
                                     <th>Nama lowongan Lowongan</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -41,10 +42,14 @@
                                 ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
+                                        <td>
+                                            <a href="<?= base_url('kelolaLowongan/toggle/') . $data['id_lowongan'] ?>" class="btn btn-circle btn-sm <?= $data['is_active'] ? 'btn-secondary' : 'btn-success' ?>" title="<?= $data['is_active'] ? 'Nonaktifkan User' : 'Aktifkan User' ?>"><i class="fa fa-fw fa-power-off"></i></a>
+                                        </td>
                                         <td><?= $data['title'] ?></td>
                                         <td>
-                                        <a href="<?= site_url('kelolaLowongan/edit/'). $data['id_lowongan'] ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>
+                                            <a href="<?= site_url('kelolaLowongan/edit/') . $data['id_lowongan'] ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>
                                             <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('kelolaLowongan/delete/') . $data['id_lowongan'] ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
+                                            <a href="<?= base_url('kelolaLowongan/report/') . $data['id_lowongan'] ?>" title="Data Pelamar" class="btn btn-circle btn-sm btn-primary"><i class="fa fa-fw fa-file-text-o "></i></a>
                                         </td>
                                     </tr>
                                 <?php

@@ -23,6 +23,15 @@ class User extends CI_Controller
         $this->template->load('template', 'user/data', $data);
     }
 
+    public function bulan()
+    {
+        $data['title'] = "User Management";
+        $data['users'] = $this->base_model->getNewMember()->result_array();
+        // var_dump($data['users']);
+
+        $this->template->load('template', 'user/data', $data);
+    }
+
     private function _validasi($mode)
     {
         $this->form_validation->set_rules('nama_lengkap', 'Nama', 'required|trim');

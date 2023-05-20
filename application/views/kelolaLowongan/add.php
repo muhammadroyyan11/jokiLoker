@@ -68,6 +68,30 @@
                             </select>
                             <span class="help-block"><?= form_error('wisata_id') ?></span>
                         </div>
+                        <div class="form-group <?= form_error('wisata_id') ? 'has-error' : null ?>" id="destination">
+                            <label for="exampleInputEmail1">Jumlah Soal Ujian *</label>
+                            <input type="number" class="form-control" id="exampleInputEmail1" name="jumlah" placeholder="Masukkan Jumlah soal">
+                            <span class="help-block"><?= form_error('wisata_id') ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Jenis Soal Ujian</label>
+                            <select name="jenis" id="" class="form-control select2" style="width: 100%;">
+                                <option value="acak">Acak</option>
+                                <option value="urut">Urut</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Waktu Ujian (Menit)</label>
+                            <input type="number" class="form-control" id="exampleInputEmail1" name="waktu" placeholder="Masukkan waktu dalam bentuk menit">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tanggal Selesai Ujian</label>
+                            <input type="datetime-local" class="form-control" id="exampleInputEmail1" name="tgl_selesai" placeholder="Masukkan Jumlah soal">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tanggal Wawancara</label>
+                            <input type="datetime-local" class="form-control" id="exampleInputEmail1" name="tgl_wawancara" placeholder="Masukkan Tanggal Wawancara">
+                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-success btn-flat">Simpan</button>
                             <button type="reset" class="btn btn-danger btn-flat">Reset</button>

@@ -37,7 +37,14 @@ class Fungsi
     public function count_karyawan()
     {
         $this->ci->load->model('Base_model', 'base');
-        return $this->ci->base->get('user', ['role' => 3])->num_rows();
+        return $this->ci->base->get('user', ['role <>' => 1])->num_rows();
+    }
+
+    public function count_newMember()
+    {   
+        
+        $this->ci->load->model('Base_model', 'base');
+        return $this->ci->base->getNewMember()->num_rows();
     }
 
     public function count_kelas()

@@ -18,6 +18,8 @@ class Dashboard extends CI_Controller
         $data = [
             'title' => 'Dashboard'  
         ];
+
+        // var_dump(date('w'));
         $this->template->load('template', 'dashboard/dashboard', $data);
     }
 }
