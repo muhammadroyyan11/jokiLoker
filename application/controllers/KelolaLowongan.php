@@ -101,8 +101,27 @@ class KelolaLowongan extends CI_Controller
             'title' => 'Report Pelamar'
         ];
 
-        
+        // var_dump($data['lowongan']);
         $this->template->load('template', 'kelolaLowongan/report', $data);
+    }
+
+    public function done_send()
+    {
+        $post = $this->input->post(null, true);
+
+        $params = [
+            'status'    => $post['status']
+        ];
+        // var_dump($params, $post);
+        $this->base->edit('lamaran', $params, ['id_lamaran' => $post['id_lamaran']]);
+
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Data berhasil disimpan');
+        } else {
+            set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
+        }
+
+        redirect('kelolaLowongan/report/'. $post['lowongan_id']);
     }
 
     public function detail($id)
@@ -111,8 +130,8 @@ class KelolaLowongan extends CI_Controller
             'row' =>  $this->base->getPelamar(['id_lamaran' => $id])->row(),
             'title' => 'Detail Hasil'
         ];
-        // var_dump($data['row']);
-        $this->template->load('template', 'kelolaLowongan/detail', $data);
+        var_dump($data['row']);
+        // $this->template->load('template', 'kelolaLowongan/detail', $data);
     }
 
     public function prosesEdit($id)

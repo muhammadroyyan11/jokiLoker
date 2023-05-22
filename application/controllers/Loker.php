@@ -31,23 +31,6 @@ class Loker extends CI_Controller
 
     public function changeProfile()
     {
-        // $post = $this->input->post(null, true);
-
-        // $params = [
-        //     'nama' => $post['nama'],
-        // ];
-
-        // if ($post['password'] != null) {
-        //     $params['password'] = password_hash($post['password'], PASSWORD_DEFAULT);
-        // }
-        // $this->base->update('user', 'id_user', userdata('id_user'), $params);
-
-        // if ($this->db->affected_rows() > 0) {
-        //     set_pesan('Data berhasil disimpan');
-        // } else {
-        //     set_pesan('terjadi kesalahan saat menyimpan data');
-        // }
-
         // redirect('loker');
         $post = $this->input->post(null, TRUE);
 
@@ -105,23 +88,30 @@ class Loker extends CI_Controller
     }
     public function start($id_ujian)
     {
-        // $kelas = array('siswa_id', $this->session->userdata('login_session')['siswa_id']);
-        // $where = array('ujian_id' => $id_ujian);
-        $ujian = $this->base->getChallenge2($id_ujian);
-        // var_dump($ujian);
-        // $siswa = $this->ujian->getKelasNow($kelas)->row();
+        $check = $this->ujian->check_ujian(['user_id' => userdata('id_user'), 'ujian_id' => $id_ujian])->num_rows();
 
-        // var_dump($siswa);
-        $data = array(
-            'title' => "Informasi Challenge",
-            'ujian' => $ujian,
-            // 'siswa' => $siswa,
-            'encrypted_id' => urlencode($this->encryption->encrypt($id_ujian))
-        );
+        if ($check > 0) {
+            // $kelas = array('siswa_id', $this->session->userdata('login_session')['siswa_id']);
+            // $where = array('ujian_id' => $id_ujian);
+            $ujian = $this->base->getChallenge2($id_ujian);
+            // var_dump($ujian);
+            // $siswa = $this->ujian->getKelasNow($kelas)->row();
 
-        // var_dump($this->session->userdata('nama'));
+            // var_dump($siswa);
+            $data = array(
+                'title' => "Informasi Challenge",
+                'ujian' => $ujian,
+                // 'siswa' => $siswa,
+                'encrypted_id' => urlencode($this->encryption->encrypt($id_ujian))
+            );
 
-        $this->template->load('tempchallenge', 'cbt/infoChallenge', $data);
+            // var_dump($this->session->userdata('nama'));
+
+            $this->template->load('tempchallenge', 'cbt/infoChallenge', $data);
+        } else {
+            set_pesan('Anda tidak memiliki akses untuk mengerjakan', FALSE);
+            redirect('loker');
+        }
     }
 
     public function view($slug)
@@ -130,7 +120,7 @@ class Loker extends CI_Controller
             'title'     => 'Lowongan Open',
             'lowongan'  => $this->base->getLowongan($slug)->row(),
             'featured'  => $this->base->getLowongan(NULL, '5')->result_array(),
-            'count'       => $this->base->getLamaranView(['user_id' => userdata('id_user'), 'seo_title' => $slug])->num_rows()
+            'count'     => $this->base->getLamaranView(['user_id' => userdata('id_user'), 'seo_title' => $slug])->num_rows()
         ];
 
         // var_dump($data['row'], userdata('id_user'));
@@ -318,7 +308,7 @@ class Loker extends CI_Controller
             $id_lowongan = $this->base->get('ujian', ['id_ujian' => $id])->row();
 
             $input = [
-                'lowongan_id'      => $id_lowongan->lowongan_id, 
+                'lowongan_id'      => $id_lowongan->lowongan_id,
                 'ujian_id'         => $id,
                 'siswa_id'        => $idSiswa,
                 'list_soal'        => $list_id_soal,

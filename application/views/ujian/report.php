@@ -19,15 +19,17 @@
                     <div class="box-header">
                         <div class="pull-right">
                             <?php
-                            if (isset($row->section) != 'Staff Kantor') { ?>
-                                <a href="<?= site_url('Ujian/generate/' . $id) ?>" class="btn btn-danger btn-flat">
-                                    <i class="fa fa-undo"></i> Generate Hasil
-                                </a>
-                            <?php } else { ?>
-                                <a href="<?= site_url('Ujian/generate_kantor/' . $id) ?>" class="btn btn-danger btn-flat">
-                                    <i class="fa fa-undo"></i> Generate Hasil
-                                </a>
+                            if ($count > 0) {
+                                if ($row->section == 'Staff Kantor') { ?>
+                                    <a href="<?= site_url('Ujian/generate_kantor/' . $id) ?>" class="btn btn-danger btn-flat">
+                                        <i class="fa fa-undo"></i> Generate Hasil
+                                    </a>
+                                <?php } else { ?>
+                                    <a href="<?= site_url('Ujian/generate/' . $id) ?>" class="btn btn-danger btn-flat">
+                                        <i class="fa fa-undo"></i> Generate
+                                    </a>
                             <?php }
+                            }
                             ?>
 
                             <a href="<?= site_url('Ujian') ?>" class="btn btn-warning btn-flat">

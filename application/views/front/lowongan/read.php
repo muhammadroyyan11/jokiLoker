@@ -39,6 +39,14 @@
                                     <span class="m-l-3 m-r-6">|</span>
                                 </span>
 
+                                <span>
+                                    <?php
+                                    $dateMasuk = new DateTime($lowongan->deadline);
+                                    ?>
+                                    Deadline : <?= $dateMasuk->format('d F Y') ?>
+                                    <span class="m-l-3 m-r-6">|</span>
+                                </span>
+
                             </div>
 
                             <div class="flex-w flex-m p-b-21">

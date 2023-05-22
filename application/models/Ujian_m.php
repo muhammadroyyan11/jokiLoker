@@ -213,16 +213,6 @@ class Ujian_m extends CI_Model
         return $this->db->get()->row()->nilai;
     }
 
-    // public function getPoint($id_tes, $siswa_id)
-    // {
-    //     $this->db->select('point');
-    //     $this->db->from('el_hasil');
-    //     $this->db->where('ujian_id', $id_tes);
-    //     $this->db->where('siswa_id', $siswa_id);
-    //     return $this->db->get()->row()->point;
-    
-    // }
-
     public function getExp($siswa_id)
     {
         $this->db->select('*');
@@ -280,5 +270,23 @@ class Ujian_m extends CI_Model
         return $this->db->get();
     }
 
+    public function check_data($where = null)
+    {
+        $this->db->select('*');
+        $this->db->from('peserta_wawancara');
+        if ($where != null) {
+            $this->db->where($where);
+        }
+        return $this->db->get();
+    }
 
+    public function check_ujian($where = null)
+    {
+        $this->db->select('*');
+        $this->db->from('lamaran');
+        if ($where != null) {
+            $this->db->where($where);
+        }
+        return $this->db->get();
+    }
 }

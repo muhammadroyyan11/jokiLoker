@@ -45,7 +45,7 @@
                                     <tr>
                                         <td><?= $no++ ?></td>
                                         <td><?= $data['nama_wawancara'] ?></td>
-                                        <td><?= $data['tanggal'] ?></td>
+                                        <td><?= date_indo($data['tanggal']) ?></td>
                                         <td><?= $data['title'] ?></td>
                                         <td>
                                             <button class="btn btn-circle btn-sm btn-warning" data-toggle="modal" data-target="#modal-edit<?= $data['id_wawancara'] ?>"><i class="fa fa-fw fa-edit"></i></button>

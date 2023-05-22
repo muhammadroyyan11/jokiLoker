@@ -31,6 +31,35 @@ class KelolaWawancara extends CI_Controller
         $this->template->load('template', 'kelolaLowongan/add', $data);
     }
 
+    public function prosesFeedback(Type $var = null)
+    {
+        $post = $this->input->post(null, TRUE);
+
+        $params = [
+            'deskripsi'     => $post['deskripsi'],
+            'tgl_selesai'   => date('Y-m-d H:i:s'),
+            'kriteria'      => $post['kriteria'],
+            'peserta_id'    => $post['peserta_id'],
+            'user_id'       => $post['user_id']
+        ];
+
+        $this->base->add('hasil_wawancara', $params);
+        
+
+        if ($this->db->affected_rows() > 0) {
+            $paramsEdit = [
+                'status' => 1,
+            ];
+
+            $this->base->edit('peserta_wawancara', $paramsEdit, ['id_peserta' => $post['peserta_id']]);
+            set_pesan('Feedback telah disimpan');
+        } else {
+            set_pesan('Gagal menyimpan data', FALSE);
+        }
+
+        redirect('kelolaWawancara/report/'. $post['wawancara_id']);
+    }
+
     public function report($id)
     {
         $data = [
@@ -39,6 +68,8 @@ class KelolaWawancara extends CI_Controller
             // 'id'    => $id,
             'title' => 'Daftar Peserta Wawancara'
         ];
+
+        // var_dump($data['wawancara']);
         $this->template->load('template', 'kelolaWawancara/report', $data);
     }
 
