@@ -78,7 +78,7 @@
                             <?php
                             if ($this->session->has_userdata('login_session')) : ?>
                                 <li>
-                                    <a href="#"><b>Hi , <?= userdata('nama') ?></b></a>
+                                    <a href="<?= site_url('loker') ?>"><b>Hi , <?= userdata('nama') ?></b></a>
                                 </li>
 
                                 <li>
@@ -126,13 +126,25 @@
             <nav class="side-menu">
                 <ul class="main-menu">
 
-                    <li class="item-menu-mobile">
-                        <a href="<?= site_url('home') ?>"><b>Register</b></a>
-                    </li>
+                    <?php
+                    if ($this->session->has_userdata('login_session')) { ?>
+                        <li class="item-menu-mobile">
+                            <a href="<?= site_url('loker') ?>"><b>Hi , <?= userdata('nama') ?></b></a>
+                        </li>
 
-                    <li class="item-menu-mobile">
-                        <a href="<?= site_url('home') ?>"><b>Login</b></a>
-                    </li>
+                        <li class="item-menu-mobile">
+                            <a href="<?= site_url('auth/logout') ?>"><b>Logout</b></a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="item-menu-mobile">
+                            <a href="<?= site_url('auth/register') ?>"><b>Register</b></a>
+                        </li>
+
+                        <li class="item-menu-mobile">
+                            <a href="<?= site_url('auth') ?>"><b>Login</b></a>
+                        </li>
+                    <?php }
+                    ?>
                 </ul>
             </nav>
         </div>

@@ -148,7 +148,7 @@
                                 <a href="<?= site_url('kategori') ?>"><i class="fa fa-circle-o"></i> Department</a>
                             </li>
                             <li>
-                                <a href="<?= site_url('SubKategori') ?>"><i class="fa fa-circle-o"></i> Sub-Department</a>
+                                <a href="<?= site_url('subKategori') ?>"><i class="fa fa-circle-o"></i> Sub-Department</a>
                             </li>
                         </ul>
                     </li>
@@ -162,7 +162,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="<?= site_url('Ujian') ?>"><i class="fa fa-circle-o"></i> Ujian</a>
+                                <a href="<?= site_url('ujian') ?>"><i class="fa fa-circle-o"></i> Ujian</a>
                             </li>
                             <li>
                                 <a href="<?= site_url('bankSoal') ?>"><i class="fa fa-circle-o"></i> Bank Soal</a>

@@ -21,7 +21,7 @@ class SubKategori extends CI_Controller
             'title' => 'Sub Department'
         ];
 
-        $this->template->load('template', 'SubKategori/data', $data);
+        $this->template->load('template', 'subKategori/data', $data);
     }
 
     public function add()
@@ -53,7 +53,7 @@ class SubKategori extends CI_Controller
             set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
         }
 
-        redirect('SubKategori');
+        redirect('subKategori');
     }
 
     public function prosesEdit($id)
