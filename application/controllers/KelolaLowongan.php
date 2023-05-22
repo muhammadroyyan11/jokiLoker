@@ -54,6 +54,7 @@ class KelolaLowongan extends CI_Controller
             'tipe' => $post['tipe'],
             'created' => date('Y-m-d'),
             'section'   => $post['section'],
+            'deadline'  => $post['deadline'],
             'is_active' => '1'
         ];
 
@@ -112,7 +113,6 @@ class KelolaLowongan extends CI_Controller
         $params = [
             'status'    => $post['status']
         ];
-        // var_dump($params, $post);
         $this->base->edit('lamaran', $params, ['id_lamaran' => $post['id_lamaran']]);
 
         if ($this->db->affected_rows() > 0) {

@@ -40,6 +40,10 @@
                             <textarea id="editor2" name="deskripsi" class="form-control" rows="10" cols="80"></textarea>
                             <span class="help-block"><?= form_error('password') ?></span>
                         </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Lowongan dibuka sampai</label>
+                            <input type="datetime-local" class="form-control" id="exampleInputEmail1" name="deadline" placeholder="Masukkan Jumlah soal">
+                        </div>
                         <div class="form-group <?= form_error('wisata_id') ? 'has-error' : null ?>" id="destination">
                             <label>Section / Bagian *</label>
                             <select name="section" id="select" class="form-control">
