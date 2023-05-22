@@ -94,24 +94,32 @@
                     </h4>
 
                     <ul class="bgwhite">
-                        <?php foreach ($featured as $key => $data) { ?>
-                            <li class="flex-w p-b-20">
-                                <a href="<?= site_url("loker/view/") . $data['seo_title'] ?>" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-                                    <img src="<?= base_url() ?>assets/img/logo.png" alt="IMG-PRODUCT" class="border" style="max-width: 18rem">
-                                    <!-- <img src="<?= base_url() ?>assets/img/read_detail.png" alt="IMG-BLOG" style="max-width: 18rem"> -->
-                                </a>
+                        <?php
+                        foreach ($featured as $key => $data) {
 
-                                <div class="w-size23 p-t-5">
-                                    <a href="<?= site_url("loker/view/") . $data['seo_title'] ?>" class="s-text20">
-                                        <b><?= character_limiter($data['title'], 31) ?></b>
+                            $today_date = strtotime(date("Y-m-d H:i:s"));
+
+                            $tengat = strtotime($data['deadline']);
+
+                            if ($tengat > $today_date) { ?>
+                                <li class="flex-w p-b-20">
+                                    <a href="<?= site_url("loker/view/") . $data['seo_title'] ?>" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
+                                        <img src="<?= base_url() ?>assets/img/logo.png" alt="IMG-PRODUCT" class="border" style="max-width: 18rem">
+                                        <!-- <img src="<?= base_url() ?>assets/img/read_detail.png" alt="IMG-BLOG" style="max-width: 18rem"> -->
                                     </a>
 
-                                    <span class="dis-block s-text17 p-t-6">
-                                        <?= $data['section'] ?>
-                                    </span>
-                                </div>
-                            </li> <br>
-                        <?php } ?>
+                                    <div class="w-size23 p-t-5">
+                                        <a href="<?= site_url("loker/view/") . $data['seo_title'] ?>" class="s-text20">
+                                            <b><?= character_limiter($data['title'], 31) ?></b>
+                                        </a>
+
+                                        <span class="dis-block s-text17 p-t-6">
+                                            <?= $data['section'] ?>
+                                        </span>
+                                    </div>
+                                </li> <br>
+                        <?php }
+                        } ?>
                     </ul>
 
 

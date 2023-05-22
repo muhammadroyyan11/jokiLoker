@@ -156,7 +156,7 @@ class Loker extends CI_Controller
         $this->base->add('lamaran', $params);
 
         if ($this->db->affected_rows() > 0) {
-            set_pesan('Berhasil melamar, Silahkan cek kelola ujian untuk melakukan pre-test');
+            set_pesan('Berhasil melamar, silahkan cek kelola tes ujian dan menunggu informasi untuk melakukan ujian');
         } else {
             set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
         }
