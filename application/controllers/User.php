@@ -32,6 +32,23 @@ class User extends CI_Controller
         $this->template->load('template', 'user/data', $data);
     }
 
+    public function uploaded()
+    {
+        $data['title'] = "User Management";
+        $data['users'] = $this->base_model->getPegguna('user', ['cv <>' => null])->result_array();
+        // var_dump($data['users']);
+
+        $this->template->load('template', 'user/data', $data);
+    }
+    public function not_uploaded()
+    {
+        $data['title'] = "User Management";
+        $data['users'] = $this->base_model->getPegguna('user', ['cv' => null])->result_array();
+        // var_dump($data['users']);
+
+        $this->template->load('template', 'user/data', $data);
+    }
+
     private function _validasi($mode)
     {
         $this->form_validation->set_rules('nama_lengkap', 'Nama', 'required|trim');

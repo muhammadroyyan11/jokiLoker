@@ -34,10 +34,24 @@ class Base_model extends CI_Model
 
     public function getPelamar($where = null)
     {
-        $this->db->select('*');
+        $this->db->select('*, lamaran.deskripsi as desc');
         $this->db->from('lamaran');
         $this->db->join('user', 'user.id_user = lamaran.user_id');
         $this->db->join('lowongan', 'lowongan.id_lowongan = lamaran.lowongan_id');
+        if ($where != null) {
+            $this->db->where($where);
+        }
+
+        $sql = $this->db->get();
+        return $sql;
+    }
+
+    public function getFeedback($where = null)
+    {
+        $this->db->select('*');
+        $this->db->from('hasil_wawancara');
+        $this->db->join('user', 'user.id_user = hasil_wawancara.user_id');
+        $this->db->join('peserta_wawancara', 'peserta_wawancara.id_peserta = hasil_wawancara.peserta_id');
         if ($where != null) {
             $this->db->where($where);
         }
@@ -65,6 +79,16 @@ class Base_model extends CI_Model
     {
         $this->db->insert($table, $data);
         return $this->db->insert_id();
+    }
+
+    public function getPegguna($table ,$where = null)
+    {
+        $this->db->select('user.nama as nama_lengkap, user.username, user.is_active, user.email, user.id_user, user.role, user.createdOn');
+        $this->db->from($table);
+        if ($where) {
+            $this->db->where($where);
+        }
+        return $this->db->get();
     }
 
 

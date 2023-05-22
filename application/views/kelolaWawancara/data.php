@@ -64,3 +64,41 @@
             </div>
         </div>
 </section>
+
+
+
+<!-- Modal edit -->
+<?php
+$no = 0;
+foreach ($wawancara as $key => $data) : $no++; ?>
+    <div class="modal fade" id="modal-edit<?= $data['id_wawancara'] ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Edit Jadwal Wawancara</h4>
+                </div>
+                <?= form_open('kelolaWawancara/prosesEdit/' . $data['id_wawancara']); ?>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nama Wawancara</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="nama_wawancara" value="<?= $data['nama_wawancara'] ?>" placeholder="Masukkan nama Ujian">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tanggal Wawancara</label>
+                        <input type="date" class="form-control" id="exampleInputEmail1" name="tanggal" value="<?= $data['tanggal'] ?>" placeholder="Masukkan nama Ujian">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<?php endforeach;
+?>

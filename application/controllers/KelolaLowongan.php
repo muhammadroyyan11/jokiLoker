@@ -130,8 +130,8 @@ class KelolaLowongan extends CI_Controller
             'row' =>  $this->base->getPelamar(['id_lamaran' => $id])->row(),
             'title' => 'Detail Hasil'
         ];
-        var_dump($data['row']);
-        // $this->template->load('template', 'kelolaLowongan/detail', $data);
+        // var_dump($data['row']);
+        $this->template->load('template', 'kelolaLowongan/detail', $data);
     }
 
     public function prosesEdit($id)

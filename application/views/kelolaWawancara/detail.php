@@ -11,7 +11,7 @@
 
                     <h3 class="profile-username text-center"><?= $row->nama ?></h3>
 
-                    <p class="text-muted text-center">Calon Karyawan</p>
+                    <p class="text-muted text-center">Peserta Wawancara</p>
 
 
                     <a href="<?= base_url() ?>assets/uploads/cv/<?= $row->cv ?>" target="_blank" class="btn btn-primary btn-block"><b>Download CV</b></a>
@@ -24,20 +24,12 @@
         <div class="col-md-9">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-
-                    <li class="active"><a href="#settings" data-toggle="tab">Keterangan</a></li>
+                    <li class="active"><a href="#settings" data-toggle="tab">Detail</a></li>
                 </ul>
                 <div class="tab-content">
                     <!-- /.tab-pane -->
                     <div class="active tab-pane" id="settings">
                         <form class="form-horizontal">
-                            <div class="form-group">
-                                <label for="inputName" class="col-sm-2 control-label">Lowongan</label>
-
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputName" value="<?= strtoupper($row->title) ?>" placeholder="Name" disabled>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Email</label>
 
@@ -70,8 +62,21 @@
                                 <label for="inputExperience" class="col-sm-2 control-label">Deskripsi melamar</label>
 
                                 <div class="col-sm-10">
-                                    <!-- <textarea name="Deskripsi" class="form-control" id="editor5" cols="30" rows="10"></textarea> -->
-                                    <?= $row->desc ?>
+                                    <textarea name="Deskripsi" class="form-control" id="editor1" cols="30" rows="10" disabled><?= $row->deskripsi?></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputExperience" class="col-sm-2 control-label">Waktu selesai wawancara</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" value="<?= $row->tgl_selesai ?>" disabled placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputExperience" class="col-sm-2 control-label">Kriteria</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" value="<?= $row->kriteria ?>" disabled placeholder="Name">
                                 </div>
                             </div>
 

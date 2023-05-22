@@ -47,6 +47,18 @@ class Fungsi
         return $this->ci->base->getNewMember()->num_rows();
     }
 
+    public function count_upload_cv()
+    {
+        $this->ci->load->model('Base_model', 'base');
+        return $this->ci->base->get('user', ['cv <>' => null])->num_rows();
+    }
+
+    public function count_no_upload()
+    {
+        $this->ci->load->model('Base_model', 'base');
+        return $this->ci->base->get('user', ['cv' => null])->num_rows();
+    }
+
     public function count_kelas()
     {
         $this->ci->load->model('Admin', 'admin');

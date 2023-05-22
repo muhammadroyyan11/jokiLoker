@@ -44,7 +44,7 @@ class KelolaWawancara extends CI_Controller
         ];
 
         $this->base->add('hasil_wawancara', $params);
-        
+
 
         if ($this->db->affected_rows() > 0) {
             $paramsEdit = [
@@ -57,7 +57,7 @@ class KelolaWawancara extends CI_Controller
             set_pesan('Gagal menyimpan data', FALSE);
         }
 
-        redirect('kelolaWawancara/report/'. $post['wawancara_id']);
+        redirect('kelolaWawancara/report/' . $post['wawancara_id']);
     }
 
     public function report($id)
@@ -73,6 +73,15 @@ class KelolaWawancara extends CI_Controller
         $this->template->load('template', 'kelolaWawancara/report', $data);
     }
 
+    public function detail($id)
+    {
+        $data = [
+            'row' =>  $this->base->getFeedback(['peserta_id' => $id])->row(),
+            'title' => 'Detail Hasil'
+        ];
+        // var_dump($data['row']);
+        $this->template->load('template', 'kelolaWawancara/detail', $data);
+    }
     public function edit($id)
     {
         $data = [
@@ -115,28 +124,12 @@ class KelolaWawancara extends CI_Controller
         $post = $this->input->post(null, true);
 
         $params = [
-            'title' => $post['nama'],
-            'seo_title' => slugify($post['nama']),
-            'requirements' => $post['requrement'],
-            'deskripsi' => $post['deskripsi'],
-            'dept_id' => $post['dept_id'],
-            'tipe' => $post['tipe'],
-            'created' => date('Y-m-d'),
-            'section'   => $post['section'],
-            'is_active' => '1'
+            'nama_wawancara'    => $post['nama_wawancara'],
+            'tanggal'           => $post['tanggal']
         ];
 
-        // if ($post['dept_id'] != null) {
-        //     $params['dept_id'] = $post['dept_id'];
-        // }
 
-
-        // if ($post['tipe'] != null) {
-        //     $params['tipe'] = $post['tipe'];
-        // }
-
-
-        $this->base->edit('lowongan', $params, ['id_lowongan' => $id]);
+        $this->base->edit('wawancara', $params, ['id_wawancara' => $id]);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil disimpan');
@@ -144,7 +137,7 @@ class KelolaWawancara extends CI_Controller
             set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
         }
 
-        redirect('kelolaLowongan');
+        redirect('kelolaWawancara');
     }
 
     public function delete($id)
