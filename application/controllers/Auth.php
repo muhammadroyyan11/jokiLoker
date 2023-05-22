@@ -167,7 +167,7 @@ class Auth extends CI_Controller
             $input['password']      = password_hash($input['password'], PASSWORD_DEFAULT);
             $input['role']          = 3;
             $input['is_active']     = 0;
-            $input['foto']          = 'user.png';
+            $input['foto']          = 'user.jpg';
             $input['agama']         = $input['agama'];
             $input['jenjang_pendidikan']     = $input['jenjang_pendidikan'];
             $input['createdOn']     = date('Y-m-d');
