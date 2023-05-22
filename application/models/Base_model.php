@@ -83,7 +83,7 @@ class Base_model extends CI_Model
 
     public function getPegguna($table ,$where = null)
     {
-        $this->db->select('user.nama as nama_lengkap, user.username, user.is_active, user.email, user.id_user, user.role, user.createdOn');
+        $this->db->select('user.nama as nama_lengkap, user.cv,user.username, user.is_active, user.email, user.id_user, user.role, user.createdOn');
         $this->db->from($table);
         if ($where) {
             $this->db->where($where);
@@ -94,7 +94,7 @@ class Base_model extends CI_Model
 
     public function getNewMember()
     {
-        $this->db->select('user.nama as nama_lengkap, user.username, user.is_active, user.email, user.id_user, user.role, user.createdOn');
+        $this->db->select('user.nama as nama_lengkap, user.cv, user.username, user.is_active, user.email, user.id_user, user.role, user.createdOn');
         $this->db->from('user');
         $this->db->where('MONTH(createdOn)', date('m'));
 
@@ -184,7 +184,7 @@ class Base_model extends CI_Model
 
     public function getUsers($id)
     {
-        $this->db->select('user.nama as nama_lengkap, user.username, user.is_active, user.email, user.id_user, user.role, user.createdOn');
+        $this->db->select('user.nama as nama_lengkap, user.username, user.is_active, user.email, user.id_user, user.role, user.createdOn, user.cv');
         $this->db->from('user');
         $this->db->where('id_user !=', $id);
         return $this->db->get()->result_array();

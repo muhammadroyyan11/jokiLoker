@@ -32,6 +32,7 @@
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>CV</th>
                                 <th>Tanggal Regis</th>
                                 <th>Aksi</th>
                             </tr>
@@ -56,6 +57,13 @@
                                             } elseif ($data['role'] == 3) {
                                                 echo 'Calon Karyawan';
                                             } ?>
+                                        </td>
+                                        <td>
+                                            <?php 
+                                            if ($data['cv'] != null) { ?>
+                                               <a href="<?= base_url() ?>assets/uploads/cv/<?= $data['cv'] ?>" target="_blank" >Download CV </a>
+                                            <?php }
+                                            ?>
                                         </td>
                                         <td><?= date_indo($data['createdOn']) ?></td>
                                         <td>

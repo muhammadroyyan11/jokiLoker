@@ -17,7 +17,7 @@
         <div class="inner">
           <h3><?= $this->fungsi->count_lowongan(); ?></h3>
 
-          <p>Lowongan aktif</p>
+          <p>Jumlah Lowongan</p>
         </div>
         <div class="icon">
           <i class="fa fa-paperclip"></i>
