@@ -366,6 +366,16 @@ class Base_model extends CI_Model
         return $query;
     }
 
+    public function aktif()
+    {
+        $this->db->select('*');
+        $this->db->from('lowongan');
+
+        $this->db->where('deadline >', date("Y-m-d H:i:s"));
+
+        return $this->db->get();
+    }
+
     public function getLowonganList($id = null)
     {
         // $nowDate = date('Y-m-d');

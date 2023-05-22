@@ -112,11 +112,20 @@ foreach ($wawancara as $key => $data) : $no++; ?>
                         <input type="hidden" class="form-control" name="peserta_id" value="<?= $data['id_peserta'] ?>" placeholder="Masukkan nama Ujian">
                         <input type="hidden" class="form-control" name="user_id" value="<?= $data['user_id'] ?>" placeholder="Masukkan nama Ujian">
                         <input type="hidden" class="form-control" name="wawancara_id" value="<?= $data['wawancara_id'] ?>" placeholder="Masukkan nama Ujian">
+                        <input type="hidden" class="form-control" name="lowongan_id" value="<?= $data['lowongan_id'] ?>" placeholder="Masukkan nama Ujian">
                         <select name="kriteria" id="" class="form-control">
                             <option value="NULL">-- Silahkan Pilih --</option>
                             <option value="Kurang">Kurang</option>
                             <option value="Cukup">Cukup</option>
                             <option value="Baik">Baik</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Hasil Akhir Lamaran</label>
+                        <select name="status_pelamar" id="" class="form-control">
+                            <option value="NULL">-- Silahkan Pilih --</option>
+                            <option value="Di Terima">Di terima kerja</option>
+                            <option value="Tidak Di Terima">Tidak di terima</option>
                         </select>
                     </div>
                 </div>

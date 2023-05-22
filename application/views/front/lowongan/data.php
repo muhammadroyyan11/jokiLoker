@@ -84,6 +84,12 @@
                     Anda memiliki <b><?= $lamaranCount ?></b> ujian yang belum dikerjakan, Silahkan cek menu kelola ujian
                 </div>
             <?php }
+
+            if (userdata('status_pelamar') == 'Di Terima') { ?>
+                <div class="alert alert-danger" role="alert">
+                    Anda sudah tidak bisa melihat atau melamar lowongan yang tersedia saat ini, karena anda telah di terima di PT TJARKINOMAS
+                </div>
+            <?php }
             ?>
 
             <div class="form contact-form">
@@ -95,37 +101,39 @@
             <div class="row">
                 <!-- start foreach  -->
                 <?php
-                foreach ($lowongan as $key => $data) {
-                    $today_date = strtotime(date("Y-m-d H:i:s"));
+                if (userdata('status_pelamar') != 'Di Terima') {
+                    foreach ($lowongan as $key => $data) {
+                        $today_date = strtotime(date("Y-m-d H:i:s"));
 
-                    $tengat = strtotime($data['deadline']);
+                        $tengat = strtotime($data['deadline']);
 
-                    if ($tengat > $today_date) { 
-                        ?>
-                        <div class="col-md-4 p-b-30" id="">
-                            <div class="job-instructor-layout">
-                                <div class="brows-job-type ">
-                                    <span class="full-time"><?= $data['tipe'] ?></span>
-                                </div>
-                                <div class="job-instructor-thumb text-center">
-                                    <a href="<?= site_url('loker/view/' . $data['seo_title']) ?>">
-                                        <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
-                                    </a>
-                                </div>
-                                <div class="job-instructor-content">
-                                    <h4 class="instructor-title"><a href="<?= site_url('loker/view/' . $data['seo_title']) ?>"></a></h4>
-                                    <div class="instructor-skills">
-                                        <?= $data['section'] ?> </div>
-                                    <div class="instructor-skills admin">
+                        if ($tengat > $today_date) {
+                ?>
+                            <div class="col-md-4 p-b-30" id="">
+                                <div class="job-instructor-layout">
+                                    <div class="brows-job-type ">
+                                        <span class="full-time"><?= $data['tipe'] ?></span>
+                                    </div>
+                                    <div class="job-instructor-thumb text-center">
                                         <a href="<?= site_url('loker/view/' . $data['seo_title']) ?>">
-                                            <h5><?= $data['title'] ?></h5>
+                                            <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
                                         </a>
                                     </div>
-                                </div>
+                                    <div class="job-instructor-content">
+                                        <h4 class="instructor-title"><a href="<?= site_url('loker/view/' . $data['seo_title']) ?>"></a></h4>
+                                        <div class="instructor-skills">
+                                            <?= $data['section'] ?> </div>
+                                        <div class="instructor-skills admin">
+                                            <a href="<?= site_url('loker/view/' . $data['seo_title']) ?>">
+                                                <h5><?= $data['title'] ?></h5>
+                                            </a>
+                                        </div>
+                                    </div>
 
+                                </div>
                             </div>
-                        </div>
                 <?php  }
+                    }
                 }
                 ?>
                 <!-- end foreach  -->

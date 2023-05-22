@@ -22,6 +22,16 @@ class KelolaLowongan extends CI_Controller
         $this->template->load('template', 'kelolaLowongan/data', $data);
     }
 
+    public function aktif()
+    {
+        $data = [
+            'lowongan' => $this->base->aktif('lowongan')->result_array(),
+            'title' => 'Lowongan Aktif',
+
+        ];
+        $this->template->load('template', 'kelolaLowongan/data', $data);
+    }
+
     public function add()
     {
         $data = [

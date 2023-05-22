@@ -22,6 +22,12 @@ class Fungsi
         return $this->ci->base->get('lowongan')->num_rows();
     }
 
+    public function count_aktif()
+    {
+        $this->ci->load->model('Base_model', 'base');
+        return $this->ci->base->aktif()->num_rows();
+    }
+
     public function count_dept()
     {
         $this->ci->load->model('Base_model', 'base');

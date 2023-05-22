@@ -43,6 +43,18 @@ class KelolaWawancara extends CI_Controller
             'user_id'       => $post['user_id']
         ];
 
+        $paramsUser = [
+            'status_pelamar' => $post['status_pelamar']
+        ];
+
+        $paramsView = [
+            'statusLamaran' => $post['status_pelamar']
+        ];
+
+        $this->base->edit('el_hasil', $paramsView, ['siswa_id' => $post['user_id'], 'lowongan_id' => $post['lowongan_id']]);;
+
+        $this->base->edit('user', $paramsUser, ['id_user' => $post['user_id']]);;
+
         $this->base->add('hasil_wawancara', $params);
 
 

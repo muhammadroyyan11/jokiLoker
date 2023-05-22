@@ -52,7 +52,8 @@ class Auth extends CI_Controller
                             'cv'    => $user_db['cv'],
                             'agama'  => $user_db['agama'],
                             'jenjang_pendidikan'  => $user_db['jenjang_pendidikan'],
-                            'timestamp' => time()
+                            'timestamp' => time(),
+                            'status_pelamar'    => $user_db['status_pelamar'],
                         ];
                         $this->session->set_userdata('login_session', $userdata);
 
