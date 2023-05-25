@@ -1,5 +1,4 @@
 
-text/x-generic report.php ( HTML document, ASCII text, with very long lines )
 <section class="content-header">
     <h1>
         <?= $title ?>
