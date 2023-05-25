@@ -127,7 +127,7 @@
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
-               
+
                 </form>
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -169,16 +169,12 @@
                             </li>
                         </ul>
                     </li>
-                    <?php if (userdata('role') == 1) { ?>
-                        <li class="header">Master Data</li>
-                        <li><a href="<?= site_url('user') ?>"><i class="fa fa-users"></i> <span>Account</span></a></li>
-                    <?php } ?>
+                    <li class="header">Master Data</li>
+                    <li><a href="<?= site_url('user') ?>"><i class="fa fa-users"></i> <span>Account</span></a></li>
 
-                    <?php if (userdata('role') == 2) { ?>
-                        <!-- <li><a href="#"><i class="fa fa-book"></i> <span>Department</span></a></li> -->
-                        <li><a href="<?= site_url('KelolaLowongan') ?>"><i class="fa fa-paperclip"></i> <span>Kelola Lowongan</span></a></li>
-                        <li><a href="<?= site_url('KelolaWawancara') ?>"><i class="fa fa-paperclip"></i> <span>Kelola Wawancara</span></a></li>
-                    <?php } ?>
+                    <!-- <li><a href="#"><i class="fa fa-book"></i> <span>Department</span></a></li> -->
+                    <li><a href="<?= site_url('KelolaLowongan') ?>"><i class="fa fa-paperclip"></i> <span>Kelola Lowongan</span></a></li>
+                    <li><a href="<?= site_url('KelolaWawancara') ?>"><i class="fa fa-paperclip"></i> <span>Kelola Wawancara</span></a></li>
                 </ul>
             </section>
             <!-- /.sidebar -->
@@ -198,14 +194,14 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" name="nama" value="<?= userdata('nama')?>" placeholder="Masukkan nama Lengkap" require>
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="nama" value="<?= userdata('nama') ?>" placeholder="Masukkan nama Lengkap" require>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Password</label>
                             <input type="password" class="form-control" id="exampleInputEmail1" name="password" placeholder="Masukkan Password baru">
                         </div>
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
