@@ -109,7 +109,8 @@ class User extends CI_Controller
                 'password'      => password_hash($input['password'], PASSWORD_DEFAULT),
                 'role'          => $input['role'],
                 'is_active'     => 1,
-                'foto'          => 'user.jpg'
+                'foto'          => 'user.jpg',
+                'createdOn'     => date('Y-m-d')
             ];
 
             if ($this->base_model->insert('user', $params)) {

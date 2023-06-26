@@ -73,7 +73,6 @@ class Ujian extends CI_Controller
                 
                 $check = $this->ujian->check_data(['user_id' => $data->siswa_id, 'wawancara_id' => $wawancara_id->id_wawancara])->num_rows();
 
-                var_dump($check);
 
                 if ($check != 1) {
                     $this->base->add('peserta_wawancara', $paramsWawacara);
@@ -131,7 +130,7 @@ class Ujian extends CI_Controller
 
                 var_dump($check);
 
-                if ($check > 0) {
+                if ($check != 1) {
                     $this->base->add('peserta_wawancara', $paramsWawacara);
                 }
 

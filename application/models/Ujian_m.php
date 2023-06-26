@@ -258,7 +258,7 @@ class Ujian_m extends CI_Model
     public function getLead($where = null)
     {
         $this->db->distinct();
-        $this->db->select('*, el_hasil.status as statusTest');
+        $this->db->select('*, el_hasil.status as statusTest, el_hasil.nilai as nilai');
         $this->db->from('el_hasil');
         if ($where != null) {
             $this->db->where($where);

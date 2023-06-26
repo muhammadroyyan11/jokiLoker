@@ -170,7 +170,11 @@
                         </ul>
                     </li>
                     <li class="header">Master Data</li>
-                    <li><a href="<?= site_url('user') ?>"><i class="fa fa-users"></i> <span>Account</span></a></li>
+                    <?php
+                    if (userdata('id_user') == 1) { ?>
+                        <li><a href="<?= site_url('user') ?>"><i class="fa fa-users"></i> <span>Account</span></a></li>
+                    <?php }
+                    ?>
 
                     <!-- <li><a href="#"><i class="fa fa-book"></i> <span>Department</span></a></li> -->
                     <li><a href="<?= site_url('KelolaLowongan') ?>"><i class="fa fa-paperclip"></i> <span>Kelola Lowongan</span></a></li>

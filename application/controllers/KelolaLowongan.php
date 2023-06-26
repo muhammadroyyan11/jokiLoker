@@ -15,7 +15,7 @@ class KelolaLowongan extends CI_Controller
     public function index()
     {
         $data = [
-            'lowongan' => $this->base->get('lowongan')->result_array(),
+            'lowongan' => $this->base->getLowonganJoin()->result_array(),
             'title' => 'Lowongan',
 
         ];
@@ -160,41 +160,13 @@ class KelolaLowongan extends CI_Controller
             'is_active' => '1'
         ];
 
+        $this->base->edit('lowongan', $params, ['id_lowongan' => $id]);
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil disimpan');
         } else {
             set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
         }
-
-        // if (isset($_POST['add'])) {
-        //     $dataPengajar = array(
-        //         'nip' => $post['nip'],
-        //         'nama' => $post['nama'],
-        //         'jenis_kelamin' => $post['jenis_kelamin'],
-        //         'tempat_lahir' => $post['tempat_lahir'],
-        //         'tgl_lahir' => $post['tgl_lahir'],
-        //         'alamat' => $post['alamat'],
-        //         'foto' => 'user.jpg',
-        //         'status' => 0
-        //     );
-
-        //     $return_id =  $this->admin->insert($dataPengajar, 'el_pengajar');
-
-        //     // foreach ($return_id as $key => $data) {
-        //     //     echo $data->id_pengajar;   
-        //     // }
-        //     // var_dump($params2,$getId);
-        //     $dataLogin = array(
-        //         'email' => $post['email'],
-        //         'password' => password_hash('password', PASSWORD_DEFAULT),
-        //         'pengajar_id' => $return_id,
-        //         'role' => 2,
-        //     );
-        //     $this->admin->insert($dataLogin, 'el_login');
-        //     redirect('admin/Datapengajar');
-        //     // var_dump($dataLogin);
-        // }
-
+        
         redirect('kelolaLowongan');
     }
 

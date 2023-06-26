@@ -32,6 +32,8 @@
                                     <th>No</th>
                                     <!-- <th>IsActive</th> -->
                                     <th>Nama lowongan Lowongan</th>
+                                    <th>Tipe Kontrak</th>
+                                    <th>Department</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -46,6 +48,8 @@
                                             <a href="<?= base_url('kelolaLowongan/toggle/') . $data['id_lowongan'] ?>" class="btn btn-circle btn-sm <?= $data['is_active'] ? 'btn-secondary' : 'btn-success' ?>" title="<?= $data['is_active'] ? 'Nonaktifkan User' : 'Aktifkan User' ?>"><i class="fa fa-fw fa-power-off"></i></a>
                                         </td> -->
                                         <td><?= $data['title'] ?></td>
+                                        <td><?= $data['tipe'] ?></td>
+                                        <td><?= $data['nama_sub'] ?></td>
                                         <td>
                                             <a href="<?= site_url('kelolaLowongan/edit/') . $data['id_lowongan'] ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>
                                             <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('kelolaLowongan/delete/') . $data['id_lowongan'] ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>

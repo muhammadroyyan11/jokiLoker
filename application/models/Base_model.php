@@ -19,6 +19,13 @@ class Base_model extends CI_Model
         return $sql;
     }
 
+    public function getLowonganJoin(){
+        $this->db->select('*');
+        $this->db->from('lowongan');
+        $this->db->join('sub_kategori', 'sub_kategori.id_sub = lowongan.dept_id');
+        return $this->db->get();
+    }
+
     public function getWawancara($where = null)
     {
         $this->db->select('*');
