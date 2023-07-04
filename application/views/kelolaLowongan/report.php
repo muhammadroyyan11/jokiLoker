@@ -51,10 +51,12 @@
                                         <td><?= $data['no_telp'] ?></td>
                                         <td><?= $data['email'] ?></td>
                                         <td><?php
-                                            if ($data['status'] != 1) {
+                                            if ($data['status'] == 1) {
+                                                echo 'Sudah di kirim';
+                                            } else if($data['status'] == 2) {
+                                                echo 'Belum sesuai persyaratan';
+                                            } else if($data['status'] == 0){
                                                 echo 'Belum di kirim / Validasi';
-                                            } else {
-                                                echo 'Undangan Terkirim';
                                             }
                                             ?></td>
                                         <td>
@@ -105,6 +107,7 @@ foreach ($lowongan as $key => $data) : $no++; ?>
                             <option value="NULL">-- Silahkan Pilih --</option>
                             <option value="1">Telah terkirim</option>
                             <option value="0">Belum di kirim</option>
+                            <option value="2">Tidak Sesuai Persyaratan</option>
                         </select>
                     </div>
                 </div>

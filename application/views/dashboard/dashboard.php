@@ -77,42 +77,36 @@
       </div>
     <?php } ?>
 
-    <?php
-    if (userdata('id_user') == 1) { ?>
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-blue">
-          <div class="inner">
-            <h3><?= $this->fungsi->count_upload_cv(); ?></h3>
 
-            <p>User Upload CV</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-users"></i>
-          </div>
-          <a href="<?= site_url('user/uploaded') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-blue">
+        <div class="inner">
+          <h3><?= $this->fungsi->count_upload_cv(); ?></h3>
+
+          <p>User Upload CV</p>
         </div>
-      </div>
-    <?php } ?>
-
-    <?php
-    if (userdata('id_user') == 1) { ?>
-
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-orange">
-          <div class="inner">
-            <h3><?= $this->fungsi->count_no_upload(); ?></h3>
-
-            <p>User Belum pload CV</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-users"></i>
-          </div>
-          <a href="<?= site_url('user/not_uploaded') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <div class="icon">
+          <i class="fa fa-users"></i>
         </div>
+        <a href="<?= site_url('user/uploaded') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
       </div>
-    <?php } ?>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-orange">
+        <div class="inner">
+          <h3><?= $this->fungsi->count_no_upload(); ?></h3>
+
+          <p>User Belum pload CV</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-users"></i>
+        </div>
+        <a href="<?= site_url('user/not_uploaded') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
 
     <div class="col-lg-3 col-xs-6">
       <!-- small box -->

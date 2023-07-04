@@ -16,9 +16,12 @@
                 <div class="box-header">
                     <h3 class="box-title">Data <?= $title ?></h3>
                     <div class="pull-right">
-                        <a href="<?= site_url('user/add') ?>" class="btn btn-primary btn-flat">
-                            <i class="fa fa-plus"></i> Add
-                        </a>
+                        <?php
+                        if (userdata('id_user') == 1) { ?>
+                            <a href="<?= site_url('user/add') ?>" class="btn btn-primary btn-flat">
+                                <i class="fa fa-plus"></i> Add
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -59,9 +62,9 @@
                                             } ?>
                                         </td>
                                         <td>
-                                            <?php 
+                                            <?php
                                             if ($data['cv'] != null) { ?>
-                                               <a href="<?= base_url() ?>assets/uploads/cv/<?= $data['cv'] ?>" target="_blank" >Download CV </a>
+                                                <a href="<?= base_url() ?>assets/uploads/cv/<?= $data['cv'] ?>" target="_blank">Download CV </a>
                                             <?php }
                                             ?>
                                         </td>
