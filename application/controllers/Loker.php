@@ -25,7 +25,7 @@ class Loker extends CI_Controller
             'cv'        => $this->base->get('user', ['id_user' => userdata('id_user')])->row()
         ];
 
-        // var_dump($this->base->getLowongan()->result_array());
+        // var_dump($data['lamaran']);
         $this->template->load('front/template', 'front/lowongan/data', $data);
     }
 

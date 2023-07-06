@@ -420,7 +420,6 @@ class Base_model extends CI_Model
         $this->db->join('lowongan', 'lowongan.id_lowongan=lamaran.lowongan_id');
         // $this->db->join('user', 'user.id_user= lamaran.user_id');
         $this->db->join('ujian', 'ujian.lowongan_id = lowongan.id_lowongan');
-        $this->db->where('status', 0);
         if ($id != null) {
             $this->db->where('user_id', $id);
         }

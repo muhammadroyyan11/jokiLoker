@@ -297,7 +297,15 @@
                                 <tr>
                                     <th scope="row"><?= $no++ ?></th>
                                     <td><?= $data['title'] ?></td>
-                                    <td>Menunggu informasi dari HRD</td>
+                                    <td>
+                                        <?php if ($data['status'] == 0) { 
+                                            echo 'Menunggu keputusan HRD';
+                                        } elseif ($data['status'] == 2) {
+                                            echo 'Tidak sesuai persyaratan';
+                                        } elseif ($data['status'] == 1) {
+                                            echo 'Ujian telah di kirim di Whatsapps';
+                                        }?>
+                                    </td>
                                 </tr>
                             <?php  }
                             ?>
