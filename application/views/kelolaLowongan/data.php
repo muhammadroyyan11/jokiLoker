@@ -33,7 +33,7 @@
                                     <!-- <th>IsActive</th> -->
                                     <th>Nama lowongan Lowongan</th>
                                     <th>Tipe Kontrak</th>
-                                    <th>Department</th>
+                                    <th>Sub Department</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
