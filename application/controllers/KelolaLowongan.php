@@ -19,6 +19,8 @@ class KelolaLowongan extends CI_Controller
             'title' => 'Lowongan',
 
         ];
+
+        // var_dump($data['lowongan']);
         $this->template->load('template', 'kelolaLowongan/data', $data);
     }
 

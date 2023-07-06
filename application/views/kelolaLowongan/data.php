@@ -33,6 +33,7 @@
                                     <!-- <th>IsActive</th> -->
                                     <th>Nama lowongan Lowongan</th>
                                     <th>Tipe Kontrak</th>
+                                    <th>Departement</th>
                                     <th>Sub Department</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -44,11 +45,9 @@
                                 ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
-                                        <!-- <td>
-                                            <a href="<?= base_url('kelolaLowongan/toggle/') . $data['id_lowongan'] ?>" class="btn btn-circle btn-sm <?= $data['is_active'] ? 'btn-secondary' : 'btn-success' ?>" title="<?= $data['is_active'] ? 'Nonaktifkan User' : 'Aktifkan User' ?>"><i class="fa fa-fw fa-power-off"></i></a>
-                                        </td> -->
                                         <td><?= $data['title'] ?></td>
                                         <td><?= $data['tipe'] ?></td>
+                                        <td><?= $data['nama_kategori'] ?></td>
                                         <td><?= $data['nama_sub'] ?></td>
                                         <td>
                                             <a href="<?= site_url('kelolaLowongan/edit/') . $data['id_lowongan'] ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>

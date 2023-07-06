@@ -23,6 +23,7 @@ class Base_model extends CI_Model
         $this->db->select('*');
         $this->db->from('lowongan');
         $this->db->join('sub_kategori', 'sub_kategori.id_sub = lowongan.dept_id');
+        $this->db->join('kategori', 'kategori.id_kategori = sub_kategori.kategori_id');
         return $this->db->get();
     }
 
@@ -378,6 +379,7 @@ class Base_model extends CI_Model
         $this->db->select('*');
         $this->db->from('lowongan');
         $this->db->join('sub_kategori', 'sub_kategori.id_sub = lowongan.dept_id');
+        $this->db->join('kategori', 'kategori.id_kategori = sub_kategori.kategori_id');
         $this->db->where('deadline >', date("Y-m-d H:i:s"));
 
         return $this->db->get();
