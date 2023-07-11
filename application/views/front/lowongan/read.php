@@ -43,8 +43,15 @@
                                     <?php
                                     $dateMasuk = new DateTime($lowongan->deadline);
                                     ?>
-                                    Deadline : <?= $dateMasuk->format('d F Y') ?>
+                                    Deadline : <?= $dateMasuk->format('d F Y') ?>, <?= $dateMasuk->format('H:i:s')?> WIB
                                     <span class="m-l-3 m-r-6">|</span>
+                                </span>
+
+                                <span>
+                                    <?php
+                                    $dateMasuk = new DateTime($lowongan->deadline);
+                                    ?>
+                                    Jumlah pelamar : <?= $pelamar ?> Pelamar
                                 </span>
 
                             </div>

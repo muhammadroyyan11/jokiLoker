@@ -57,10 +57,23 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <select name="kunci" id="" class="form-control">
-                                            <option value="a"  <?= $row->kunci == 'a' ? 'selected' : '' ?>>Pilihan A</option>
-                                            <option value="b"  <?=  $row->kunci == 'b' ? 'selected' : '' ?>>Pilihan B</option>
-                                            <option value="c"  <?=  $row->kunci == 'c' ? 'selected' : '' ?>>Pilihan C</option>
-                                            <option value="d"  <?=  $row->kunci == 'd' ? 'selected' : '' ?>>Pilihan D</option>
+                                            <option value="a" <?= $row->kunci == 'a' ? 'selected' : '' ?>>Pilihan A</option>
+                                            <option value="b" <?= $row->kunci == 'b' ? 'selected' : '' ?>>Pilihan B</option>
+                                            <option value="c" <?= $row->kunci == 'c' ? 'selected' : '' ?>>Pilihan C</option>
+                                            <option value="d" <?= $row->kunci == 'd' ? 'selected' : '' ?>>Pilihan D</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="textarea-input" class=" form-control-label">Departement</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select name="dept_id" id="select" class="form-control">
+                                            <option value="">-- Pilih Department --</option>
+                                            s <?php foreach ($kategori as $l => $data) { ?>
+                                                <option value="<?= $data['id_sub'] ?>" <?= $row->dept_id == $data['id_sub'] ? 'selected' : '' ?>><b><?= $data['nama_kategori'] ?></b> - <?= $data['nama_sub'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>

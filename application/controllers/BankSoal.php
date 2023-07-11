@@ -47,7 +47,8 @@ class BankSoal extends CI_Controller
         $data = [
             'title' => 'Bank Soal',
             'row' => $soal,
-            'page' => 'add'
+            'page' => 'add',
+            'kategori'  => $this->base->getSub()->result_array()
             // 'ujian' => $ujian
         ];
 
@@ -60,7 +61,8 @@ class BankSoal extends CI_Controller
         $data = [
             'title' => 'Edit Soal',
             'row'   => $this->base->get('soal', ['id_soal' => $id])->row(),
-            'page'  => 'edit'
+            'page'  => 'edit',
+            'kategori'  => $this->base->getSub()->result_array()
         ];
 
         $this->template->load('template', 'soal/add', $data);
@@ -119,6 +121,7 @@ class BankSoal extends CI_Controller
                         'kunci' => $post['kunci'],
                         'file'  => $post['file_soal'],
                         'tipe_file' => $post['tipe_file'],
+                        'dept_id'   => $post['dept_id']
                     ];
 
                     $this->base->add('soal', $params);
@@ -141,6 +144,7 @@ class BankSoal extends CI_Controller
                     'p_c' => $post['p_c'],
                     'p_d' => $post['p_d'],
                     'kunci' => $post['kunci'],
+                    'dept_id'   => $post['dept_id']
                 ];
 
                 $this->base->add('soal', $params);
@@ -168,6 +172,7 @@ class BankSoal extends CI_Controller
                         'kunci' => $post['kunci'],
                         'file'  => $post['file_soal'],
                         'tipe_file' => $post['tipe_file'],
+                        'dept_id'   => $post['dept_id']
                     ];
 
                     $this->base->edit('soal', $params, ['id_soal' => $post['id_soal']]);
@@ -190,6 +195,7 @@ class BankSoal extends CI_Controller
                     'p_c' => $post['p_c'],
                     'p_d' => $post['p_d'],
                     'kunci' => $post['kunci'],
+                    'dept_id'   => $post['dept_id']
                 ];
 
                 $this->base->edit('soal', $params, ['id_soal' => $post['id_soal']]);

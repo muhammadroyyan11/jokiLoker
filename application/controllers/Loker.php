@@ -115,12 +115,14 @@ class Loker extends CI_Controller
     }
 
     public function view($slug)
-    {
+    {   
+        $id_lowongan = $this->base->get('lowongan', ['seo_title' => $slug])->row();
         $data = [
             'title'     => 'Lowongan Open',
             'lowongan'  => $this->base->getLowongan($slug)->row(),
             'featured'  => $this->base->getLowongan(NULL, '5')->result_array(),
-            'count'     => $this->base->getLamaranView(['user_id' => userdata('id_user'), 'seo_title' => $slug])->num_rows()
+            'count'     => $this->base->getLamaranView(['user_id' => userdata('id_user'), 'seo_title' => $slug])->num_rows(),
+            'pelamar'   => $this->base->get('lamaran', ['lowongan_id' => $id_lowongan->id_lowongan])->num_rows()
         ];
 
         // var_dump($data['row'], userdata('id_user'));
@@ -262,8 +264,12 @@ class Loker extends CI_Controller
 
         $ujian = $this->base->getUjianById($id);
 
+        // $dept = $this->base->get();
+
         // var_dump($ujian);
         $soal = $this->ujian->getSoal($id);
+
+        // var_dump($soal);
 
         $h_ujian     = $this->ujian->HslUjian($id, $idSiswa);
 
@@ -339,7 +345,9 @@ class Loker extends CI_Controller
         }
 
         $detail_tes = $q_soal;
-        $soal_urut_ok = $soal_urut_ok;
+        $soal_urut_ok = $soal_urut_ok;  
+
+        // var_dump($soal_urut_ok);
 
         $pc_list_jawaban = explode(",", $detail_tes->list_jawaban);
         $arr_jawab = array();

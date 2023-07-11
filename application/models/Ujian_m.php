@@ -110,20 +110,27 @@ class Ujian_m extends CI_Model
         return $this->db->get()->row();
     }
 
+    public function getUjianId($id)
+    {
+        $this->db->select('*');
+        $this->db->from('ujian a');
+        $this->db->join('lowongan b', 'a.lowongan_id=b.id_lowongan');
+        // $this->db->join('matkul c', 'a.matkul_id=c.id_matkul');
+        $this->db->where('id_ujian', $id);
+        // $this->db->order_by('level', 'ASC');
+        return $this->db->get()->row();
+    }
+
     public function getSoal($id)
     {
-        $ujian = $this->getUjianById($id);
-        // $order = $ujian->jenis==="acak" ? 'rand()' : "ASC";
+        $ujian = $this->getUjianId($id);
 
-        // if ($ujian->jenis == 'acak') {
-        //     $order = 'rand()';
-        // } else {
-        //     $order = 'ASC'
-        // }
+        $id_kategori = $ujian->dept_id;
+    
 
-        $this->db->select('id_soal, pertanyaan, file, p_a, p_b, p_c, p_d, kunci,  tipe_file');
+        $this->db->select('id_soal, pertanyaan, file, p_a, p_b, p_c, p_d, kunci,  tipe_file, dept_id');
         $this->db->from('soal');
-        // $this->db->where('matkul_id', $ujian->matkul_id);
+        $this->db->where('dept_id', $id_kategori);
         if ($ujian->jenis == 'acak') {
             $this->db->order_by('rand()');
         } else {
