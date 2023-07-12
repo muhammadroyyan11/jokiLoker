@@ -70,13 +70,13 @@ class KelolaLowongan extends CI_Controller
             'is_active' => '1'
         ];
 
-       
+
         $return_id =   $this->base->insert('lowongan', $paramsLowongan);
 
         // var_dump($return_id);
 
         $paramsUjian = [
-            'nama_ujian' => 'Test '. $post['nama'],
+            'nama_ujian' => 'Test ' . $post['nama'],
             'jenis' => $post['jenis'],
             'jumlah_soal' => $post['jumlah'],
             'waktu' => $post['waktu'],
@@ -118,6 +118,20 @@ class KelolaLowongan extends CI_Controller
         $this->template->load('template', 'kelolaLowongan/report', $data);
     }
 
+    public function compare()
+    {
+        $post = $this->input->post(null, true);
+
+        $data = [
+            'title' => 'Compare Data',
+            'satu' => $this->base->getPelamar(['id_lamaran' => $post['pelamar_one']])->row(),
+            'dua' =>  $this->base->getPelamar(['id_lamaran' => $post['pelamar_two']])->row()
+        ];
+
+        $this->template->load('template', 'kelolaLowongan/compare', $data);
+    }
+
+
     public function done_send()
     {
         $post = $this->input->post(null, true);
@@ -133,7 +147,7 @@ class KelolaLowongan extends CI_Controller
             set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
         }
 
-        redirect('kelolaLowongan/report/'. $post['lowongan_id']);
+        redirect('kelolaLowongan/report/' . $post['lowongan_id']);
     }
 
     public function detail($id)
@@ -168,7 +182,7 @@ class KelolaLowongan extends CI_Controller
         } else {
             set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
         }
-        
+
         redirect('kelolaLowongan');
     }
 

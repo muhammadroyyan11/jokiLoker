@@ -85,6 +85,7 @@ class KelolaWawancara extends CI_Controller
         $this->template->load('template', 'kelolaWawancara/report', $data);
     }
 
+ 
     public function detail($id)
     {
         $data = [
