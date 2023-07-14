@@ -56,7 +56,7 @@ class Ujian extends CI_Controller
         foreach ($get_peserta as $key => $data) {
 
             // var_dump($data->nilai);
-            if ($data->nilai >= '56') {
+            if ($data->nilai >= $data->kkm) {
                 $params = [
                     'statusLamaran' => 'Lolos ke tahap wawancara'
                 ];
@@ -111,7 +111,7 @@ class Ujian extends CI_Controller
         // if ($get_ujian == 'Staff Produksi') {
         foreach ($get_peserta as $key => $data) {
 
-            if ($data->nilai >= '71') {
+            if ($data->nilai >= $data->kkm) {
                 $params = [
                     'statusLamaran' => 'Lolos Seleksi'
                 ];

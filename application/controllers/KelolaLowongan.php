@@ -70,6 +70,12 @@ class KelolaLowongan extends CI_Controller
             'is_active' => '1'
         ];
 
+        if ($post['section'] == 'Staff Kantor') {
+            $paramsLowongan['kkm']  = 71;
+        } else{
+            $paramsLowongan['kkm']  = 56;
+        }
+
 
         $return_id =   $this->base->insert('lowongan', $paramsLowongan);
 
