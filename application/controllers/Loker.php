@@ -29,12 +29,28 @@ class Loker extends CI_Controller
         $this->template->load('front/template', 'front/lowongan/data', $data);
     }
 
+    public function search()
+    {
+        $post = $this->input->post(null, true);
+        $where = ['pendidikan' => $post['pendidikan'], 'section' => $post['pekerjaan'], 'tipe' => $post['kontrak']];
+        
+        $data = [
+            'title'     => 'Lowongan Open',
+            'lowongan'  => $this->base->getLowonganSearch($where)->result_array(),
+            'lamaran'   => $this->base->getLamaran(userdata('id_user'))->result_array(),
+            'history'   => $this->base->getKelolaLamaran(['siswa_id' => userdata('id_user')])->result_array(),
+            'lamaranCount'   => $this->base->getLamaran(userdata('id_user'))->num_rows(),
+            'cv'        => $this->base->get('user', ['id_user' => userdata('id_user')])->row()
+        ];
+
+        // var_dump($where);
+        $this->template->load('front/template', 'front/lowongan/data', $data);
+    }
+
     public function changeProfile()
     {
         // redirect('loker');
         $post = $this->input->post(null, TRUE);
-
-        // var_dump($post);
 
         $config['upload_path']          = './assets/uploads/foto/';
         $config['allowed_types']        = 'jpeg|png|jpg';

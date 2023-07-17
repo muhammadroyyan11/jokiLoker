@@ -16,7 +16,7 @@ class BankSoal extends CI_Controller
     public function index()
     {
         $data = [
-            'soal' => $this->base->get('soal')->result_array(),
+            'soal' => $this->base->getBankSoal()->result_array(),
             'title' => 'Bank Soal'
         ];
         $this->template->load('template', 'soal/data', $data);
@@ -40,6 +40,7 @@ class BankSoal extends CI_Controller
         $soal->kunci = null;
         $soal->level = null;
         $soal->hrd_id = null;
+        $soal->dept_id = null;
 
         // $where = array('login_id' => $this->session->userdata('login_session')['user']);
         // $ujian = $this->ujian->get($where)->result();

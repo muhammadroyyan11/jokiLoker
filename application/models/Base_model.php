@@ -19,7 +19,8 @@ class Base_model extends CI_Model
         return $sql;
     }
 
-    public function getLowonganJoin(){
+    public function getLowonganJoin()
+    {
         $this->db->select('*');
         $this->db->from('lowongan');
         $this->db->join('sub_kategori', 'sub_kategori.id_sub = lowongan.dept_id');
@@ -89,7 +90,7 @@ class Base_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    public function getPegguna($table ,$where = null)
+    public function getPegguna($table, $where = null)
     {
         $this->db->select('user.nama as nama_lengkap, user.cv,user.username, user.is_active, user.email, user.id_user, user.role, user.createdOn');
         $this->db->from($table);
@@ -402,6 +403,31 @@ class Base_model extends CI_Model
         $this->db->order_by('id_lowongan', 'desc');
         $query = $this->db->get();
         return $query;
+    }
+
+    public function getLowonganSearch($where = 'null', $kontrak = 'null')
+    {
+        // $nowDate = date('Y-m-d');
+        $this->db->select('*');
+        $this->db->from('lowongan');
+        $this->db->join('sub_kategori', 'sub_kategori.id_sub=lowongan.dept_id');
+        $this->db->join('ujian', 'ujian.lowongan_id=lowongan.id_lowongan');
+        $this->db->join('kategori', 'kategori.id_kategori=sub_kategori.kategori_id');
+
+        if ($where != 'null') {
+            $this->db->like($where);
+        }
+
+        $this->db->order_by('id_lowongan', 'desc');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function getBankSoal() {
+        $this->db->select('*');
+        $this->db->from('soal');
+        $this->db->join('sub_kategori', 'sub_kategori.id_sub=soal.dept_id');
+        return $this->db->get();
     }
 
     public function create($table, $data, $batch = false)

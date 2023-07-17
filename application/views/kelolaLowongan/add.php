@@ -66,9 +66,24 @@
                             <label>Deptartment / Categori *</label>
                             <select name="dept_id" id="select" class="form-control">
                                 <option value="">-- Pilih Department --</option>
-                                s <?php foreach ($kategori as $l => $data) { ?>
+                                <?php foreach ($kategori as $l => $data) { ?>
                                     <option value="<?= $data['id_sub'] ?>"><b><?= $data['nama_kategori'] ?></b> - <?= $data['nama_sub'] ?></option>
                                 <?php } ?>
+                            </select>
+                            <span class="help-block"><?= form_error('wisata_id') ?></span>
+                        </div>
+                        <div class="form-group <?= form_error('wisata_id') ? 'has-error' : null ?>" id="destination">
+                            <label>Deptartment / Categori *</label>
+                            <select name="pendidikan" id="select" class="form-control">
+                                <option value="">-- Pilih Pendidikan --</option>
+                                    <option value="SMK">SMK / SMA</option>
+                                    <option value="D1">D1</option>
+                                    <option value="D2">D2</option>
+                                    <option value="D3">D3</option>
+                                    <option value="D4">D4</option>
+                                    <option value="S1">S1</option>
+                                    <option value="S2">S2</option>
+                                    <option value="S3">S3</option>
                             </select>
                             <span class="help-block"><?= form_error('wisata_id') ?></span>
                         </div>

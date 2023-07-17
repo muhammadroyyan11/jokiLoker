@@ -92,11 +92,48 @@
             <?php }
             ?>
 
-            <div class="form contact-form">
-                <div class="bo4 of-hidden size15 m-b-20">
-                    <input class="sizefull s-text7 p-l-22 p-r-22 border border-dark" id="myInput" onkeyup="myFunction()" type="text" name="name" placeholder="Ketikkan Lowongan yang diinginkan">
+
+            <form action="<?= site_url('loker/search') ?>" method="post">
+
+                <div class="row">
+                    <div class="col-md-3 p-b-30" id="">
+                        <select name="pendidikan" class="form-control" id="">
+                            <option value="">-- Pilih Pendidikan --</option>
+                            <option value="SMK">SMK / SMA</option>
+                            <option value="D1">D1</option>
+                            <option value="D2">D2</option>
+                            <option value="D3">D3</option>
+                            <option value="D4">D4</option>
+                            <option value="S1">S1</option>
+                            <option value="S2">S2</option>
+                            <option value="S3">S3</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 p-b-30" id="">
+                        <select name="kontrak" class="form-control" id="">
+                            <option value="">-- Pilih Jenis Kontrak --</option>
+                            <option value="Kontrak">Karywaan Kontrak</option>
+                            <option value="Karyawan Tetap">Karyawan Tetap</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 p-b-30" id="">
+                        <select name="pekerjaan" class="form-control" id="">
+                            <option value="">-- Pilih Jenis Pekerjaan --</option>
+                            <option value="Staff Produksi">Staff Produksi</option>
+                            <option value="Staff Kantor">Staff Kantor</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 p-b-30" id="">
+                        <button class="flex-c-m size2 bg1 bo-rad-23 hov1 trans-0-4">
+                            <span style="color: white;  ">Cari Lowongan</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
+
 
             <div class="row">
                 <!-- start foreach  -->
@@ -298,13 +335,13 @@
                                     <th scope="row"><?= $no++ ?></th>
                                     <td><?= $data['title'] ?></td>
                                     <td>
-                                        <?php if ($data['status'] == 0) { 
+                                        <?php if ($data['status'] == 0) {
                                             echo 'Menunggu keputusan HRD';
                                         } elseif ($data['status'] == 2) {
                                             echo 'Tidak sesuai persyaratan';
                                         } elseif ($data['status'] == 1) {
                                             echo 'Ujian telah di kirim di Whatsapps';
-                                        }?>
+                                        } ?>
                                     </td>
                                 </tr>
                             <?php  }

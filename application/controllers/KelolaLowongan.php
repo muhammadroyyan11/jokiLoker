@@ -67,6 +67,7 @@ class KelolaLowongan extends CI_Controller
             'created' => date('Y-m-d'),
             'section'   => $post['section'],
             'deadline'  => $post['deadline'],
+            'pendidikan'  => $post['pendidikan'],
             'is_active' => '1'
         ];
 
