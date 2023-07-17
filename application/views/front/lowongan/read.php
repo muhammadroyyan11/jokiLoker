@@ -43,7 +43,7 @@
                                     <?php
                                     $dateMasuk = new DateTime($lowongan->deadline);
                                     ?>
-                                    Deadline : <?= $dateMasuk->format('d F Y') ?>, <?= $dateMasuk->format('H:i:s')?> WIB
+                                    Deadline : <?= $dateMasuk->format('d F Y') ?>, <?= $dateMasuk->format('H:i')?> WIB
                                     <span class="m-l-3 m-r-6">|</span>
                                 </span>
 
