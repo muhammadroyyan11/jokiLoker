@@ -132,6 +132,36 @@ class KelolaWawancara extends CI_Controller
         redirect('KelolaLowongan');
     }
 
+    public function terima($id){
+        $params['status'] = 'Di Terima';
+
+        $this->base->edit('hasil_wawancara', $params, ['id_haswan' => $id]);
+
+        
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Data berhasil disimpan');
+        } else {
+            set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
+        }
+
+        redirect('KelolaWawancara');
+    }
+
+    public function tolak($id){
+        $params['status'] = 'Tidak Di Terima';
+
+        $this->base->edit('hasil_wawancara', $params, ['id_haswan' => $id]);
+
+        
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Data berhasil disimpan');
+        } else {
+            set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
+        }
+
+        redirect('KelolaWawancara');
+    }
+
     public function prosesEdit($id)
     {
         $post = $this->input->post(null, true);

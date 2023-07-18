@@ -122,14 +122,14 @@ foreach ($wawancara as $key => $data) : $no++; ?>
                             <option value="Baik">Baik</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="exampleInputEmail1">Hasil Akhir Lamaran</label>
                         <select name="status_pelamar" id="" class="form-control">
                             <option value="NULL">-- Silahkan Pilih --</option>
                             <option value="Di Terima">Di terima kerja</option>
                             <option value="Tidak Di Terima">Tidak di terima</option>
                         </select>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>

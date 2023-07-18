@@ -2577,6 +2577,15 @@ input.num-product::-webkit-inner-spin-button {
     border-radius: 2px 0 0 2px;
 }
 
+.job-instructor-layout .brows-job-school span {
+    position: absolute;
+    padding: 4px 15px;
+    top: 30px;
+    left: 10px;
+    line-height: 1.4;
+    font-size: 12px;
+    border-radius: 2px 0 0 2px;
+}
 .job-instructor-thumb {
     display: table;
     width: 100%;
@@ -2608,6 +2617,11 @@ input.num-product::-webkit-inner-spin-button {
 .full-time {
     background: rgba(3,165,4,0.1);
     color: #03a504;
+}
+
+.school-time {
+    background: rgba(128, 6, 2, 0.1);
+    color: #f0140c;
 }
 
 .h5, h5 {

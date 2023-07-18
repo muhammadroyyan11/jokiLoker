@@ -93,6 +93,10 @@
                             <span class="help-block"><?= form_error('wisata_id') ?></span>
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Nilai KKM</label>
+                            <input type="number" class="form-control" id="exampleInputEmail1" name="kkm" placeholder="Masukkan Nilai KKM">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Jenis Soal Ujian</label>
                             <select name="jenis" id="" class="form-control select2" style="width: 100%;">
                                 <option value="acak">Acak</option>

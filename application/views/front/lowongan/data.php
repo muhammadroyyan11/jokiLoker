@@ -151,6 +151,9 @@
                                     <div class="brows-job-type ">
                                         <span class="full-time"><?= $data['tipe'] ?></span>
                                     </div>
+                                    <div class="brows-job-school ">
+                                        <span class="school-time"><?= strtoupper($data['pendidikan']) ?></span>
+                                    </div>
                                     <div class="job-instructor-thumb text-center">
                                         <a href="<?= site_url('loker/view/' . $data['seo_title']) ?>">
                                             <img src="<?= base_url() ?>assets/img/logo.png" alt="" style="max-width: 8rem">
@@ -158,8 +161,10 @@
                                     </div>
                                     <div class="job-instructor-content">
                                         <h4 class="instructor-title"><a href="<?= site_url('loker/view/' . $data['seo_title']) ?>"></a></h4>
+                                        
                                         <div class="instructor-skills">
-                                            <?= $data['section'] ?> </div>
+                                            <?= $data['section'] ?>
+                                        </div>
                                         <div class="instructor-skills admin">
                                             <a href="<?= site_url('loker/view/' . $data['seo_title']) ?>">
                                                 <h5><?= $data['title'] ?></h5>

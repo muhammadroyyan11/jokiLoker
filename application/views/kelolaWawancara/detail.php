@@ -15,6 +15,8 @@
 
 
                     <a href="<?= base_url() ?>assets/uploads/cv/<?= $row->cv ?>" target="_blank" class="btn btn-primary btn-block"><b>Download CV</b></a>
+                    <a href="<?= site_url('kelolaWawancara/terima/'.$row->id_haswan) ?>" class="btn btn-success btn-block"><b>Di terima</b></a>
+                    <a href="<?= site_url('kelolaWawancara/tolak/'.$row->id_haswan) ?>" class="btn btn-danger btn-block"><b>Tidak di terima</b></a>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -62,7 +64,7 @@
                                 <label for="inputExperience" class="col-sm-2 control-label">Deskripsi melamar</label>
 
                                 <div class="col-sm-10">
-                                    <textarea name="Deskripsi" class="form-control" id="editor1" cols="30" rows="10" disabled><?= $row->deskripsi?></textarea>
+                                    <textarea name="Deskripsi" class="form-control" id="editor1" cols="30" rows="10" disabled><?= $row->deskripsi ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -79,8 +81,9 @@
                                     <input type="text" class="form-control" id="inputName" value="<?= $row->kriteria ?>" disabled placeholder="Name">
                                 </div>
                             </div>
-
-
+                            <!-- <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-flat">Simpan</button>
+                            </div> -->
                         </form>
                     </div>
                     <!-- /.tab-pane -->
