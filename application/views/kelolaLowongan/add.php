@@ -73,7 +73,7 @@
                             <span class="help-block"><?= form_error('wisata_id') ?></span>
                         </div>
                         <div class="form-group <?= form_error('wisata_id') ? 'has-error' : null ?>" id="destination">
-                            <label>Deptartment / Categori *</label>
+                            <label>Pendidikan *</label>
                             <select name="pendidikan" id="select" class="form-control">
                                 <option value="">-- Pilih Pendidikan --</option>
                                     <option value="SMK">SMK / SMA</option>
