@@ -47,6 +47,7 @@
                                         <td><?= $data['nama_wawancara'] ?></td>
                                         <td><?= date_indo($data['tanggal']) ?></td>
                                         <td><?= $data['title'] ?></td>
+                                        
                                         <td>
                                             <button class="btn btn-circle btn-sm btn-warning" data-toggle="modal" data-target="#modal-edit<?= $data['id_wawancara'] ?>"><i class="fa fa-fw fa-edit"></i></button>
                                             <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('wawancara/delete/') . $data['id_wawancara'] ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>

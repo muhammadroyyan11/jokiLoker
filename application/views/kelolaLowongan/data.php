@@ -49,6 +49,7 @@
                                         <td><?= $data['tipe'] ?></td>
                                         <td><?= $data['nama_kategori'] ?></td>
                                         <td><?= $data['nama_sub'] ?></td>
+                                        <td><?= $data['kkm'] ?></td>
                                         <td>
                                             <a href="<?= site_url('kelolaLowongan/edit/') . $data['id_lowongan'] ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>
                                             <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('kelolaLowongan/delete/') . $data['id_lowongan'] ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
