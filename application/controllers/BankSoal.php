@@ -49,7 +49,7 @@ class BankSoal extends CI_Controller
             'title' => 'Bank Soal',
             'row' => $soal,
             'page' => 'add',
-            'kategori'  => $this->base->getSub()->result_array()
+            'kategori'  => $this->base->get('kategori')->result_array()
             // 'ujian' => $ujian
         ];
 

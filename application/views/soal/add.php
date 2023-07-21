@@ -72,7 +72,7 @@
                                         <select name="dept_id" id="select" class="form-control">
                                             <option value="">-- Pilih Department --</option>
                                             s <?php foreach ($kategori as $l => $data) { ?>
-                                                <option value="<?= $data['id_sub'] ?>" <?= $row->dept_id == $data['id_sub'] ? 'selected' : '' ?>><b><?= $data['nama_kategori'] ?></b> - <?= $data['nama_sub'] ?></option>
+                                                <option value="<?= $data['id_kategori'] ?>" <?= $row->dept_id == $data['id_kategori'] ? 'selected' : '' ?>><?= $data['nama_kategori'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
