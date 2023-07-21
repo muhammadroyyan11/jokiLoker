@@ -71,11 +71,11 @@ class Base_model extends CI_Model
 
     public function getPeserta($where = null)
     {
-        $this->db->select('*');
-        $this->db->from('peserta_wawancara');
-        $this->db->join('user', 'user.id_user = peserta_wawancara.user_id');
-        $this->db->join('lowongan', 'lowongan.id_lowongan = peserta_wawancara.lowongan_id');
-        $this->db->join('wawancara', 'wawancara.id_wawancara = peserta_wawancara.wawancara_id');
+        $this->db->select('*, a.statusLamaran as hasil');
+        $this->db->from('peserta_wawancara as a');
+        $this->db->join('user', 'user.id_user = a.user_id');
+        $this->db->join('lowongan', 'lowongan.id_lowongan = a.lowongan_id');
+        $this->db->join('wawancara', 'wawancara.id_wawancara = a.wawancara_id');
         if ($where != null) {
             $this->db->where($where);
         }

@@ -431,6 +431,8 @@ class Loker extends CI_Controller
         $id_tes = $this->input->post('id_tes', true);
         $jml = $this->input->post('jml_soal', true);
         // $id_tes = $this->encryption->decrypt($id_tes);
+        
+        $jml_soal = $jml - 1;
 
         $input     = $this->input->post(null, true);
         $list_jawaban     = "";
@@ -458,7 +460,7 @@ class Loker extends CI_Controller
 
         // Pecah Jawaban
         $jawaban_simpan = explode(",", $list_jawaban);
-        var_dump($jawaban_simpan);
+        // var_dump($jawaban_simpan);
 
         $jumlah_benar     = 0;
         $jumlah_salah     = 0;
@@ -466,6 +468,8 @@ class Loker extends CI_Controller
         $nilai_bobot     = 0;
         $total_bobot    = 0;
         $jumlah_soal    = sizeof($jawaban_simpan);
+
+        var_dump($jml_soal);
 
         foreach ($jawaban_simpan as $jwb) {
             $dt_jwb         = explode(":", $jwb);
@@ -481,7 +485,7 @@ class Loker extends CI_Controller
                 $jumlah_salah++;
             }
         }
-        $nilai = ($jumlah_benar / $jumlah_soal)  * 100;
+        $nilai = ($jumlah_benar / $jml_soal)  * 100;
         // $set_point = $nilai * 2;
 
         // end update nilai
@@ -578,6 +582,8 @@ class Loker extends CI_Controller
     // }
     public function simpan_akhir()
     {
+        // $this->simpan_satu();
+
         $siswa_id = userdata('id_user');
 
         $id_ujian = $this->input->post('id_tes', true);

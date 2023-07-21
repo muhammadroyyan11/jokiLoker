@@ -71,7 +71,7 @@
 
                                 <div class="col-sm-10">
                                     <!-- <textarea name="Deskripsi" class="form-control" id="editor5" cols="30" rows="10"></textarea> -->
-                                    <?= $row->desc ?>
+                                    <?= $row->lamaranDesc ?>
                                 </div>
                             </div>
 

@@ -135,9 +135,16 @@ class KelolaWawancara extends CI_Controller
     public function terima($id){
         $params['status'] = 'Di Terima';
 
+        $paramsPelamar['statusLamaran'] = 'Di Terima';
+
+        $id_peserta = $this->base->get('hasil_wawancara', ['id_haswan' => $id])->row();
+
+        // var_dump($id_peserta->peserta_id)
+
         $this->base->edit('hasil_wawancara', $params, ['id_haswan' => $id]);
 
-        
+        $this->base->edit('peserta_wawancara', $paramsPelamar, ['id_peserta' => $id_peserta->peserta_id]);
+
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil disimpan');
         } else {
@@ -150,7 +157,13 @@ class KelolaWawancara extends CI_Controller
     public function tolak($id){
         $params['status'] = 'Tidak Di Terima';
 
+        $paramsPelamar['statusLamaran'] = 'Tidak Di Terima';
+
+        $id_peserta = $this->base->get('hasil_wawancara', ['id_haswan' => $id])->row();
+
         $this->base->edit('hasil_wawancara', $params, ['id_haswan' => $id]);
+
+        $this->base->edit('peserta_wawancara', $paramsPelamar, ['id_peserta' => $id_peserta->peserta_id]);
 
         
         if ($this->db->affected_rows() > 0) {

@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputExperience" class="col-sm-2 control-label">Deskripsi melamar</label>
+                                <label for="inputExperience" class="col-sm-2 control-label">Kesimpulan</label>
 
                                 <div class="col-sm-10">
                                     <textarea name="Deskripsi" class="form-control" id="editor1" cols="30" rows="10" disabled><?= $row->deskripsi ?></textarea>
