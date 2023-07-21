@@ -2,7 +2,7 @@
 
 use LDAP\Result;
 
- defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Ujian_m extends CI_Model
 {
@@ -36,7 +36,7 @@ class Ujian_m extends CI_Model
         $this->db->order_by('nilai', 'DESC');
         return $this->db->get();
     }
-    
+
 
     public function add($post)
     {
@@ -74,7 +74,7 @@ class Ujian_m extends CI_Model
         // $this->db->join('el_pengajar', 'el_pengajar.id_pengajar = soal.pengajar_id');
         $query = $this->db->get()->row();
         return $query;
-    }   
+    }
 
     public function getKelasNow($where = null)
     {
@@ -115,6 +115,7 @@ class Ujian_m extends CI_Model
         $this->db->select('*');
         $this->db->from('ujian a');
         $this->db->join('lowongan b', 'a.lowongan_id=b.id_lowongan');
+        $this->db->join('sub_kategori c', 'b.dept_id=c.id_sub');
         // $this->db->join('matkul c', 'a.matkul_id=c.id_matkul');
         $this->db->where('id_ujian', $id);
         // $this->db->order_by('level', 'ASC');
@@ -125,16 +126,15 @@ class Ujian_m extends CI_Model
     {
         $ujian = $this->getUjianId($id);
 
-        $id_kategori = $ujian->dept_id;
-    
+        $id_kategori = $ujian->kategori_id;
 
         $this->db->select('id_soal, pertanyaan, file, p_a, p_b, p_c, p_d, kunci,  tipe_file, dept_id');
         $this->db->from('soal');
-        $this->db->where('dept_id', $id_kategori);
+        $this->db->where('dept_id', 3);
         if ($ujian->jenis == 'acak') {
             $this->db->order_by('rand()');
         } else {
-            $this->db->order_by('id_soal', 'ASC'); 
+            $this->db->order_by('id_soal', 'ASC');
         }
         $this->db->limit($ujian->jumlah_soal);
         return $this->db->get()->result();
@@ -146,7 +146,6 @@ class Ujian_m extends CI_Model
         $this->db->from('soal');
         $this->db->where('id_soal', $id_soal);
         return $this->db->get();
-        
     }
 
     public function create($table, $data, $batch = false)
@@ -158,7 +157,7 @@ class Ujian_m extends CI_Model
         }
         return $insert;
     }
-    
+
     public function HslUjian($id, $siswa)
     {
         $this->db->select('*, UNIX_TIMESTAMP(tgl_selesai) as waktu_habis');

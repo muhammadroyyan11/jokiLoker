@@ -67,7 +67,7 @@
                             <select name="dept_id" id="select" class="form-control">
                                 <option value="">-- Pilih Department --</option>
                                 <?php foreach ($kategori as $l => $data) { ?>
-                                    <option value="<?= $data['kategori_id'] ?>"><b><?= $data['nama_kategori'] ?></b> - <?= $data['nama_sub'] ?></option>
+                                    <option value="<?= $data['id_sub'] ?>"><b><?= $data['nama_kategori'] ?></b> - <?= $data['nama_sub'] ?></option>
                                 <?php } ?>
                             </select>
                             <span class="help-block"><?= form_error('wisata_id') ?></span>

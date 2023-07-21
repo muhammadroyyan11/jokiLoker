@@ -284,7 +284,6 @@ class Loker extends CI_Controller
 
         // var_dump($ujian);
         $soal = $this->ujian->getSoal($id);
-
         // var_dump($soal);
 
         $h_ujian     = $this->ujian->HslUjian($id, $idSiswa);
@@ -314,6 +313,8 @@ class Loker extends CI_Controller
             $soal_urut_ok     = $soal_urut_ok;
             $list_id_soal    = "";
             $list_jw_soal     = "";
+
+           
 
             if (!empty($soal)) {
                 foreach ($soal as $d) {
@@ -348,10 +349,12 @@ class Loker extends CI_Controller
 
             redirect('loker/garap/?key=' . urlencode($id_en), 'location', 301);
         }
+        
 
         $q_soal = $h_ujian->row();
 
         $urut_soal         = explode(",", $q_soal->list_jawaban);
+        
         $soal_urut_ok    = array();
         for ($i = 0; $i < sizeof($urut_soal); $i++) {
             $pc_urut_soal    = explode(":", $urut_soal[$i]);
@@ -359,11 +362,9 @@ class Loker extends CI_Controller
             $ambil_soal     = $this->ujian->ambilSoal($pc_urut_soal1, $pc_urut_soal[0]);
             $soal_urut_ok[] = $ambil_soal;
         }
-
+        
         $detail_tes = $q_soal;
         $soal_urut_ok = $soal_urut_ok;  
-
-        // var_dump($soal_urut_ok);
 
         $pc_list_jawaban = explode(",", $detail_tes->list_jawaban);
         $arr_jawab = array();
