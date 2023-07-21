@@ -35,6 +35,7 @@
                                     <th>Tipe Kontrak</th>
                                     <th>Departement</th>
                                     <th>Sub Department</th>
+                                    <th>Nilai Minimum</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

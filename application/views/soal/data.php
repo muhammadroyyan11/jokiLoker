@@ -54,7 +54,7 @@
                                         <td><?= $data['p_c']?></td>
                                         <td><?= $data['p_d']?></td>
                                         <td><?= $data['kunci'] ?></td>
-                                        <td><?= $data['nama_sub'] ?></td>
+                                        <td><?= $data['nama_kategori'] ?></td>
                                         <td>
                                             <a href="<?= base_url('bankSoal/edit/') . $data['id_soal'] ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>
                                             <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('bankSoal/del/') . $data['id_soal'] ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
