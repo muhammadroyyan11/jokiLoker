@@ -118,7 +118,7 @@ class Loker extends CI_Controller
                 'title' => "Informasi Challenge",
                 'ujian' => $ujian,
                 // 'siswa' => $siswa,
-                'encrypted_id' => urlencode($this->encryption->encrypt($id_ujian))
+                // 'encrypted_id' => urlencode($this->encryption->encrypt($id_ujian))
             );
 
             // var_dump($this->session->userdata('nama'));
