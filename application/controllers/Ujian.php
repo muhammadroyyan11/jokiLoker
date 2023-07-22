@@ -27,14 +27,14 @@ class Ujian extends CI_Controller
     public function report($id)
     {
         $data = [
-            'ujian' => $this->ujian->getLead(['el_hasil.ujian_id' => $id, 'el_hasil.status' => 0])->result_array(),
+            'ujian' => $this->ujian->getLeadList(['el_hasil.ujian_id' => $id, 'el_hasil.status' => 0])->result_array(),
             'row' => $this->ujian->getLead(['el_hasil.ujian_id' => $id, 'el_hasil.status' => 0])->row(),
             'count' =>  $this->ujian->getLead(['el_hasil.ujian_id' => $id, 'el_hasil.status' => 0])->num_rows(),
             'id'    => $id,
             'title' => 'Report Ujian'
         ];
 
-        // var_dump($data['row']);
+        // var_dump($data['ujian']);
         $this->template->load('template', 'ujian/report', $data);
     }
 

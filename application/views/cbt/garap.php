@@ -45,10 +45,10 @@ if (time() >= $soal->waktu_habis) {
                 <a class="ragu_ragu btn btn-warning" rel="1" onclick="return tidak_jawab();">Ragu-ragu</a>
                 <a class="action next btn btn-info" rel="2" onclick="return next();"><i class="glyphicon glyphicon-chevron-right"></i> Next</a>
                 <a class="selesai action submit btn btn-danger" onclick="return simpan_akhir();"><i class="glyphicon glyphicon-stop"></i> Selesai</a>
-                <input type="text" name="jml_soal" id="jml_soal" value="<?= $no; ?>">
+                <input type="hidden" name="jml_soal" id="jml_soal" value="<?= $no; ?>">
             </div>
         </div>
-        <input type="text" name="id_tes" value="<?= $this->encryption->decrypt($id_tes);  ?>">
+        <input type="hidden" name="id_tes" value="<?= $this->encryption->decrypt($id_tes);  ?>">
 
         <?= form_close(); ?>
     </div>
