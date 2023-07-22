@@ -118,13 +118,13 @@ class Loker extends CI_Controller
                 'title' => "Informasi Challenge",
                 'ujian' => $ujian,
                 // 'siswa' => $siswa,
-                // 'encrypted_id' => urlencode($this->encryption->encrypt($id_ujian))
+                'encrypted_id' => urlencode($this->encryption->encrypt($id_ujian))
             );
 
             // var_dump($this->session->userdata('nama'));
 
-            // $this->template->load('tempChallenge', 'cbt/infoChallenge', $data);
-            $this->template->load('tempChallenge', 'cbt/infoChallenge', $data);
+            // $this->template->load('tempChallenge', 'test/infoChallenge', $data);
+            $this->template->load('tempChallenge', 'test/infoChallenge', $data);
         } else {
             set_pesan('Anda tidak memiliki akses untuk mengerjakan', FALSE);
             redirect('loker');
@@ -423,7 +423,7 @@ class Loker extends CI_Controller
             'id_tes'    => $id_tes
         ];
 
-        $this->template->load('tempChallenge', 'cbt/garap', $data);
+        $this->template->load('tempChallenge', 'test/garap', $data);
     }
 
     public function simpan_satu()
