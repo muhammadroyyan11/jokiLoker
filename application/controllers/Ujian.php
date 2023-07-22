@@ -34,7 +34,7 @@ class Ujian extends CI_Controller
             'title' => 'Report Ujian'
         ];
 
-        var_dump($data['row']);
+        // var_dump($data['row']);
         $this->template->load('template', 'ujian/report', $data);
     }
 
@@ -50,9 +50,9 @@ class Ujian extends CI_Controller
 
     public function generate($id)
     {
-        $get_ujian = $this->ujian->getLead(['ujian_id' => $id])->row();
+        $get_ujian = $this->ujian->getLead(['el_hasil.ujian_id' => $id])->row();
 
-        $get_peserta = $this->ujian->getLead(['ujian_id' => $id])->result();
+        $get_peserta = $this->ujian->getLead(['el_hasil.ujian_id' => $id])->result();
 
         // if ($get_ujian == 'Staff Produksi') {
         foreach ($get_peserta as $key => $data) {
@@ -104,9 +104,9 @@ class Ujian extends CI_Controller
 
     public function generate_kantor($id)
     {
-        $get_ujian = $this->ujian->getLead(['ujian_id' => $id])->row();
+        $get_ujian = $this->ujian->getLead(['el_hasil.ujian_id' => $id])->row();
 
-        $get_peserta = $this->ujian->getLead(['ujian_id' => $id])->result();
+        $get_peserta = $this->ujian->getLead(['el_hasil.ujian_id' => $id])->result();
 
         // var_dump($get_peserta);
 
@@ -115,7 +115,7 @@ class Ujian extends CI_Controller
 
             if ($data->nilai >= $data->kkm) {
                 $params = [
-                    'statusLamaran' => 'Lolos Seleksi'
+                    'statusLamaran' => 'Lolos ke tahap wawancara'
                 ];
 
                 $wawancara_id = $this->base->get('wawancara', ['lowongan_id' => $data->lowongan_id])->row();

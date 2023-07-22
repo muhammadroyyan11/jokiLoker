@@ -130,7 +130,7 @@ class Ujian_m extends CI_Model
 
         $this->db->select('id_soal, pertanyaan, file, p_a, p_b, p_c, p_d, kunci,  tipe_file, dept_id');
         $this->db->from('soal');
-        $this->db->where('dept_id', 3);
+        $this->db->where('dept_id', $id_kategori);
         if ($ujian->jenis == 'acak') {
             $this->db->order_by('rand()');
         } else {
@@ -264,7 +264,7 @@ class Ujian_m extends CI_Model
     public function getLead($where = null)
     {
         $this->db->distinct();
-        $this->db->select('*, el_hasil.status as statusTest, el_hasil.nilai as nilai, lowongan.kkm as kkm, lamaran.deskripsi as lamaranDesc');
+        $this->db->select('*, el_hasil.status as statusTest, el_hasil.nilai as nilai, lowongan.kkm as kkm, el_hasil.statusLamaran as hasilUjian,lamaran.deskripsi as lamaranDesc');
         $this->db->from('el_hasil');
         if ($where != null) {
             $this->db->where($where);
