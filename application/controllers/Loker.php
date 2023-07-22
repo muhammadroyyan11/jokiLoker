@@ -123,8 +123,8 @@ class Loker extends CI_Controller
 
             // var_dump($this->session->userdata('nama'));
 
-            // $this->template->load('tempChallenge', 'test/infoChallenge', $data);
-            $this->template->load('tempChallenge', 'test/infoChallenge', $data);
+            // $this->template->load('tempUjian', 'test/infoChallenge', $data);
+            $this->template->load('tempUjian', 'test/infoChallenge', $data);
         } else {
             set_pesan('Anda tidak memiliki akses untuk mengerjakan', FALSE);
             redirect('loker');
@@ -423,7 +423,7 @@ class Loker extends CI_Controller
             'id_tes'    => $id_tes
         ];
 
-        $this->template->load('tempChallenge', 'test/garap', $data);
+        $this->template->load('tempUjian', 'test/garap', $data);
     }
 
     public function simpan_satu()
