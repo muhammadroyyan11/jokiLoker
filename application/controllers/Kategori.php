@@ -8,6 +8,7 @@ class Kategori extends CI_Controller
     {
         parent::__construct();
         cek_login();
+        is_pelamar();
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Base_model', 'base');
         $this->load->model('Chart_model', 'chart');

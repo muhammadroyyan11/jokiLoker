@@ -11,6 +11,7 @@ class Dashboard extends CI_Controller
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Base_model', 'base');
         $this->load->model('Chart_model', 'chart');
+        is_pelamar();
     }
 
     public function index()

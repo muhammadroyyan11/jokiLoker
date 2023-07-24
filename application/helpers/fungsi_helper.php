@@ -9,6 +9,13 @@ function cek_login()
     }
 }
 
+function is_pelamar() {
+    $ci = get_instance();
+    if($ci->session->userdata('login_session')['role'] == 3){
+        redirect('home');
+    }
+}
+
 function is_admin()
 {
     $ci = get_instance();

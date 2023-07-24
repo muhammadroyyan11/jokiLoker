@@ -10,6 +10,7 @@ class User extends CI_Controller
         // if (!is_admin()) {
         //     redirect('dashboard');
         // }
+        is_pelamar();
         $this->load->model('Base_model', 'base');
         $this->load->library('form_validation');
         date_default_timezone_set('Asia/Jakarta');

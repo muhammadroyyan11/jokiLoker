@@ -10,6 +10,7 @@ class KelolaLowongan extends CI_Controller
         $this->load->model('Base_model', 'base');
         cek_login();
         date_default_timezone_set('Asia/Jakarta');
+        is_pelamar();
     }
 
     public function index()

@@ -9,6 +9,7 @@ class KelolaWawancara extends CI_Controller
         parent::__construct();
         $this->load->model('Base_model', 'base');
         cek_login();
+        is_pelamar();
         date_default_timezone_set('Asia/Jakarta');
     }
 
