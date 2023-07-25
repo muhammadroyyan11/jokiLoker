@@ -426,7 +426,7 @@ class Base_model extends CI_Model
     public function getBankSoal() {
         $this->db->select('*');
         $this->db->from('soal');
-        $this->db->join('kategori', 'kategori.id_kategori=soal.dept_id');
+        $this->db->join('sub_kategori', 'sub_kategori.id_sub=soal.dept_id');
         return $this->db->get();
     }
 
