@@ -12,6 +12,7 @@ class BankSoal extends CI_Controller
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Base_model', 'base');
         $this->load->model('Soal_m', 'soal');
+        $this->load->model('Ujian_m', 'ujian');
     }
 
     public function index()
@@ -46,11 +47,14 @@ class BankSoal extends CI_Controller
         // $where = array('login_id' => $this->session->userdata('login_session')['user']);
         // $ujian = $this->ujian->get($where)->result();
 
+        // $tes = $this->ujian->getUjianId(25);
+        // var_dump($tes);
+
         $data = [
             'title' => 'Bank Soal',
             'row' => $soal,
             'page' => 'add',
-            'kategori'  => $this->base->get('kategori')->result_array()
+            'kategori'  => $this->base->getSub()->result_array()
             // 'ujian' => $ujian
         ];
 

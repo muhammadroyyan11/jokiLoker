@@ -21,6 +21,7 @@
         </div>
 
         <div class="box-body">
+        <?= $this->session->flashdata('pesan'); ?>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <form action="<?= site_url('KelolaLowongan/proses') ?>" method="post">

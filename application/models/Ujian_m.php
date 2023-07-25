@@ -19,6 +19,16 @@ class Ujian_m extends CI_Model
         return $query;
     }
 
+    public function get_soal($where = null) {
+        $this->db->select('*');
+        $this->db->from('soal');
+        if ($where != null) {
+            $this->db->where($where);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function getOne()
     {
         $this->db->select('*');
@@ -126,7 +136,7 @@ class Ujian_m extends CI_Model
     {
         $ujian = $this->getUjianId($id);
 
-        $id_kategori = $ujian->kategori_id;
+        $id_kategori = $ujian->id_sub;
 
         $this->db->select('id_soal, pertanyaan, file, p_a, p_b, p_c, p_d, kunci,  tipe_file, dept_id');
         $this->db->from('soal');

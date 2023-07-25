@@ -8,6 +8,7 @@ class KelolaLowongan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Base_model', 'base');
+        $this->load->model('Ujian_m', 'ujian');
         cek_login();
         date_default_timezone_set('Asia/Jakarta');
         is_pelamar();
@@ -73,38 +74,44 @@ class KelolaLowongan extends CI_Controller
             'kkm' => $post['kkm']
         ];
 
-        $return_id =   $this->base->insert('lowongan', $paramsLowongan);
+        $count_soal = $this->ujian->get_soal(['dept_id' => $post['dept_id']])->num_rows();
 
-        // var_dump($return_id);
-
-        $paramsUjian = [
-            'nama_ujian' => 'Test ' . $post['nama'],
-            'jenis' => $post['jenis'],
-            'jumlah_soal' => $post['jumlah'],
-            'waktu' => $post['waktu'],
-            'tgl_dibuat' => date('Y-m-d h:i:s'),
-            'tgl_selesai' => $post['tgl_selesai'],
-            'lowongan_id' => $return_id,
-            'token' => strtoupper(random_string('alpha', 5)),
-        ];
-
-        $this->base->add('ujian', $paramsUjian);
-
-        $paramsWawancara = [
-            'nama_wawancara' => 'Wawancara ' . $post['nama'],
-            'tanggal'        => $post['tgl_wawancara'],
-            'lowongan_id'    => $return_id
-        ];
-
-        $this->base->add('wawancara', $paramsWawancara);
-
-        if ($this->db->affected_rows() > 0) {
-            set_pesan('Data berhasil disimpan');
+        if ($count_soal < $post['jumlah']) {
+            set_pesan('Bank soal yang teredia tidak mencukupi, Silahkan tambah bank soal terlebih dahulu', FALSE);
+            redirect('KelolaLowongan/add');
         } else {
-            set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
-        }
+            $return_id =   $this->base->insert('lowongan', $paramsLowongan);
+            // var_dump($return_id);
 
-        redirect('KelolaLowongan');
+            $paramsUjian = [
+                'nama_ujian' => 'Test ' . $post['nama'],
+                'jenis' => $post['jenis'],
+                'jumlah_soal' => $post['jumlah'],
+                'waktu' => $post['waktu'],
+                'tgl_dibuat' => date('Y-m-d h:i:s'),
+                'tgl_selesai' => $post['tgl_selesai'],
+                'lowongan_id' => $return_id,
+                'token' => strtoupper(random_string('alpha', 5)),
+            ];
+
+            $this->base->add('ujian', $paramsUjian);
+
+            $paramsWawancara = [
+                'nama_wawancara' => 'Wawancara ' . $post['nama'],
+                'tanggal'        => $post['tgl_wawancara'],
+                'lowongan_id'    => $return_id
+            ];
+
+            $this->base->add('wawancara', $paramsWawancara);
+
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Data berhasil disimpan');
+            } else {
+                set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
+            }
+
+            redirect('KelolaLowongan');
+        }
     }
 
     public function report($id)
