@@ -83,12 +83,18 @@ class KelolaLowongan extends CI_Controller
             $return_id =   $this->base->insert('lowongan', $paramsLowongan);
             // var_dump($return_id);
 
+            $dateTime = date('Y-m-d H:i:s'); 
+            $tz_from = 'Asia/Jakarta'; 
+            $newDateTime = new DateTime($dateTime, new DateTimeZone($tz_from)); 
+            $newDateTime->setTimezone(new DateTimeZone("GMT+7")); 
+            $dateTimeUTC = $newDateTime->format("Y-m-d H:i:s");
+
             $paramsUjian = [
                 'nama_ujian' => 'Test ' . $post['nama'],
                 'jenis' => $post['jenis'],
                 'jumlah_soal' => $post['jumlah'],
                 'waktu' => $post['waktu'],
-                'tgl_dibuat' => date('Y-m-d h:i:s'),
+                'tgl_dibuat' => $dateTimeUTC,
                 'tgl_selesai' => $post['tgl_selesai'],
                 'lowongan_id' => $return_id,
                 'token' => strtoupper(random_string('alpha', 5)),

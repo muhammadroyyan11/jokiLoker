@@ -95,7 +95,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nilai KKM</label>
-                            <input type="number" class="form-control" id="exampleInputEmail1" name="kkm" placeholder="Masukkan Nilai KKM">
+                            <input type="number" class="form-control" id="exampleInputEmail1" name="kkm" placeholder="Masukkan Nilai KKM" min="1" max="100" >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Jenis Soal Ujian</label>

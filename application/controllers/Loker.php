@@ -122,9 +122,17 @@ class Loker extends CI_Controller
             );
 
             // var_dump($this->session->userdata('nama'));
+            $dateTime = date('Y-m-d H:i:s'); 
+            $tz_from = 'Asia/Jakarta'; 
+            $newDateTime = new DateTime($dateTime, new DateTimeZone($tz_from)); 
+            $newDateTime->setTimezone(new DateTimeZone("GMT+7")); 
+            $dateTimeUTC = $newDateTime->format("Y-m-d H:i:s");
 
+            // echo $dateTimeUTC;
             // $this->template->load('tempUjian', 'test/infoChallenge', $data);
             $this->template->load('tempUjian', 'test/infoChallenge', $data);
+
+            // echo date('Y-m-d h:i:s');
         } else {
             set_pesan('Anda tidak memiliki akses untuk mengerjakan', FALSE);
             redirect('loker');

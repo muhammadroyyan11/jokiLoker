@@ -67,7 +67,7 @@
                                 <i class="fa fa-pencil"></i> Mulai
                             </button><br>
                             <div class="callout callout-danger">
-                                <i class="fa fa-clock-o"></i> <strong class="countdown" data-time="<?= date('Y-m-d H:i:s', strtotime($ujian->tgl_selesai)) ?>">00 Hari, 00 Jam, 00 Menit, 00 Detik</strong><br />
+                                <i class="fa fa-clock-o"></i> <strong class="countdown" data-time="<?= gmdate('Y-m-d H:i:s', strtotime($ujian->tgl_selesai)) ?>">00 Hari, 00 Jam, 00 Menit, 00 Detik</strong><br />
                                 Batas waktu menekan tombol mulai.
                             </div>
                         <?php else : ?>
