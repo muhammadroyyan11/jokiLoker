@@ -25,6 +25,7 @@ class Base_model extends CI_Model
         $this->db->from('lowongan');
         $this->db->join('sub_kategori', 'sub_kategori.id_sub = lowongan.dept_id');
         $this->db->join('kategori', 'kategori.id_kategori = sub_kategori.kategori_id');
+        $this->db->order_by('id_lowongan', 'DESC');
         return $this->db->get();
     }
 
