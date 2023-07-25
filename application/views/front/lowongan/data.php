@@ -79,11 +79,13 @@
             <?= $this->session->flashdata('pesan'); ?>
 
             <?php
-            if ($lamaranCount > 0) { ?>
-                <div class="alert alert-danger" role="alert">
-                    Anda memiliki <b><?= $lamaranCount ?></b> ujian yang belum dikerjakan, Silahkan cek menu kelola ujian
-                </div>
-            <?php }
+            if (userdata('status_pelamar') != 'Di Terima') {
+                if ($lamaranCount > 0) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        Anda memiliki <b><?= $lamaranCount ?></b> ujian yang belum dikerjakan, Silahkan cek menu kelola ujian
+                    </div>
+                <?php }
+            }
 
             if (userdata('status_pelamar') == 'Di Terima') { ?>
                 <div class="alert alert-danger" role="alert">
@@ -161,7 +163,7 @@
                                     </div>
                                     <div class="job-instructor-content">
                                         <h4 class="instructor-title"><a href="<?= site_url('loker/view/' . $data['seo_title']) ?>"></a></h4>
-                                        
+
                                         <div class="instructor-skills">
                                             <?= $data['section'] ?>
                                         </div>

@@ -44,9 +44,9 @@ class KelolaWawancara extends CI_Controller
             'user_id'       => $post['user_id']
         ];
 
-        $paramsUser = [
-            'status_pelamar' => $post['status_pelamar']
-        ];
+        // $paramsUser = [
+        //     'status_pelamar' => $post['status_pelamar']
+        // ];
 
         $paramsView = [
             'statusLamaran' => $post['status_pelamar']
@@ -54,7 +54,7 @@ class KelolaWawancara extends CI_Controller
 
         $this->base->edit('el_hasil', $paramsView, ['siswa_id' => $post['user_id'], 'lowongan_id' => $post['lowongan_id']]);;
 
-        $this->base->edit('user', $paramsUser, ['id_user' => $post['user_id']]);;
+        // $this->base->edit('user', $paramsUser, ['id_user' => $post['user_id']]);;
 
         $this->base->add('hasil_wawancara', $params);
 
@@ -140,7 +140,11 @@ class KelolaWawancara extends CI_Controller
 
         $id_peserta = $this->base->get('hasil_wawancara', ['id_haswan' => $id])->row();
 
-        // var_dump($id_peserta->peserta_id)
+        $paramsUser = [
+            'status_pelamar' => 'Di Terima'
+        ];
+
+        $this->base->edit('user', $paramsUser, ['id_user' => $id_peserta->user_id]);
 
         $this->base->edit('hasil_wawancara', $params, ['id_haswan' => $id]);
 
